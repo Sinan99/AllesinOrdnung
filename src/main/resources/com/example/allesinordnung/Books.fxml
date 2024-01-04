@@ -35,7 +35,7 @@
                     <Font size="23.0" />
                 </font>
                 <VBox.margin>
-                    <Insets bottom="40.0" />
+                    <Insets bottom="30.0" />
                 </VBox.margin>
             </Button>
             <GridPane alignment="CENTER_LEFT" vgap="20.0">
@@ -140,6 +140,9 @@
                         <font>
                             <Font size="20.0" />
                         </font>
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
                     </TextField>
                     <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="60.0" style="-fx-background-color: #252525;" text="🔍" textAlignment="CENTER" textFill="WHITE">
                         <font>
@@ -153,7 +156,7 @@
             </HBox>
         </children>
     </VBox>
-    <TableView fx:id="tableView" fixedCellSize="0.0" layoutX="300.0" layoutY="100.0" prefHeight="470.0" prefWidth="595.0" stylesheets="@TableViewCSS.css" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="10.0">
+    <TableView fx:id="tableView" fixedCellSize="0.0" layoutX="300.0" layoutY="100.0" prefHeight="470.0" prefWidth="600.0" stylesheets="@TableViewCSS.css" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
         <columns>
             <TableColumn fx:id="titleColumn" prefWidth="150.0" styleClass="header" text="Title" />
             <TableColumn fx:id="authorColumn" prefWidth="120.0" styleClass="header" text="Author" />
