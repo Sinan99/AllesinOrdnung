@@ -26,7 +26,7 @@
 
 .table-view .column-header {
     -fx-background-color: transparent;
-    -fx-pref-height:40px;
+    -fx-pref-height:50px;
 }
 .table-view  .table-column{
     -fx-alignment: center;
