@@ -3,6 +3,7 @@ module com.example.allesinordnung {
     requires javafx.fxml;
 
     requires com.dlsc.formsfx;
+    requires com.fasterxml.jackson.databind;
 
     opens com.example.allesinordnung to javafx.fxml;
     exports com.example.allesinordnung;

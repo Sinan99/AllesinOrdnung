@@ -30,7 +30,7 @@ application {
 }
 
 javafx {
-    version = '17.0.6'
+    version = '21'
     modules = ['javafx.controls', 'javafx.fxml']
 }
 
@@ -41,6 +41,7 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.0'
 }
 
 test {
@@ -58,3 +59,5 @@ jlink {
 jlinkZip {
     group = 'distribution'
 }
+
+

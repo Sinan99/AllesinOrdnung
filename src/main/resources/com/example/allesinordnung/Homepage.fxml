@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.allesinordnung.AllesinOrdnungController">
+<Rectangle fill="#252525" height="150.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="900.0" />
+   <VBox alignment="CENTER" prefHeight="150.0" prefWidth="900.0">
+      <children>
+      <Text fill="WHITE" text="Alles in Ordnung">
+         <font>
+            <Font name="System Bold" size="50.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="(!M)" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      </children>
+   </VBox>
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0">
+    <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+        <Button fx:id="openBooks" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openBooks" prefHeight="80.0" prefWidth="300.0" style="-fx-background-color: #606060;" text="Bücher" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER">
+            <font>
+                <Font name="System Bold" size="30.0" />
+            </font>
+        </Button>
+        <Button fx:id="openMusics" layoutX="85.0" layoutY="70.0" mnemonicParsing="false" onAction="#openMusics" prefHeight="80.0" prefWidth="300.0" style="-fx-background-color: #606060;" text="Musik" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <font>
+                <Font name="System Bold" size="30.0" />
+            </font>
+        </Button>
+   <Button fx:id="openMovies" mnemonicParsing="false" onAction="#openMovies" prefHeight="80.0" prefWidth="300.0" style="-fx-background-color: #606060;" text="Filme" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
+      <font>
+         <Font name="System Bold" size="30.0" />
+      </font>
+   </Button>
+   <Button fx:id="closeProgram" mnemonicParsing="false" onAction="#closeProgram" prefHeight="80.0" prefWidth="300.0" style="-fx-background-color: #252525;" text="Beenden" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <font>
+         <Font name="System Bold" size="30.0" />
+      </font>
+   </Button>
+    </GridPane>
+</AnchorPane>
