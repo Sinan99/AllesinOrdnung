@@ -46,7 +46,7 @@ public class BooksController extends AllesinOrdnungController {
     private ObservableList<Book> bookData = FXCollections.observableArrayList();
 
     @FXML
-    private TableColumn<Book, String> barcodeColumn;
+    private TableColumn<Book, String> genreColumn;
 
     @FXML
     private TableColumn<Book, Integer> yearColumn;
@@ -67,7 +67,7 @@ public class BooksController extends AllesinOrdnungController {
     @FXML
     private void initialize() {
         // Initialisieren der TableView-Spalten
-        barcodeColumn.setCellValueFactory(new PropertyValueFactory<>("barcode"));
+        genreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
         yearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
         authorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
@@ -90,7 +90,7 @@ public class BooksController extends AllesinOrdnungController {
                     return true;
                 } else if (String.valueOf(book.getYear()).contains(newValue)) {
                     return true;
-                } else if (book.getBarcode().contains(newValue)) {
+                } else if (book.getGenre().contains(newValue)) {
                     return true;
                 }
                 return false;
@@ -111,7 +111,7 @@ public class BooksController extends AllesinOrdnungController {
     @FXML
     private void addNewBook() {
         // Erfassen Sie die Benutzereingaben
-        String barcode = genreField.getText();
+        String genre = genreField.getText();
         int year = Integer.parseInt(yearField.getText());
         String author = authorField.getText();
         String title = titleField.getText();
@@ -119,7 +119,7 @@ public class BooksController extends AllesinOrdnungController {
         double rating = Double.parseDouble(ratingField.getText());
 
         // Erstellen Sie ein neues Buchobjekt
-        Book newBook = new Book(barcode, year, author, title,rating,comment);
+        Book newBook = new Book(genre, year, author, title,rating,comment);
 
         // Fügen Sie das neue Buch zur bookData hinzu
         addBookData(newBook);
@@ -138,7 +138,7 @@ public class BooksController extends AllesinOrdnungController {
 
     private void fillFormWithBook(Book book) {
         // Befüllen Sie die Formularfelder mit den Daten des ausgewählten Buches
-        genreField.setText(book.getBarcode());
+        genreField.setText(book.getGenre());
         yearField.setText(String.valueOf(book.getYear())); // Jahr in String umwandeln
         authorField.setText(book.getAuthor());
         titleField.setText(book.getTitle());
@@ -201,7 +201,7 @@ public class BooksController extends AllesinOrdnungController {
         // Prüfen Sie, ob ein Buch ausgewählt wurde
         if (selectedBook != null) {
             // Holen Sie die neuen Daten aus den Formularfeldern
-            String barcode = genreField.getText();
+            String genre = genreField.getText();
             int year = Integer.parseInt(yearField.getText()); // Achten Sie auf Fehlerbehandlung
             String author = authorField.getText();
             String title = titleField.getText();
@@ -209,7 +209,7 @@ public class BooksController extends AllesinOrdnungController {
             String comment = commentField.getText();
 
             // Aktualisieren Sie die Buchdaten
-            selectedBook.setBarcode(barcode);
+            selectedBook.setGenre(genre);
             selectedBook.setYear(year);
             selectedBook.setAuthor(author);
             selectedBook.setTitle(title);

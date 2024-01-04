@@ -2,7 +2,7 @@ package com.example.allesinordnung;
 
 public class MediaItem {
 
-    private String barcode;
+    private String genre;
     private int year;
     private String title;
     private String comment;
@@ -14,16 +14,16 @@ public class MediaItem {
 
     ////hbfsdhfb
 
-    public MediaItem(String barcode,int year,String title,String comment,double rating){
-        this.barcode = barcode;
+    public MediaItem(String genre, int year, String title, String comment, double rating){
+        this.genre = genre;
         this.year = year;
         this.title = title;
         this.comment = comment;
         this.rating = rating;
     }
 
-    public String getBarcode() {
-        return barcode;
+    public String getGenre() {
+        return genre;
     }
 
     public int getYear() {
@@ -42,8 +42,8 @@ public class MediaItem {
         return rating;
     }
 
-    public void setBarcode(String barcode) {
-        this.barcode = barcode;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     public void setYear(int year) {

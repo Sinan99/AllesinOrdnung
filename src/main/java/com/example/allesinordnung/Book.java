@@ -7,14 +7,14 @@ public class Book extends MediaItem {
     private String author;
 
     @JsonCreator
-    public Book(@JsonProperty("barcode") String barcode,
+    public Book(@JsonProperty("genre") String genre,
                 @JsonProperty("year") int year,
                 @JsonProperty("author") String author,
                 @JsonProperty("title") String title,
                 @JsonProperty("rating") Double rating,
                 @JsonProperty("comment") String comment) {
 
-        super(barcode,year,title,comment,rating);
+        super(genre,year,title,comment,rating);
         this.author = author;
 
     }
