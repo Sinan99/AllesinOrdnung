@@ -228,7 +228,5 @@ public class BooksController extends AllesinOrdnungController {
     private void Home() {
         openPage(home, "Homepage.fxml");
     }
-
-
 }
 
