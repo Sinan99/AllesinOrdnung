@@ -3,31 +3,20 @@ package com.example.allesinordnung;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Book {
-    private String barcode;
-    private int year;
+public class Book extends MediaItem {
     private String author;
-    private String title;
 
     @JsonCreator
     public Book(@JsonProperty("barcode") String barcode,
                 @JsonProperty("year") int year,
                 @JsonProperty("author") String author,
-                @JsonProperty("title") String title) {
-        this.barcode = barcode;
-        this.year = year;
+                @JsonProperty("title") String title,
+                @JsonProperty("rating") Double rating,
+                @JsonProperty("comment") String comment) {
+
+        super(barcode,year,title,comment,rating);
         this.author = author;
-        this.title = title;
-    }
 
-
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getAuthor() {
@@ -38,19 +27,4 @@ public class Book {
         this.author = author;
     }
 
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public String getBarcode() {
-        return barcode;
-    }
-
-    public void setBarcode(String barcode) {
-        this.barcode = barcode;
-    }
 }

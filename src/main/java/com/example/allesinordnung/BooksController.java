@@ -34,6 +34,12 @@ public class BooksController extends AllesinOrdnungController {
     private TextField titleField;
 
     @FXML
+    private TextField ratingField;
+
+    @FXML
+    private TextField commentField;
+
+    @FXML
     private Button home;
     @FXML
     private TableView<Book> tableView;
@@ -50,6 +56,13 @@ public class BooksController extends AllesinOrdnungController {
 
     @FXML
     private TableColumn<Book, String> titleColumn;
+
+    @FXML
+    private TableColumn<Book, Double> ratingColumn;
+
+    @FXML
+    private TableColumn<Book, String> commentColumn;
+
     private FilteredList<Book> filteredData;
     @FXML
     private void initialize() {
@@ -58,6 +71,8 @@ public class BooksController extends AllesinOrdnungController {
         yearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
         authorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        ratingColumn.setCellValueFactory(new PropertyValueFactory<>("rating"));
+        commentColumn.setCellValueFactory(new PropertyValueFactory<>("comment"));
 
         loadDataFromJson();
 
@@ -100,9 +115,11 @@ public class BooksController extends AllesinOrdnungController {
         int year = Integer.parseInt(yearField.getText());
         String author = authorField.getText();
         String title = titleField.getText();
+        String comment = commentField.getText();
+        double rating = Double.parseDouble(ratingField.getText());
 
         // Erstellen Sie ein neues Buchobjekt
-        Book newBook = new Book(barcode, year, author, title);
+        Book newBook = new Book(barcode, year, author, title,rating,comment);
 
         // Fügen Sie das neue Buch zur bookData hinzu
         addBookData(newBook);
@@ -115,6 +132,8 @@ public class BooksController extends AllesinOrdnungController {
         yearField.clear();
         authorField.clear();
         titleField.clear();
+        ratingField.clear();
+        commentField.clear();
     }
 
     private void fillFormWithBook(Book book) {
@@ -123,6 +142,8 @@ public class BooksController extends AllesinOrdnungController {
         yearField.setText(String.valueOf(book.getYear())); // Jahr in String umwandeln
         authorField.setText(book.getAuthor());
         titleField.setText(book.getTitle());
+        ratingField.setText(String.valueOf(book.getRating()));
+        commentField.setText(String.valueOf(book.getComment()));
     }
 
     private void loadDataFromJson() {
@@ -167,6 +188,8 @@ public class BooksController extends AllesinOrdnungController {
             yearField.clear();
             authorField.clear();
             titleField.clear();
+            ratingField.clear();;
+            commentField.clear();
         }
     }
 
@@ -182,12 +205,16 @@ public class BooksController extends AllesinOrdnungController {
             int year = Integer.parseInt(yearField.getText()); // Achten Sie auf Fehlerbehandlung
             String author = authorField.getText();
             String title = titleField.getText();
+            double raing = Double.parseDouble(ratingField.getText());
+            String comment = commentField.getText();
 
             // Aktualisieren Sie die Buchdaten
             selectedBook.setBarcode(barcode);
             selectedBook.setYear(year);
             selectedBook.setAuthor(author);
             selectedBook.setTitle(title);
+            selectedBook.setRating(raing);
+            selectedBook.setComment(comment);
 
             // Aktualisieren Sie das Buch in der ObservableList
             bookData.set(bookData.indexOf(selectedBook), selectedBook);
