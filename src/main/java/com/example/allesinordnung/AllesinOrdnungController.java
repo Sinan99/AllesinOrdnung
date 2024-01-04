@@ -18,6 +18,7 @@ public class AllesinOrdnungController {
     private Button openMusics;
     @FXML
     private Button openBooks;
+
     @FXML
     private void openBooks() {
         try {
@@ -32,6 +33,7 @@ public class AllesinOrdnungController {
             ex.printStackTrace();
         }
     }
+
     @FXML
     private void closeProgram() {
         System.exit(0);
@@ -51,6 +53,7 @@ public class AllesinOrdnungController {
             ex.printStackTrace();
         }
     }
+
     @FXML
     private void openMovies() {
         try {
