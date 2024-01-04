@@ -53,12 +53,12 @@
                <RowConstraints />
                 </rowConstraints>
                 <children>
-                    <Label text="Barcode:" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <Label text="Genre:" GridPane.columnIndex="0" GridPane.rowIndex="0">
                         <font>
                             <Font size="15.0" />
                         </font>
                     </Label>
-                    <TextField fx:id="barcodeField" GridPane.columnIndex="1" />
+                    <TextField fx:id="genreField" GridPane.columnIndex="1" />
 
                     <Label text="Year:" GridPane.rowIndex="1">
                         <font>
@@ -158,7 +158,7 @@
             <TableColumn fx:id="titleColumn" prefWidth="150.0" styleClass="header" text="Title" />
             <TableColumn fx:id="authorColumn" prefWidth="120.0" styleClass="header" text="Author" />
             <TableColumn fx:id="yearColumn" prefWidth="50.0" styleClass="header" text="Year" />
-            <TableColumn fx:id="barcodeColumn" minWidth="8.7999267578125" prefWidth="141.599853515625" styleClass="header" text="Barcode" />
+            <TableColumn fx:id="barcodeColumn" minWidth="8.7999267578125" prefWidth="141.599853515625" styleClass="header" text="Genre" />
          <TableColumn fx:id="ratingColumn" prefWidth="60.0" styleClass="header" text="★" />
          <TableColumn fx:id="commentColumn" prefWidth="120.80020141601562" styleClass="header" text="Comment" />
         </columns>

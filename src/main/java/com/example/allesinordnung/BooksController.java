@@ -25,7 +25,7 @@ public class BooksController extends AllesinOrdnungController {
     @FXML
     private TextField searchField;
     @FXML
-    private TextField barcodeField;
+    private TextField genreField;
     @FXML
     private TextField yearField;
     @FXML
@@ -111,7 +111,7 @@ public class BooksController extends AllesinOrdnungController {
     @FXML
     private void addNewBook() {
         // Erfassen Sie die Benutzereingaben
-        String barcode = barcodeField.getText();
+        String barcode = genreField.getText();
         int year = Integer.parseInt(yearField.getText());
         String author = authorField.getText();
         String title = titleField.getText();
@@ -128,7 +128,7 @@ public class BooksController extends AllesinOrdnungController {
         saveBookDataToJson();
 
         // Löschen Sie die Textfelder im Formular
-        barcodeField.clear();
+        genreField.clear();
         yearField.clear();
         authorField.clear();
         titleField.clear();
@@ -138,7 +138,7 @@ public class BooksController extends AllesinOrdnungController {
 
     private void fillFormWithBook(Book book) {
         // Befüllen Sie die Formularfelder mit den Daten des ausgewählten Buches
-        barcodeField.setText(book.getBarcode());
+        genreField.setText(book.getBarcode());
         yearField.setText(String.valueOf(book.getYear())); // Jahr in String umwandeln
         authorField.setText(book.getAuthor());
         titleField.setText(book.getTitle());
@@ -184,7 +184,7 @@ public class BooksController extends AllesinOrdnungController {
 
             // Speichern Sie die aktualisierte Liste in der JSON-Datei
             saveBookDataToJson();
-            barcodeField.clear();
+            genreField.clear();
             yearField.clear();
             authorField.clear();
             titleField.clear();
@@ -201,7 +201,7 @@ public class BooksController extends AllesinOrdnungController {
         // Prüfen Sie, ob ein Buch ausgewählt wurde
         if (selectedBook != null) {
             // Holen Sie die neuen Daten aus den Formularfeldern
-            String barcode = barcodeField.getText();
+            String barcode = genreField.getText();
             int year = Integer.parseInt(yearField.getText()); // Achten Sie auf Fehlerbehandlung
             String author = authorField.getText();
             String title = titleField.getText();
