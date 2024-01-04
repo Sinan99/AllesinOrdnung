@@ -21,7 +21,6 @@ public class MediaItem {
         this.comment = comment;
         this.rating = rating;
     }
-
     public String getGenre() {
         return genre;
     }

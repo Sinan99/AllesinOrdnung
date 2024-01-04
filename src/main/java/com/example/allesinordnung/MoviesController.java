@@ -31,6 +31,10 @@ public class MoviesController extends AllesinOrdnungController {
     private TextField releaseYearField;
     @FXML
     private TextField genreField;
+    @FXML
+    private TextField ratingField; // Added rating field
+    @FXML
+    private TextField commentField; // Added comment field
 
     @FXML
     private Button home;
@@ -50,6 +54,12 @@ public class MoviesController extends AllesinOrdnungController {
     @FXML
     private TableColumn<Movie, String> genreColumn;
 
+    @FXML
+    private TableColumn<Movie, Double> ratingColumn;
+
+    @FXML
+    private TableColumn<Movie, String> commentColumn;
+
     private FilteredList<Movie> filteredData;
 
     @FXML
@@ -57,8 +67,10 @@ public class MoviesController extends AllesinOrdnungController {
         // Initialize TableView columns
         directorColumn.setCellValueFactory(new PropertyValueFactory<>("director"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-        releaseYearColumn.setCellValueFactory(new PropertyValueFactory<>("releaseYear"));
+        releaseYearColumn.setCellValueFactory(new PropertyValueFactory<>("year")); // Use "year" property
         genreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        ratingColumn.setCellValueFactory(new PropertyValueFactory<>("rating"));
+        commentColumn.setCellValueFactory(new PropertyValueFactory<>("comment"));
 
         loadDataFromJson();
 
@@ -74,7 +86,7 @@ public class MoviesController extends AllesinOrdnungController {
                     return true;
                 } else if (movie.getDirector().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else if (String.valueOf(movie.getReleaseYear()).contains(newValue)) {
+                } else if (String.valueOf(movie.getYear()).contains(newValue)) {
                     return true;
                 } else if (movie.getGenre().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
@@ -98,8 +110,10 @@ public class MoviesController extends AllesinOrdnungController {
         String title = titleField.getText();
         int releaseYear = Integer.parseInt(releaseYearField.getText());
         String genre = genreField.getText();
+        Double rating = parseDoubleOrNull(ratingField.getText()); // parse rating or null
+        String comment = commentField.getText(); // get comment
 
-        Movie newMovie = new Movie(director, title, releaseYear, genre);
+        Movie newMovie = new Movie(releaseYear, title, director, rating, genre, comment); // Update Movie constructor
 
         addMovieData(newMovie);
 
@@ -109,13 +123,27 @@ public class MoviesController extends AllesinOrdnungController {
         titleField.clear();
         releaseYearField.clear();
         genreField.clear();
+        ratingField.clear(); // clear ratingField
+        commentField.clear(); // clear commentField
     }
+
+    // Helper method to parse Double or return null if parsing fails
+    private Double parseDoubleOrNull(String value) {
+        try {
+            return Double.parseDouble(value);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
+
 
     private void fillFormWithMovie(Movie movie) {
         directorField.setText(movie.getDirector());
         titleField.setText(movie.getTitle());
-        releaseYearField.setText(String.valueOf(movie.getReleaseYear()));
+        releaseYearField.setText(String.valueOf(movie.getYear()));
         genreField.setText(movie.getGenre());
+        ratingField.setText(String.valueOf(movie.getRating())); // Set rating field
+        commentField.setText(movie.getComment()); // Set comment field
     }
 
     private void loadDataFromJson() {
@@ -154,6 +182,8 @@ public class MoviesController extends AllesinOrdnungController {
             titleField.clear();
             releaseYearField.clear();
             genreField.clear();
+            ratingField.clear(); // Clear rating field
+            commentField.clear(); // Clear comment field
         }
     }
 
@@ -166,11 +196,15 @@ public class MoviesController extends AllesinOrdnungController {
             String title = titleField.getText();
             int releaseYear = Integer.parseInt(releaseYearField.getText());
             String genre = genreField.getText();
+            double rating = Double.parseDouble(ratingField.getText()); // Added rating field
+            String comment = commentField.getText(); // Added comment field
 
             selectedMovie.setDirector(director);
             selectedMovie.setTitle(title);
-            selectedMovie.setReleaseYear(releaseYear);
+            selectedMovie.setYear(releaseYear);
             selectedMovie.setGenre(genre);
+            selectedMovie.setRating(rating); // Set rating field
+            selectedMovie.setComment(comment); // Set comment field
 
             movieData.set(movieData.indexOf(selectedMovie), selectedMovie);
 

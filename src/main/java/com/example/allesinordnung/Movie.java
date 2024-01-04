@@ -1,23 +1,23 @@
 package com.example.allesinordnung;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Movie {
+public class Movie extends MediaItem {
+
     private String director;
-    private String title;
-    private int releaseYear;
-    private String genre;
 
     @JsonCreator
-    public Movie(@JsonProperty("director") String director,
+    public Movie(@JsonProperty("releaseYear") @JsonInclude(JsonInclude.Include.NON_NULL) Integer year,
                  @JsonProperty("title") String title,
-                 @JsonProperty("releaseYear") int releaseYear,
-                 @JsonProperty("genre") String genre) {
+                 @JsonProperty("director") String director,
+                 @JsonProperty("rating") @JsonInclude(JsonInclude.Include.NON_NULL) Double rating,
+                 @JsonProperty("genre") String genre,
+                 @JsonProperty("comment") String comment) {
+
+        super(genre, (year != null) ? year : 0, title, comment, rating);
         this.director = director;
-        this.title = title;
-        this.releaseYear = releaseYear;
-        this.genre = genre;
     }
 
     public String getDirector() {
@@ -26,29 +26,5 @@ public class Movie {
 
     public void setDirector(String director) {
         this.director = director;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public int getReleaseYear() {
-        return releaseYear;
-    }
-
-    public void setReleaseYear(int releaseYear) {
-        this.releaseYear = releaseYear;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
     }
 }
