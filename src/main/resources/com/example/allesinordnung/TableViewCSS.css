@@ -8,6 +8,7 @@
 
 .table-view .column-header-background{
     -fx-background-color: #252525;
+    -fx-background-radius: 3px;
     -fx-border-style: none;
 }
 .table-view:row-selection .column-header-background .filler{

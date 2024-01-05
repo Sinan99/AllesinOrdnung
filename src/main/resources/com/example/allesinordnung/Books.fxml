@@ -28,9 +28,9 @@
             </Text>
         </children>
     </VBox>
-    <VBox alignment="CENTER" layoutY="100.0" prefHeight="470.0" prefWidth="270.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
+    <VBox alignment="TOP_CENTER" layoutY="100.0" prefHeight="470.0" prefWidth="270.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
         <children>
-            <Button fx:id="home" graphicTextGap="0.0" mnemonicParsing="false" onAction="#Home" prefHeight="20.0" prefWidth="270.0" style="-fx-background-color: #252525;" text="🏠" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="home" graphicTextGap="0.0" mnemonicParsing="false" onAction="#Home" prefHeight="57.0" prefWidth="270.0" style="-fx-background-color: #252525;" text="🏠" textAlignment="CENTER" textFill="WHITE">
                 <font>
                     <Font size="23.0" />
                 </font>
@@ -97,7 +97,7 @@
 
                 </children>
             </GridPane>
-            <HBox alignment="CENTER" prefHeight="35.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
                 <children>
                     <Button fx:id="cancelAddBook" mnemonicParsing="false" onAction="#deleteSelectedBook" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: red;" text="❌" textAlignment="CENTER" textFill="WHITE">
                         <font>
@@ -131,7 +131,7 @@
                     </Button>
                 </children>
                 <VBox.margin>
-                    <Insets top="20.0" />
+                    <Insets bottom="20.0" top="20.0" />
                 </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="300.0">
@@ -144,14 +144,14 @@
                      <Insets />
                   </HBox.margin>
                     </TextField>
-                    <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="60.0" style="-fx-background-color: #252525;" text="🔍" textAlignment="CENTER" textFill="WHITE">
+                    <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #252525;" text="🔍" textAlignment="CENTER" textFill="WHITE">
                         <font>
                             <Font size="23.0" />
                         </font>
                     </Button>
                 </children>
                 <VBox.margin>
-                    <Insets top="20.0" />
+                    <Insets />
                 </VBox.margin>
             </HBox>
         </children>
