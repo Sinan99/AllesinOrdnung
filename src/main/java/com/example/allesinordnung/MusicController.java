@@ -29,6 +29,10 @@ public class MusicController extends AllesinOrdnungController {
     private TextField songTitleField;
     @FXML
     private TextField songDateField;
+    @FXML
+    private TextField ratingField;
+    @FXML
+    private TextField commentField;
 
     @FXML
     private Button home;
@@ -44,6 +48,10 @@ public class MusicController extends AllesinOrdnungController {
 
     @FXML
     private TableColumn<Music, String> songDateColumn;
+    @FXML
+    private TableColumn<Music, Double> ratingColumn;
+    @FXML
+    private TableColumn<Music, String> commentColumn;
     private FilteredList<Music> filteredData;
 
     @FXML
@@ -52,6 +60,8 @@ public class MusicController extends AllesinOrdnungController {
         artistNameColumn.setCellValueFactory(new PropertyValueFactory<>("artistName"));
         songTitleColumn.setCellValueFactory(new PropertyValueFactory<>("songTitle"));
         songDateColumn.setCellValueFactory(new PropertyValueFactory<>("songDate"));
+        ratingColumn.setCellValueFactory(new PropertyValueFactory<>("rating"));
+        commentColumn.setCellValueFactory(new PropertyValueFactory<>("comment"));
 
         // Laden der Daten aus JSON
         loadDataFromJson();
@@ -94,9 +104,11 @@ public class MusicController extends AllesinOrdnungController {
         String artistName = artistNameField.getText();
         String songTitle = songTitleField.getText();
         String songDate = songDateField.getText();
+        Double rating = Double.valueOf(ratingField.getText());
+        String comment = commentField.getText();
 
         // Erstellen eines neuen Musikobjekts
-        Music newMusic = new Music(artistName, songTitle, songDate);
+        Music newMusic = new Music(artistName, songTitle, songDate, rating, comment);
 
         // Hinzufügen des neuen Musikstücks zur Liste
         addMusicData(newMusic);
@@ -115,6 +127,8 @@ public class MusicController extends AllesinOrdnungController {
         artistNameField.setText(music.getArtistName());
         songTitleField.setText(music.getSongTitle());
         songDateField.setText(music.getSongDate());
+        String comment = commentField.getText();
+        double rating = Double.parseDouble(ratingField.getText());
     }
 
     private void loadDataFromJson() {
