@@ -145,9 +145,9 @@
     </VBox>
     <TableView fx:id="tableView" fixedCellSize="0.0" layoutX="300.0" layoutY="100.0" prefHeight="470.0" prefWidth="600.0" stylesheets="@TableViewCSS.css" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
         <columns>
-            <TableColumn fx:id="songTitleColumn" prefWidth="150.0" styleClass="header" text="Song Title" />
+            <TableColumn fx:id="songTitleColumn" prefWidth="150.0" styleClass="header" text="Title" />
             <TableColumn fx:id="artistNameColumn" prefWidth="120.0" styleClass="header" text="Artist" />
-            <TableColumn fx:id="songDateColumn" prefWidth="50.0" styleClass="header" text="Song Date" />
+            <TableColumn fx:id="songDateColumn" prefWidth="50.0" styleClass="header" text="Date" />
             <TableColumn fx:id="ratingColumn" prefWidth="60.0" styleClass="header" text="★" />
             <TableColumn fx:id="commentColumn" prefWidth="120.80020141601562" styleClass="header" text="Comment" />
         </columns>
