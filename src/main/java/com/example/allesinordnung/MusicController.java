@@ -48,15 +48,18 @@ public class MusicController extends AllesinOrdnungController {
 
     @FXML
     private void initialize() {
-        // Initialisieren der TableView-Spalten
+        // Initialisierung der TableView-Spalten
         artistNameColumn.setCellValueFactory(new PropertyValueFactory<>("artistName"));
         songTitleColumn.setCellValueFactory(new PropertyValueFactory<>("songTitle"));
         songDateColumn.setCellValueFactory(new PropertyValueFactory<>("songDate"));
 
+        // Laden der Daten aus JSON
         loadDataFromJson();
 
+        // Erstellung einer gefilterten Datenliste
         filteredData = new FilteredList<>(musicData, p -> true);
 
+        // Hinzufügen eines Listeners für die Suchfeld-Eingabe
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(music -> {
                 if (newValue == null || newValue.isEmpty()) {
@@ -74,10 +77,10 @@ public class MusicController extends AllesinOrdnungController {
             });
         });
 
-        // Setzen Sie filteredData als die Datenquelle für die TableView
+        // Setzen der gefilterten Daten als Datenquelle für die TableView
         tableView.setItems(filteredData);
 
-        // Listener für die Auswahl von Zeilen in der TableView
+        // Hinzufügen eines Listeners für die Auswahl von Zeilen in der TableView
         tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 fillFormWithMusic(newSelection);
@@ -87,28 +90,28 @@ public class MusicController extends AllesinOrdnungController {
 
     @FXML
     private void addNewMusic() {
-        // Erfassen Sie die Benutzereingaben
+        // Erfassen der Benutzereingaben
         String artistName = artistNameField.getText();
         String songTitle = songTitleField.getText();
         String songDate = songDateField.getText();
 
-        // Erstellen Sie ein neues Musikobjekt
+        // Erstellen eines neuen Musikobjekts
         Music newMusic = new Music(artistName, songTitle, songDate);
 
-        // Fügen Sie das neue Musikstück zur musicData hinzu
+        // Hinzufügen des neuen Musikstücks zur Liste
         addMusicData(newMusic);
 
-        // Save the updated data to the JSON file
+        // Speichern der aktualisierten Daten in einer JSON-Datei
         saveMusicDataToJson();
 
-        // Löschen Sie die Textfelder im Formular
+        // Löschen der Textfelder im Formular
         artistNameField.clear();
         songTitleField.clear();
         songDateField.clear();
     }
 
     private void fillFormWithMusic(Music music) {
-        // Befüllen Sie die Formularfelder mit den Daten des ausgewählten Musikstücks
+        // Befüllen der Formularfelder mit den Daten des ausgewählten Musikstücks
         artistNameField.setText(music.getArtistName());
         songTitleField.setText(music.getSongTitle());
         songDateField.setText(music.getSongDate());
@@ -119,7 +122,7 @@ public class MusicController extends AllesinOrdnungController {
         try {
             List<Music> loadedMusic = objectMapper.readValue(new File("src/main/resources/data/music.json"), new TypeReference<List<Music>>() {
             });
-            // Clear the existing data and add the loaded data
+            // Löschen der vorhandenen Daten und Hinzufügen der geladenen Daten
             musicData.clear();
             musicData.addAll(loadedMusic);
         } catch (IOException e) {
@@ -142,16 +145,18 @@ public class MusicController extends AllesinOrdnungController {
 
     @FXML
     private void deleteSelectedMusic() {
-        // Holen Sie das ausgewählte Musikstück
+        // Holen des ausgewählten Musikstücks
         Music selectedMusic = tableView.getSelectionModel().getSelectedItem();
 
-        // Prüfen Sie, ob ein Musikstück ausgewählt wurde
+        // Überprüfen, ob ein Musikstück ausgewählt wurde
         if (selectedMusic != null) {
-            // Entfernen Sie das Musikstück aus der ObservableList
+            // Entfernen des Musikstücks aus der Liste
             musicData.remove(selectedMusic);
 
-            // Speichern Sie die aktualisierte Liste in der JSON-Datei
+            // Speichern der aktualisierten Liste in der JSON-Datei
             saveMusicDataToJson();
+
+            // Löschen der Formularfelder
             artistNameField.clear();
             songTitleField.clear();
             songDateField.clear();
@@ -160,25 +165,25 @@ public class MusicController extends AllesinOrdnungController {
 
     @FXML
     private void updateSelectedMusic() {
-        // Holen Sie das ausgewählte Musikstück
+        // Holen des ausgewählten Musikstücks
         Music selectedMusic = tableView.getSelectionModel().getSelectedItem();
 
-        // Prüfen Sie, ob ein Musikstück ausgewählt wurde
+        // Überprüfen, ob ein Musikstück ausgewählt wurde
         if (selectedMusic != null) {
-            // Holen Sie die neuen Daten aus den Formularfeldern
+            // Holen der neuen Daten aus den Formularfeldern
             String artistName = artistNameField.getText();
             String songTitle = songTitleField.getText();
             String songDate = songDateField.getText();
 
-            // Aktualisieren Sie die Musikdaten
+            // Aktualisieren der Musikdaten
             selectedMusic.setArtistName(artistName);
             selectedMusic.setSongTitle(songTitle);
             selectedMusic.setSongDate(songDate);
 
-            // Aktualisieren Sie das Musikstück in der ObservableList
+            // Aktualisieren des Musikstücks in der Liste
             musicData.set(musicData.indexOf(selectedMusic), selectedMusic);
 
-            // Speichern Sie die aktualisierte Liste in der JSON-Datei
+            // Speichern der aktualisierten Liste in der JSON-Datei
             saveMusicDataToJson();
         }
     }

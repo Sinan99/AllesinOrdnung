@@ -11,8 +11,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -32,38 +30,29 @@ public class BooksController extends AllesinOrdnungController {
     private TextField authorField;
     @FXML
     private TextField titleField;
-
     @FXML
     private TextField ratingField;
-
     @FXML
     private TextField commentField;
-
     @FXML
     private Button home;
     @FXML
     private TableView<Book> tableView;
     private ObservableList<Book> bookData = FXCollections.observableArrayList();
-
     @FXML
     private TableColumn<Book, String> genreColumn;
-
     @FXML
     private TableColumn<Book, Integer> yearColumn;
-
     @FXML
     private TableColumn<Book, String> authorColumn;
-
     @FXML
     private TableColumn<Book, String> titleColumn;
-
     @FXML
     private TableColumn<Book, Double> ratingColumn;
-
     @FXML
     private TableColumn<Book, String> commentColumn;
-
     private FilteredList<Book> filteredData;
+
     @FXML
     private void initialize() {
         // Initialisieren der TableView-Spalten
@@ -74,10 +63,13 @@ public class BooksController extends AllesinOrdnungController {
         ratingColumn.setCellValueFactory(new PropertyValueFactory<>("rating"));
         commentColumn.setCellValueFactory(new PropertyValueFactory<>("comment"));
 
+        // Lädt Daten aus der JSON-Datei
         loadDataFromJson();
 
+        // Erstellt eine gefilterte Liste für die Suche
         filteredData = new FilteredList<>(bookData, p -> true);
 
+        // Fügt einen Listener für das Suchfeld hinzu
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(book -> {
                 if (newValue == null || newValue.isEmpty()) {
@@ -97,7 +89,7 @@ public class BooksController extends AllesinOrdnungController {
             });
         });
 
-        // Setzen Sie filteredData als die Datenquelle für die TableView
+        // Setzt die gefilterte Liste als Datenquelle für die TableView
         tableView.setItems(filteredData);
 
         // Listener für die Auswahl von Zeilen in der TableView
@@ -110,7 +102,7 @@ public class BooksController extends AllesinOrdnungController {
 
     @FXML
     private void addNewBook() {
-        // Erfassen Sie die Benutzereingaben
+        // Erfasst die Benutzereingaben
         String genre = genreField.getText();
         int year = Integer.parseInt(yearField.getText());
         String author = authorField.getText();
@@ -118,16 +110,16 @@ public class BooksController extends AllesinOrdnungController {
         String comment = commentField.getText();
         double rating = Double.parseDouble(ratingField.getText());
 
-        // Erstellen Sie ein neues Buchobjekt
-        Book newBook = new Book(genre, year, author, title,rating,comment);
+        // Erstellt ein neues Buchobjekt
+        Book newBook = new Book(genre, year, author, title, rating, comment);
 
-        // Fügen Sie das neue Buch zur bookData hinzu
+        // Fügt das neue Buch zur bookData hinzu
         addBookData(newBook);
 
-        // Save the updated data to the JSON file
+        // Speichert die aktualisierten Daten in der JSON-Datei
         saveBookDataToJson();
 
-        // Löschen Sie die Textfelder im Formular
+        // Löscht die Textfelder im Formular
         genreField.clear();
         yearField.clear();
         authorField.clear();
@@ -137,13 +129,13 @@ public class BooksController extends AllesinOrdnungController {
     }
 
     private void fillFormWithBook(Book book) {
-        // Befüllen Sie die Formularfelder mit den Daten des ausgewählten Buches
+        // Befüllt die Formularfelder mit den Daten des ausgewählten Buches
         genreField.setText(book.getGenre());
         yearField.setText(String.valueOf(book.getYear())); // Jahr in String umwandeln
         authorField.setText(book.getAuthor());
         titleField.setText(book.getTitle());
         ratingField.setText(String.valueOf(book.getRating()));
-        commentField.setText(String.valueOf(book.getComment()));
+        commentField.setText(book.getComment());
     }
 
     private void loadDataFromJson() {
@@ -151,7 +143,7 @@ public class BooksController extends AllesinOrdnungController {
         try {
             List<Book> loadedBooks = objectMapper.readValue(new File("src/main/resources/data/books.json"), new TypeReference<List<Book>>() {
             });
-            // Clear the existing data and add the loaded data
+            // Löscht die vorhandenen Daten und fügt die geladenen Daten hinzu
             bookData.clear();
             bookData.addAll(loadedBooks);
         } catch (IOException e) {
@@ -174,52 +166,54 @@ public class BooksController extends AllesinOrdnungController {
 
     @FXML
     private void deleteSelectedBook() {
-        // Holen Sie das ausgewählte Buch
+        // Holt das ausgewählte Buch
         Book selectedBook = tableView.getSelectionModel().getSelectedItem();
 
-        // Prüfen Sie, ob ein Buch ausgewählt wurde
+        // Prüft, ob ein Buch ausgewählt wurde
         if (selectedBook != null) {
-            // Entfernen Sie das Buch aus der ObservableList
+            // Entfernt das Buch aus der ObservableList
             bookData.remove(selectedBook);
 
-            // Speichern Sie die aktualisierte Liste in der JSON-Datei
+            // Speichert die aktualisierte Liste in der JSON-Datei
             saveBookDataToJson();
+
+            // Löscht die Formularfelder
             genreField.clear();
             yearField.clear();
             authorField.clear();
             titleField.clear();
-            ratingField.clear();;
+            ratingField.clear();
             commentField.clear();
         }
     }
 
     @FXML
     private void updateSelectedBook() {
-        // Holen Sie das ausgewählte Buch
+        // Holt das ausgewählte Buch
         Book selectedBook = tableView.getSelectionModel().getSelectedItem();
 
-        // Prüfen Sie, ob ein Buch ausgewählt wurde
+        // Prüft, ob ein Buch ausgewählt wurde
         if (selectedBook != null) {
-            // Holen Sie die neuen Daten aus den Formularfeldern
+            // Holt die neuen Daten aus den Formularfeldern
             String genre = genreField.getText();
             int year = Integer.parseInt(yearField.getText()); // Achten Sie auf Fehlerbehandlung
             String author = authorField.getText();
             String title = titleField.getText();
-            double raing = Double.parseDouble(ratingField.getText());
+            double rating = Double.parseDouble(ratingField.getText());
             String comment = commentField.getText();
 
-            // Aktualisieren Sie die Buchdaten
+            // Aktualisiert die Buchdaten
             selectedBook.setGenre(genre);
             selectedBook.setYear(year);
             selectedBook.setAuthor(author);
             selectedBook.setTitle(title);
-            selectedBook.setRating(raing);
+            selectedBook.setRating(rating);
             selectedBook.setComment(comment);
 
-            // Aktualisieren Sie das Buch in der ObservableList
+            // Aktualisiert das Buch in der ObservableList
             bookData.set(bookData.indexOf(selectedBook), selectedBook);
 
-            // Speichern Sie die aktualisierte Liste in der JSON-Datei
+            // Speichert die aktualisierte Liste in der JSON-Datei
             saveBookDataToJson();
         }
     }

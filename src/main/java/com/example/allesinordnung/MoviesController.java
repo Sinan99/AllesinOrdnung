@@ -32,9 +32,9 @@ public class MoviesController extends AllesinOrdnungController {
     @FXML
     private TextField genreField;
     @FXML
-    private TextField ratingField; // Added rating field
+    private TextField ratingField; // Hinzugefügtes Bewertungsfeld
     @FXML
-    private TextField commentField; // Added comment field
+    private TextField commentField; // Hinzugefügtes Kommentarfeld
 
     @FXML
     private Button home;
@@ -64,18 +64,21 @@ public class MoviesController extends AllesinOrdnungController {
 
     @FXML
     private void initialize() {
-        // Initialize TableView columns
+        // Initialisieren der TableView-Spalten
         directorColumn.setCellValueFactory(new PropertyValueFactory<>("director"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-        releaseYearColumn.setCellValueFactory(new PropertyValueFactory<>("year")); // Use "year" property
+        releaseYearColumn.setCellValueFactory(new PropertyValueFactory<>("year")); // Verwenden Sie das "year" -Attribut
         genreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
         ratingColumn.setCellValueFactory(new PropertyValueFactory<>("rating"));
         commentColumn.setCellValueFactory(new PropertyValueFactory<>("comment"));
 
+        // Daten aus der JSON-Datei laden
         loadDataFromJson();
 
+        // Erstellen einer gefilterten Liste für die Suche
         filteredData = new FilteredList<>(movieData, p -> true);
 
+        // Hinzufügen eines Listeners für das Suchfeld
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(movie -> {
                 if (newValue == null || newValue.isEmpty()) {
@@ -95,8 +98,10 @@ public class MoviesController extends AllesinOrdnungController {
             });
         });
 
+        // Setzen der gefilterten Liste als Datenquelle für die TableView
         tableView.setItems(filteredData);
 
+        // Listener für die Auswahl von Zeilen in der TableView
         tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 fillFormWithMovie(newSelection);
@@ -110,24 +115,28 @@ public class MoviesController extends AllesinOrdnungController {
         String title = titleField.getText();
         int releaseYear = Integer.parseInt(releaseYearField.getText());
         String genre = genreField.getText();
-        Double rating = parseDoubleOrNull(ratingField.getText()); // parse rating or null
-        String comment = commentField.getText(); // get comment
+        Double rating = parseDoubleOrNull(ratingField.getText()); // Bewertung oder null parsen
+        String comment = commentField.getText(); // Kommentar holen
 
-        Movie newMovie = new Movie(releaseYear, title, director, rating, genre, comment); // Update Movie constructor
+        // Neues Movie-Objekt erstellen
+        Movie newMovie = new Movie(releaseYear, title, director, rating, genre, comment);
 
+        // Movie-Daten hinzufügen
         addMovieData(newMovie);
 
+        // Movie-Daten in JSON-Datei speichern
         saveMovieDataToJson();
 
+        // Textfelder im Formular leeren
         directorField.clear();
         titleField.clear();
         releaseYearField.clear();
         genreField.clear();
-        ratingField.clear(); // clear ratingField
-        commentField.clear(); // clear commentField
+        ratingField.clear(); // Bewertungsfeld leeren
+        commentField.clear(); // Kommentarfeld leeren
     }
 
-    // Helper method to parse Double or return null if parsing fails
+    // Hilfsmethode zum Parsen von Double oder null zurückgeben, falls das Parsen fehlschlägt
     private Double parseDoubleOrNull(String value) {
         try {
             return Double.parseDouble(value);
@@ -136,14 +145,14 @@ public class MoviesController extends AllesinOrdnungController {
         }
     }
 
-
     private void fillFormWithMovie(Movie movie) {
+        // Formularfelder mit den Daten des ausgewählten Films füllen
         directorField.setText(movie.getDirector());
         titleField.setText(movie.getTitle());
         releaseYearField.setText(String.valueOf(movie.getYear()));
         genreField.setText(movie.getGenre());
-        ratingField.setText(String.valueOf(movie.getRating())); // Set rating field
-        commentField.setText(movie.getComment()); // Set comment field
+        ratingField.setText(String.valueOf(movie.getRating())); // Bewertungsfeld setzen
+        commentField.setText(movie.getComment()); // Kommentarfeld setzen
     }
 
     private void loadDataFromJson() {
@@ -182,8 +191,8 @@ public class MoviesController extends AllesinOrdnungController {
             titleField.clear();
             releaseYearField.clear();
             genreField.clear();
-            ratingField.clear(); // Clear rating field
-            commentField.clear(); // Clear comment field
+            ratingField.clear(); // Bewertungsfeld leeren
+            commentField.clear(); // Kommentarfeld leeren
         }
     }
 
@@ -196,15 +205,15 @@ public class MoviesController extends AllesinOrdnungController {
             String title = titleField.getText();
             int releaseYear = Integer.parseInt(releaseYearField.getText());
             String genre = genreField.getText();
-            double rating = Double.parseDouble(ratingField.getText()); // Added rating field
-            String comment = commentField.getText(); // Added comment field
+            double rating = Double.parseDouble(ratingField.getText()); // Bewertungsfeld hinzugefügt
+            String comment = commentField.getText(); // Kommentarfeld hinzugefügt
 
             selectedMovie.setDirector(director);
             selectedMovie.setTitle(title);
             selectedMovie.setYear(releaseYear);
             selectedMovie.setGenre(genre);
-            selectedMovie.setRating(rating); // Set rating field
-            selectedMovie.setComment(comment); // Set comment field
+            selectedMovie.setRating(rating); // Bewertungsfeld setzen
+            selectedMovie.setComment(comment); // Kommentarfeld setzen
 
             movieData.set(movieData.indexOf(selectedMovie), selectedMovie);
 

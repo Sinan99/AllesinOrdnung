@@ -68,7 +68,7 @@ public class AllesinOrdnungController {
             ex.printStackTrace();
         }
     }
-
+    // Diese Methode kann verwendet werden, um allgemein Seiten zu öffnen, indem Sie den Button und den Dateinamen übergeben.
     protected void openPage(Button clicked, String document) {
         try {
             // Lade das FXML-Layout für die neue Seite
