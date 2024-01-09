@@ -158,7 +158,7 @@
     </VBox>
     <TableView fx:id="tableView" fixedCellSize="0.0" layoutX="300.0" layoutY="100.0" prefHeight="470.0" prefWidth="600.0" stylesheets="@TableViewCSS.css" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
         <columns>
-            <TableColumn fx:id="titleColumn" minWidth="150.0" prefWidth="150.0" styleClass="header" text="Title" />
+            <TableColumn fx:id="titleColumn" minWidth="150.0" prefWidth="150.0" sortable="true" styleClass="header" text="Title" />
             <TableColumn fx:id="authorColumn" minWidth="110.0" prefWidth="110.0" styleClass="header" text="Author" />
             <TableColumn fx:id="yearColumn" minWidth="60.0" prefWidth="60.0" styleClass="header" text="Year" />
             <TableColumn fx:id="genreColumn" minWidth="100.0" prefWidth="100.0" styleClass="header" text="Genre" />

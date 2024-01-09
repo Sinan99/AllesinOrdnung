@@ -82,7 +82,12 @@ public class BooksController extends AllesinOrdnungController {
                     return true;
                 } else if (String.valueOf(book.getYear()).contains(newValue)) {
                     return true;
-                } else if (book.getGenre().contains(newValue)) {
+                } else if (book.getGenre().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (String.valueOf(book.getRating()).contains(newValue)) {
+                    return true;
+                }
+                else if (book.getComment().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 }
                 return false;

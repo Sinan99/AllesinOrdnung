@@ -35,22 +35,22 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
-        <Button fx:id="openBooks" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openBooks" prefHeight="80.0" prefWidth="300.0" text="Bücher" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER">
+        <Button fx:id="openBooks" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openBooks" prefHeight="80.0" prefWidth="300.0" text="Books" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER">
             <font>
                 <Font name="System Bold" size="30.0" />
             </font>
         </Button>
-        <Button fx:id="openMusics" layoutX="85.0" layoutY="70.0" mnemonicParsing="false" onAction="#openMusics" prefHeight="80.0" prefWidth="300.0" text="Musik" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+        <Button fx:id="openMusics" layoutX="85.0" layoutY="70.0" mnemonicParsing="false" onAction="#openMusics" prefHeight="80.0" prefWidth="300.0" text="Musics" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1">
             <font>
                 <Font name="System Bold" size="30.0" />
             </font>
         </Button>
-   <Button fx:id="openMovies" mnemonicParsing="false" onAction="#openMovies" prefHeight="80.0" prefWidth="300.0" text="Filme" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
+   <Button fx:id="openMovies" mnemonicParsing="false" onAction="#openMovies" prefHeight="80.0" prefWidth="300.0" text="Movies" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
       <font>
          <Font name="System Bold" size="30.0" />
       </font>
    </Button>
-   <Button fx:id="closeProgram" mnemonicParsing="false" onAction="#closeProgram" prefHeight="80.0" prefWidth="300.0" style="-fx-background-color: #252525;" text="Beenden" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+   <Button fx:id="closeProgram" mnemonicParsing="false" onAction="#closeProgram" prefHeight="80.0" prefWidth="300.0" style="-fx-background-color: #252525;" text="Close Programm" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
       <font>
          <Font name="System Bold" size="30.0" />
       </font>
