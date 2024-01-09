@@ -136,7 +136,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="300.0">
                 <children>
-                    <TextField fx:id="searchField" prefHeight="50.0" prefWidth="220.0" promptText="Suchen" text="Search">
+                    <TextField fx:id="searchField" prefHeight="50.0" prefWidth="220.0" promptText="Search">
                         <font>
                             <Font size="20.0" />
                         </font>
