@@ -21,7 +21,7 @@
     <Rectangle fill="WHITE" height="490.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="900.0" AnchorPane.bottomAnchor="0.0" />
     <VBox alignment="CENTER" prefHeight="110.0" prefWidth="900.0" AnchorPane.topAnchor="0.0">
         <children>
-            <Text fill="WHITE" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Musics" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="500.0">
+            <Text fill="WHITE" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Music" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="500.0">
                 <font>
                     <Font name="System Bold" size="40.0" />
                 </font>

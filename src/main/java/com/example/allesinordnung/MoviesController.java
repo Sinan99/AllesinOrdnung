@@ -15,14 +15,21 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 public class MoviesController extends AllesinOrdnungController {
+    @FXML
+    private TextField searchField;
+    @FXML
+    private TextField ratingField;
+
+    private FilteredList<Movie> filteredData;
+
     @FXML
     private Button cancelAddMovie;
     @FXML
     private Button saveMovie;
-    @FXML
-    private TextField searchField;
+
     @FXML
     private TextField directorField;
     @FXML
@@ -32,7 +39,7 @@ public class MoviesController extends AllesinOrdnungController {
     @FXML
     private TextField genreField;
     @FXML
-    private TextField ratingField; // Hinzugefügtes Bewertungsfeld
+    private TextField rattingField; // Hinzugefügtes Bewertungsfeld
     @FXML
     private TextField commentField; // Hinzugefügtes Kommentarfeld
 
@@ -60,7 +67,7 @@ public class MoviesController extends AllesinOrdnungController {
     @FXML
     private TableColumn<Movie, String> commentColumn;
 
-    private FilteredList<Movie> filteredData;
+
 
     @FXML
     private void initialize() {
@@ -93,7 +100,10 @@ public class MoviesController extends AllesinOrdnungController {
                     return true;
                 } else if (movie.getGenre().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
+                } else if (compareRating(movie.getRating(), lowerCaseFilter)) {
+                    return true;
                 }
+                // If none of the conditions are met, exclude the item
                 return false;
             });
         });
@@ -107,7 +117,44 @@ public class MoviesController extends AllesinOrdnungController {
                 fillFormWithMovie(newSelection);
             }
         });
+
+        // Set the filtered data as the data source for the TableView
+        tableView.setItems(filteredData);
+
     }
+    // Method to compare rating based on user input
+    private boolean compareRating(Double rating, String filter) {
+        try {
+            if (rating == null) {
+                return false;
+            }
+
+            // Check if the filter value is preceded by '<', '>', '<=', or '>='
+            if (filter.matches("^[<>]=?")) {
+                char operator = filter.charAt(0);
+                double filterValue = Double.parseDouble(filter.substring(1));
+
+                // Adjust the comparison based on the operator
+                switch (operator) {
+                    case '>':
+                        return rating > filterValue;
+                    case '<':
+                        return rating < filterValue;
+                    case '=':
+                        return rating == filterValue;
+                    default:
+                        return false;
+                }
+            } else {
+                // If no operator is provided, default to '>=' comparison
+                double filterValue = Double.parseDouble(filter);
+                return rating >= filterValue;
+            }
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
 
     @FXML
     private void addNewMovie() {
@@ -117,6 +164,8 @@ public class MoviesController extends AllesinOrdnungController {
         String genre = genreField.getText();
         Double rating = parseDoubleOrNull(ratingField.getText()); // Bewertung oder null parsen
         String comment = commentField.getText(); // Kommentar holen
+
+
 
         // Neues Movie-Objekt erstellen
         Movie newMovie = new Movie(releaseYear, title, director, rating, genre, comment);
@@ -208,6 +257,9 @@ public class MoviesController extends AllesinOrdnungController {
             double rating = Double.parseDouble(ratingField.getText()); // Bewertungsfeld hinzugefügt
             String comment = commentField.getText(); // Kommentarfeld hinzugefügt
 
+
+            selectedMovie.setRating(rating);
+            selectedMovie.setComment(comment);
             selectedMovie.setDirector(director);
             selectedMovie.setTitle(title);
             selectedMovie.setYear(releaseYear);

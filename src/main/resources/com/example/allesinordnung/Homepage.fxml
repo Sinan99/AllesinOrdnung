@@ -40,7 +40,7 @@
                 <Font name="System Bold" size="30.0" />
             </font>
         </Button>
-        <Button fx:id="openMusics" layoutX="85.0" layoutY="70.0" mnemonicParsing="false" onAction="#openMusics" prefHeight="80.0" prefWidth="300.0" text="Musics" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+        <Button fx:id="openMusic" layoutX="85.0" layoutY="70.0" mnemonicParsing="false" onAction="#openMusics" prefHeight="80.0" prefWidth="300.0" text="Music" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1">
             <font>
                 <Font name="System Bold" size="30.0" />
             </font>
@@ -50,7 +50,7 @@
          <Font name="System Bold" size="30.0" />
       </font>
    </Button>
-   <Button fx:id="closeProgram" mnemonicParsing="false" onAction="#closeProgram" prefHeight="80.0" prefWidth="300.0" style="-fx-background-color: #252525;" text="Close Programm" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+   <Button fx:id="closeProgram" mnemonicParsing="false" onAction="#closeProgram" prefHeight="80.0" prefWidth="300.0" style="-fx-background-color: #252525;" text="Close Program" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
       <font>
          <Font name="System Bold" size="30.0" />
       </font>
