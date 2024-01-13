@@ -82,6 +82,10 @@ public class MusicController extends AllesinOrdnungController {
                     return true;
                 } else if (music.getSongDate().contains(newValue)) {
                     return true;
+                }else if (String.valueOf(music.getRating()).contains(newValue)) {
+                    return true;
+                } else if (music.getComment().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
                 }
                 return false;
             });
@@ -120,6 +124,8 @@ public class MusicController extends AllesinOrdnungController {
         artistNameField.clear();
         songTitleField.clear();
         songDateField.clear();
+        ratingField.clear();
+        commentField.clear();
     }
 
     private void fillFormWithMusic(Music music) {
@@ -127,8 +133,8 @@ public class MusicController extends AllesinOrdnungController {
         artistNameField.setText(music.getArtistName());
         songTitleField.setText(music.getSongTitle());
         songDateField.setText(music.getSongDate());
-        String comment = commentField.getText();
-        double rating = Double.parseDouble(ratingField.getText());
+        ratingField.setText(String.valueOf(music.getRating()));
+        commentField.setText(music.getComment());
     }
 
     private void loadDataFromJson() {
@@ -174,6 +180,8 @@ public class MusicController extends AllesinOrdnungController {
             artistNameField.clear();
             songTitleField.clear();
             songDateField.clear();
+            ratingField.clear();
+            commentField.clear();
         }
     }
 
@@ -188,11 +196,15 @@ public class MusicController extends AllesinOrdnungController {
             String artistName = artistNameField.getText();
             String songTitle = songTitleField.getText();
             String songDate = songDateField.getText();
+            double rating = Double.parseDouble(ratingField.getText());
+            String comment = commentField.getText();
 
             // Aktualisieren der Musikdaten
             selectedMusic.setArtistName(artistName);
             selectedMusic.setSongTitle(songTitle);
             selectedMusic.setSongDate(songDate);
+            selectedMusic.setRating(rating);
+            selectedMusic.setComment(comment);
 
             // Aktualisieren des Musikstücks in der Liste
             musicData.set(musicData.indexOf(selectedMusic), selectedMusic);
