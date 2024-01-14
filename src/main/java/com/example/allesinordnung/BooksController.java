@@ -5,12 +5,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.text.Text;
+import javafx.util.Callback;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -63,6 +64,13 @@ public class BooksController extends AllesinOrdnungController {
         ratingColumn.setCellValueFactory(new PropertyValueFactory<>("rating"));
         commentColumn.setCellValueFactory(new PropertyValueFactory<>("comment"));
 
+        // Set the cell factory for each column
+        setTooltipForColumn(genreColumn);
+        setTooltipForColumn(yearColumn);
+        setTooltipForColumn(authorColumn);
+        setTooltipForColumn(titleColumn);
+        setTooltipForColumn(ratingColumn);
+        setTooltipForColumn(commentColumn);
         // Lädt Daten aus der JSON-Datei
         loadDataFromJson();
 
@@ -113,6 +121,9 @@ public class BooksController extends AllesinOrdnungController {
         });
     }
 
+
+
+
     @FXML
     private void addNewBook() {
         // Erfasst die Benutzereingaben
@@ -139,6 +150,20 @@ public class BooksController extends AllesinOrdnungController {
         titleField.clear();
         ratingField.clear();
         commentField.clear();
+    }
+
+
+
+    private String getFullText(String text) {
+        Text helper = new Text(text);
+        double textWidth = helper.getBoundsInLocal().getWidth();
+        double cellWidth = 150; // Set your cell width here
+
+        if (textWidth > cellWidth) {
+            return text;
+        } else {
+            return "";
+        }
     }
 
     private void fillFormWithBook(Book book) {
@@ -235,5 +260,23 @@ public class BooksController extends AllesinOrdnungController {
     private void Home() {
         openPage(home, "Homepage.fxml");
     }
+    private <T> void setTooltipForColumn(TableColumn<Book, T> column) {
+        column.setCellFactory(tc -> new TableCell<Book, T>() {
+            @Override
+            protected void updateItem(T item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                    setTooltip(null);
+                } else {
+                    setText(item.toString());
+                    Tooltip tooltip = new Tooltip(item.toString());
+                    setTooltip(tooltip);
+                }
+            }
+        });
+    }
+
 }
 

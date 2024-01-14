@@ -6,10 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.File;
@@ -62,6 +59,12 @@ public class MusicController extends AllesinOrdnungController {
         songDateColumn.setCellValueFactory(new PropertyValueFactory<>("songDate"));
         ratingColumn.setCellValueFactory(new PropertyValueFactory<>("rating"));
         commentColumn.setCellValueFactory(new PropertyValueFactory<>("comment"));
+        setTooltipForColumn(artistNameColumn);
+        setTooltipForColumn(songTitleColumn);
+        setTooltipForColumn(songDateColumn);
+        setTooltipForColumn(ratingColumn);
+        setTooltipForColumn(commentColumn);
+
 
         // Laden der Daten aus JSON
         loadDataFromJson();
@@ -225,4 +228,22 @@ public class MusicController extends AllesinOrdnungController {
     private void Home() {
         openPage(home, "Homepage.fxml");
     }
+    private <T> void setTooltipForColumn(TableColumn<Music, T> column) {
+        column.setCellFactory(tc -> new TableCell<Music, T>() {
+            @Override
+            protected void updateItem(T item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                    setTooltip(null);
+                } else {
+                    setText(item.toString());
+                    Tooltip tooltip = new Tooltip(item.toString());
+                    setTooltip(tooltip);
+                }
+            }
+        });
+    }
+
 }

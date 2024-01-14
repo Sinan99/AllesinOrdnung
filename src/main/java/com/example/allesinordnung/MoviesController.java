@@ -6,10 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.File;
@@ -78,6 +75,13 @@ public class MoviesController extends AllesinOrdnungController {
         genreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
         ratingColumn.setCellValueFactory(new PropertyValueFactory<>("rating"));
         commentColumn.setCellValueFactory(new PropertyValueFactory<>("comment"));
+        setTooltipForColumn(directorColumn);
+        setTooltipForColumn(titleColumn);
+        setTooltipForColumn(releaseYearColumn);
+        setTooltipForColumn(genreColumn);
+        setTooltipForColumn(ratingColumn);
+        setTooltipForColumn(commentColumn);
+
 
         // Daten aus der JSON-Datei laden
         loadDataFromJson();
@@ -94,10 +98,10 @@ public class MoviesController extends AllesinOrdnungController {
 
                 String lowerCaseFilter = newValue.toLowerCase();
 
-                // Check if the input is a number greater than 0 and up to 10
-                if (newValue.matches("\\d+") && Double.parseDouble(newValue) > 0 && Double.parseDouble(newValue) <= 10) {
-                    // If it's a valid number, perform rating search
-                    return compareRating(movie.getRating(), newValue);
+                // Check if the input is a valid rating
+                if (RatingUtils.isValidRatingInput(newValue)) {
+                    // If it's a valid rating, perform rating search
+                    return RatingUtils.compareRating(movie.getRating(), newValue);
                 } else {
                     // Otherwise, perform regular text search on other fields
                     return movie.getTitle().toLowerCase().contains(lowerCaseFilter) ||
@@ -107,6 +111,7 @@ public class MoviesController extends AllesinOrdnungController {
                 }
             });
         });
+
 
 
         // Setzen der gefilterten Liste als Datenquelle für die TableView
@@ -123,48 +128,7 @@ public class MoviesController extends AllesinOrdnungController {
         tableView.setItems(filteredData);
 
     }
-    private boolean compareRating(Double rating, String filter) {
-        System.out.println("Rating: " + rating + ", Filter: " + filter);
 
-        try {
-            if (rating == null || rating < 0 || rating > 10) {
-                // Exclude null ratings and those outside the range [0, 10]
-                return false;
-            }
-
-            char operator;
-            double filterValue;
-
-            if (filter.matches("\\d+")) {
-                // If the filter contains only digits (no operator), set the operator to '='
-                operator = '=';
-                filterValue = Double.parseDouble(filter);
-            } else {
-                // Extract operator and filter value
-                operator = filter.charAt(0);
-                filterValue = Double.parseDouble(filter.substring(1));
-            }
-
-            // Check if the filter value is within the range (1 to 10, inclusive)
-            boolean excludeYear = (filterValue > 0 && filterValue <= 10);
-
-            // Adjust the comparison based on the operator
-            switch (operator) {
-                case '>':
-                    return excludeYear && rating > filterValue;
-                case '<':
-                    return excludeYear && rating < filterValue;
-                case '=':
-                    return excludeYear && Math.floor(rating) == filterValue;
-                default:
-                    // If no operator is provided, default to '>=' comparison
-                    return excludeYear && rating >= filterValue;
-            }
-        } catch (NumberFormatException | StringIndexOutOfBoundsException e) {
-            // Handle the case where the input is not a valid double or does not contain a valid operator
-            return false;
-        }
-    }
 
     @FXML
     private void addNewMovie() {
@@ -287,4 +251,23 @@ public class MoviesController extends AllesinOrdnungController {
     private void Home() {
         openPage(home, "Homepage.fxml");
     }
+    private <T> void setTooltipForColumn(TableColumn<Movie, T> column) {
+        column.setCellFactory(tc -> new TableCell<Movie, T>() {
+            @Override
+            protected void updateItem(T item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                    setTooltip(null);
+                } else {
+                    setText(item.toString());
+                    Tooltip tooltip = new Tooltip(item.toString());
+                    setTooltip(tooltip);
+                }
+            }
+        });
+    }
+
+
 }
