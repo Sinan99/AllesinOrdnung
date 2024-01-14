@@ -65,32 +65,39 @@ public class MusicController extends AllesinOrdnungController {
 
         // Laden der Daten aus JSON
         loadDataFromJson();
-
-        // Erstellung einer gefilterten Datenliste
+// Erstellung einer gefilterten Datenliste
         filteredData = new FilteredList<>(musicData, p -> true);
 
-        // Hinzufügen eines Listeners für die Suchfeld-Eingabe
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(music -> {
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
+
                 String lowerCaseFilter = newValue.toLowerCase();
-                if (music.getSongTitle().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                } else if (music.getArtistName().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                } else if (music.getSongDate().contains(newValue)) {
-                    return true;
-                }else if (String.valueOf(music.getRating()).contains(newValue)) {
-                    return true;
-                } else if (music.getComment().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
+
+                // Check if the input contains an operator and a number
+                if (newValue.matches("[<=>]?\\d+")) {
+                    return RatingUtils.compareRating(music.getRating(), newValue);
+                } else {
+                    // Perform regular text search on other fields
+                    return music.getSongTitle().toLowerCase().contains(lowerCaseFilter) ||
+                            music.getArtistName().toLowerCase().contains(lowerCaseFilter) ||
+                            music.getSongDate().contains(newValue) ||
+                            music.getComment().toLowerCase().contains(lowerCaseFilter);
                 }
-                return false;
             });
         });
 
+        // Set the filtered data as the data source for the TableView
+        tableView.setItems(filteredData);
+
+        // Add a listener for the selection of rows in the TableView
+        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                fillFormWithMusic(newSelection);
+            }
+        });
         // Setzen der gefilterten Daten als Datenquelle für die TableView
         tableView.setItems(filteredData);
 
