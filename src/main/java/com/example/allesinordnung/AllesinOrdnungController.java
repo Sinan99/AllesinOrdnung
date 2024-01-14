@@ -1,6 +1,5 @@
 package com.example.allesinordnung;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +14,7 @@ public class AllesinOrdnungController {
     @FXML
     private Button openMovies;
     @FXML
-    private Button openMusics;
+    private Button openMusic;
     @FXML
     private Button openBooks;
 
@@ -46,7 +45,7 @@ public class AllesinOrdnungController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Musics.fxml"));
             Parent newPageRoot = loader.load();
             // Erhalte die Stage der aktuellen Szene
-            Stage currentStage = (Stage) openMusics.getScene().getWindow();
+            Stage currentStage = (Stage) openMusic.getScene().getWindow();
             // Setze die neue Scene auf der aktuellen Stage, um die Seite zu ändern
             currentStage.setScene(new Scene(newPageRoot));
         } catch (Exception ex) {
