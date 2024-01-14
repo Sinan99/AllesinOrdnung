@@ -8,10 +8,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.text.Text;
-import javafx.util.Callback;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -77,26 +73,31 @@ public class BooksController extends AllesinOrdnungController {
         // Erstellt eine gefilterte Liste für die Suche
         filteredData = new FilteredList<>(bookData, p -> true);
 
-        // Hinzufügen eines Listeners für das Suchfeld
+        // Change Listener der auf änderungen im Suchfeld reagiert
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Hier wird ein neues Filterkriterium für die gefilterte Datenliste festgelegt
+            // wenn 'true' anzeigen / wenn 'false' ausblenden
             filteredData.setPredicate(book -> {
+                //
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
-
                 String lowerCaseFilter = newValue.toLowerCase();
-
-                // Check if the input is a valid rating using RatingUtils
-                if (RatingUtils.isValidRatingInput(newValue)) {
-                    return RatingUtils.compareRating(book.getRating(), newValue);
-                } else {
-                    // Perform regular text search on other fields
-                    return book.getTitle().toLowerCase().contains(lowerCaseFilter) ||
-                            book.getAuthor().toLowerCase().contains(lowerCaseFilter) ||
-                            String.valueOf(book.getYear()).contains(newValue) ||
-                            book.getGenre().toLowerCase().contains(lowerCaseFilter) ||
-                            book.getComment().toLowerCase().contains(lowerCaseFilter);
+                // Wenn ja, wird 'true' zurückgegeben und das Buch wird angezeigt, sonst wird 'false' zurückgegeben und das Buch wird ausgeblendet.
+                if (book.getTitle().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (book.getAuthor().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (String.valueOf(book.getYear()).contains(newValue)) {
+                    return true;
+                } else if (book.getGenre().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (String.valueOf(book.getRating()).contains(newValue)) {
+                    return true;
+                } else if (book.getComment().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
                 }
+                return false;
             });
         });
 
@@ -120,8 +121,6 @@ public class BooksController extends AllesinOrdnungController {
             }
         });
     }
-
-
 
 
     @FXML
@@ -150,20 +149,6 @@ public class BooksController extends AllesinOrdnungController {
         titleField.clear();
         ratingField.clear();
         commentField.clear();
-    }
-
-
-
-    private String getFullText(String text) {
-        Text helper = new Text(text);
-        double textWidth = helper.getBoundsInLocal().getWidth();
-        double cellWidth = 150; // Set your cell width here
-
-        if (textWidth > cellWidth) {
-            return text;
-        } else {
-            return "";
-        }
     }
 
     private void fillFormWithBook(Book book) {
@@ -260,6 +245,7 @@ public class BooksController extends AllesinOrdnungController {
     private void Home() {
         openPage(home, "Homepage.fxml");
     }
+
     private <T> void setTooltipForColumn(TableColumn<Book, T> column) {
         column.setCellFactory(tc -> new TableCell<Book, T>() {
             @Override

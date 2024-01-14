@@ -89,7 +89,31 @@ public class MoviesController extends AllesinOrdnungController {
         // Erstellen einer gefilterten Liste für die Suche
         filteredData = new FilteredList<>(movieData, p -> true);
 
-        
+        // Change Listener der auf änderungen im Suchfeld reagiert
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Hier wird ein neues Filterkriterium für die gefilterte Datenliste festgelegt
+            // wenn 'true' anzeigen / wenn 'false' ausblenden
+            filteredData.setPredicate(movie -> {
+                //
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                // Wenn ja, wird 'true' zurückgegeben und das Buch wird angezeigt, sonst wird 'false' zurückgegeben und das Buch wird ausgeblendet.
+                if (movie.getTitle().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                } else if (movie.getDirector().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (movie.getGenre().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (String.valueOf(movie.getRating()).contains(newValue)) {
+                    return true;
+                } else if (movie.getComment().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }
+                return false;
+            });
+        });
 
 
         // Setzen der gefilterten Liste als Datenquelle für die TableView
@@ -106,48 +130,6 @@ public class MoviesController extends AllesinOrdnungController {
         tableView.setItems(filteredData);
 
     }
-    private boolean compareRating(Double rating, String filter) {
-        System.out.println("Rating: " + rating + ", Filter: " + filter);
-
-        try {
-            if (rating == null || rating < 0 || rating > 10) {
-                // Exclude null ratings and those outside the range [0, 10]
-                return false;
-            }
-
-            char operator;
-            double filterValue;
-
-            if (filter.matches("\\d+")) {
-                // If the filter contains only digits (no operator), set the operator to '='
-                operator = '=';
-                filterValue = Double.parseDouble(filter);
-            } else {
-                // Extract operator and filter value
-                operator = filter.charAt(0);
-                filterValue = Double.parseDouble(filter.substring(1));
-            }
-
-            // Check if the filter value is within the range (1 to 10, inclusive)
-            boolean excludeYear = (filterValue > 0 && filterValue <= 10);
-
-            // Adjust the comparison based on the operator
-            switch (operator) {
-                case '>':
-                    return excludeYear && rating > filterValue;
-                case '<':
-                    return excludeYear && rating < filterValue;
-                case '=':
-                    return excludeYear && Math.floor(rating) == filterValue;
-                default:
-                    // If no operator is provided, default to '>=' comparison
-                    return excludeYear && rating >= filterValue;
-            }
-        } catch (NumberFormatException | StringIndexOutOfBoundsException e) {
-            // Handle the case where the input is not a valid double or does not contain a valid operator
-            return false;
-        }
-    }
 
     @FXML
     private void addNewMovie() {
@@ -157,8 +139,6 @@ public class MoviesController extends AllesinOrdnungController {
         String genre = genreField.getText();
         Double rating = parseDoubleOrNull(ratingField.getText()); // Bewertung oder null parsen
         String comment = commentField.getText(); // Kommentar holen
-
-
 
         // Neues Movie-Objekt erstellen
         Movie newMovie = new Movie(releaseYear, title, director, rating, genre, comment);
