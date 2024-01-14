@@ -17,7 +17,7 @@ public class AllesinOrdnung extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(AllesinOrdnung.class.getResource("Homepage.fxml"));
         // Eine neue Szene (Scene) wird erstellt und mit der geladenen Benutzeroberfläche (FXML-Datei) initialisiert.
         Scene scene = new Scene(fxmlLoader.load(), 900, 600);
-        //stage.setResizable(false);
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
