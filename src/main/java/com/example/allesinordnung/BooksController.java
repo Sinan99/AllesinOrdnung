@@ -69,29 +69,37 @@ public class BooksController extends AllesinOrdnungController {
         // Erstellt eine gefilterte Liste für die Suche
         filteredData = new FilteredList<>(bookData, p -> true);
 
-        // Fügt einen Listener für das Suchfeld hinzu
+        // Hinzufügen eines Listeners für das Suchfeld
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(book -> {
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
+
                 String lowerCaseFilter = newValue.toLowerCase();
-                if (book.getTitle().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                } else if (book.getAuthor().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                } else if (String.valueOf(book.getYear()).contains(newValue)) {
-                    return true;
-                } else if (book.getGenre().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                } else if (String.valueOf(book.getRating()).contains(newValue)) {
-                    return true;
+
+                // Check if the input is a valid rating using RatingUtils
+                if (RatingUtils.isValidRatingInput(newValue)) {
+                    return RatingUtils.compareRating(book.getRating(), newValue);
+                } else {
+                    // Perform regular text search on other fields
+                    return book.getTitle().toLowerCase().contains(lowerCaseFilter) ||
+                            book.getAuthor().toLowerCase().contains(lowerCaseFilter) ||
+                            String.valueOf(book.getYear()).contains(newValue) ||
+                            book.getGenre().toLowerCase().contains(lowerCaseFilter) ||
+                            book.getComment().toLowerCase().contains(lowerCaseFilter);
                 }
-                else if (book.getComment().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                }
-                return false;
             });
+        });
+
+        // Setzen der gefilterten Liste als Datenquelle für die TableView
+        tableView.setItems(filteredData);
+
+        // Listener für die Auswahl von Zeilen in der TableView
+        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                fillFormWithBook(newSelection);
+            }
         });
 
         // Setzt die gefilterte Liste als Datenquelle für die TableView
