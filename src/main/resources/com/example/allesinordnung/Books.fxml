@@ -144,7 +144,7 @@
                      <Insets />
                   </HBox.margin>
                     </TextField>
-                    <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #252525;" text="🔍" textAlignment="CENTER" textFill="WHITE">
+                    <Button mnemonicParsing="false" fx:id="searchButton" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #252525;" text="🔍" textAlignment="CENTER" textFill="WHITE">
                         <font>
                             <Font size="23.0" />
                         </font>

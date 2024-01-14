@@ -71,24 +71,31 @@ public class MusicController extends AllesinOrdnungController {
 // Erstellung einer gefilterten Datenliste
         filteredData = new FilteredList<>(musicData, p -> true);
 
+        // Change Listener der auf änderungen im Suchfeld reagiert
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(music -> {
+            // Hier wird ein neues Filterkriterium für die gefilterte Datenliste festgelegt
+            // wenn 'true' anzeigen / wenn 'false' ausblenden
+            filteredData.setPredicate(book -> {
+                //
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
 
                 String lowerCaseFilter = newValue.toLowerCase();
 
-                // Check if the input contains an operator and a number
-                if (newValue.matches("[<=>]?\\d+")) {
-                    return RatingUtils.compareRating(music.getRating(), newValue);
-                } else {
-                    // Perform regular text search on other fields
-                    return music.getSongTitle().toLowerCase().contains(lowerCaseFilter) ||
-                            music.getArtistName().toLowerCase().contains(lowerCaseFilter) ||
-                            music.getSongDate().contains(newValue) ||
-                            music.getComment().toLowerCase().contains(lowerCaseFilter);
+                // Wenn ja, wird 'true' zurückgegeben und das Buch wird angezeigt, sonst wird 'false' zurückgegeben und das Buch wird ausgeblendet.
+                if (book.getArtistName().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                }  else if (String.valueOf(book.getSongDate()).contains(newValue)) {
+                    return true;
+                } else if (book.getSongTitle().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (String.valueOf(book.getRating()).contains(newValue)) {
+                    return true;
+                } else if (book.getComment().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
                 }
+                return false;
             });
         });
 
