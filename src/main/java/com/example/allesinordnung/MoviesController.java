@@ -89,29 +89,7 @@ public class MoviesController extends AllesinOrdnungController {
         // Erstellen einer gefilterten Liste für die Suche
         filteredData = new FilteredList<>(movieData, p -> true);
 
-        // Hinzufügen eines Listeners für das Suchfeld
-        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(movie -> {
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-
-                String lowerCaseFilter = newValue.toLowerCase();
-
-                // Check if the input is a valid rating
-                if (RatingUtils.isValidRatingInput(newValue)) {
-                    // If it's a valid rating, perform rating search
-                    return RatingUtils.compareRating(movie.getRating(), newValue);
-                } else {
-                    // Otherwise, perform regular text search on other fields
-                    return movie.getTitle().toLowerCase().contains(lowerCaseFilter) ||
-                            movie.getDirector().toLowerCase().contains(lowerCaseFilter) ||
-                            String.valueOf(movie.getYear()).contains(newValue) ||
-                            movie.getGenre().toLowerCase().contains(lowerCaseFilter);
-                }
-            });
-        });
-
+        
 
 
         // Setzen der gefilterten Liste als Datenquelle für die TableView
@@ -128,7 +106,48 @@ public class MoviesController extends AllesinOrdnungController {
         tableView.setItems(filteredData);
 
     }
+    private boolean compareRating(Double rating, String filter) {
+        System.out.println("Rating: " + rating + ", Filter: " + filter);
 
+        try {
+            if (rating == null || rating < 0 || rating > 10) {
+                // Exclude null ratings and those outside the range [0, 10]
+                return false;
+            }
+
+            char operator;
+            double filterValue;
+
+            if (filter.matches("\\d+")) {
+                // If the filter contains only digits (no operator), set the operator to '='
+                operator = '=';
+                filterValue = Double.parseDouble(filter);
+            } else {
+                // Extract operator and filter value
+                operator = filter.charAt(0);
+                filterValue = Double.parseDouble(filter.substring(1));
+            }
+
+            // Check if the filter value is within the range (1 to 10, inclusive)
+            boolean excludeYear = (filterValue > 0 && filterValue <= 10);
+
+            // Adjust the comparison based on the operator
+            switch (operator) {
+                case '>':
+                    return excludeYear && rating > filterValue;
+                case '<':
+                    return excludeYear && rating < filterValue;
+                case '=':
+                    return excludeYear && Math.floor(rating) == filterValue;
+                default:
+                    // If no operator is provided, default to '>=' comparison
+                    return excludeYear && rating >= filterValue;
+            }
+        } catch (NumberFormatException | StringIndexOutOfBoundsException e) {
+            // Handle the case where the input is not a valid double or does not contain a valid operator
+            return false;
+        }
+    }
 
     @FXML
     private void addNewMovie() {

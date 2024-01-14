@@ -5,12 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 
 public class AllesinOrdnungController {
-
     @FXML
     private Button closeProgram;
     @FXML
@@ -69,7 +67,6 @@ public class AllesinOrdnungController {
             ex.printStackTrace();
         }
     }
-
     // Diese Methode kann verwendet werden, um allgemein Seiten zu öffnen, indem Sie den Button und den Dateinamen übergeben.
     protected void openPage(Button clicked, String document) {
         try {
@@ -84,4 +81,5 @@ public class AllesinOrdnungController {
             ex.printStackTrace();
         }
     }
+
 }
