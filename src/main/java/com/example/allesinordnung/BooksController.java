@@ -11,11 +11,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 public class BooksController extends AllesinOrdnungController {
+    @FXML
+    public Button searchButton;
     @FXML
     private Button cancelAddBook;
     @FXML
@@ -66,47 +69,48 @@ public class BooksController extends AllesinOrdnungController {
         // Lädt Daten aus der JSON-Datei
         loadDataFromJson();
 
-        // Erstellt eine gefilterte Liste für die Suche
-        filteredData = new FilteredList<>(bookData, p -> true);
+        // Erstellt eine gefilterte Ansicht der bookData-Liste
+        filteredData = new FilteredList<>(bookData, book -> true);
+        /* book ist das aktuelle Buchobjekt, das überprüft wird.
+        -> weist auf den Beginn der Lambda-Funktion hin.
+        true bedeutet, dass die Filterlogik zu Beginn immer 'true' zurückgibt,*/
 
-        // Hinzufügen eines Listeners für das Suchfeld
+        // Change Listener der auf änderungen im Suchfeld reagiert
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Hier wird ein neues Filterkriterium für die gefilterte Datenliste festgelegt
+            // wenn 'true' anzeigen / wenn 'false' ausblenden
             filteredData.setPredicate(book -> {
+                //
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
 
                 String lowerCaseFilter = newValue.toLowerCase();
 
-                // Check if the input is a valid rating using RatingUtils
-                if (RatingUtils.isValidRatingInput(newValue)) {
-                    return RatingUtils.compareRating(book.getRating(), newValue);
-                } else {
-                    // Perform regular text search on other fields
-                    return book.getTitle().toLowerCase().contains(lowerCaseFilter) ||
-                            book.getAuthor().toLowerCase().contains(lowerCaseFilter) ||
-                            String.valueOf(book.getYear()).contains(newValue) ||
-                            book.getGenre().toLowerCase().contains(lowerCaseFilter) ||
-                            book.getComment().toLowerCase().contains(lowerCaseFilter);
+                // Wenn ja, wird 'true' zurückgegeben und das Buch wird angezeigt, sonst wird 'false' zurückgegeben und das Buch wird ausgeblendet.
+                if (book.getTitle().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                } else if (book.getAuthor().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (String.valueOf(book.getYear()).contains(newValue)) {
+                    return true;
+                } else if (book.getGenre().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (String.valueOf(book.getRating()).contains(newValue)) {
+                    return true;
+                } else if (book.getComment().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
                 }
+                return false;
             });
         });
 
         // Setzen der gefilterten Liste als Datenquelle für die TableView
         tableView.setItems(filteredData);
 
-        // Listener für die Auswahl von Zeilen in der TableView
-        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null) {
-                fillFormWithBook(newSelection);
-            }
-        });
-
-        // Setzt die gefilterte Liste als Datenquelle für die TableView
-        tableView.setItems(filteredData);
-
-        // Listener für die Auswahl von Zeilen in der TableView
-        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+        // Change Listener der auf ausgewählte Zeilen der tableView reagiert
+        tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldSelection, newSelection) -> {
+            // Falls eine neue Zeile ausgewählt wurde, führt es die Methode fillFormWithBook aus
             if (newSelection != null) {
                 fillFormWithBook(newSelection);
             }

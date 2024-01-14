@@ -68,7 +68,6 @@ public class MoviesController extends AllesinOrdnungController {
     private TableColumn<Movie, String> commentColumn;
 
 
-
     @FXML
     private void initialize() {
         // Initialisieren der TableView-Spalten
@@ -87,24 +86,31 @@ public class MoviesController extends AllesinOrdnungController {
 
         // Hinzufügen eines Listeners für das Suchfeld
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Hier wird ein neues Filterkriterium für die gefilterte Datenliste festgelegt
+            // wenn 'true' anzeigen / wenn 'false' ausblenden
             filteredData.setPredicate(movie -> {
+                //
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
 
                 String lowerCaseFilter = newValue.toLowerCase();
 
-                // Check if the input is a number greater than 0 and up to 10
-                if (newValue.matches("\\d+") && Double.parseDouble(newValue) > 0 && Double.parseDouble(newValue) <= 10) {
-                    // If it's a valid number, perform rating search
-                    return compareRating(movie.getRating(), newValue);
-                } else {
-                    // Otherwise, perform regular text search on other fields
-                    return movie.getTitle().toLowerCase().contains(lowerCaseFilter) ||
-                            movie.getDirector().toLowerCase().contains(lowerCaseFilter) ||
-                            String.valueOf(movie.getYear()).contains(newValue) ||
-                            movie.getGenre().toLowerCase().contains(lowerCaseFilter);
+                // Wenn ja, wird 'true' zurückgegeben und das Buch wird angezeigt, sonst wird 'false' zurückgegeben und das Buch wird ausgeblendet.
+                if (movie.getTitle().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                } else if (movie.getDirector().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (String.valueOf(movie.getYear()).contains(newValue)) {
+                    return true;
+                } else if (movie.getGenre().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (String.valueOf(movie.getRating()).contains(newValue)) {
+                    return true;
+                } else if (movie.getComment().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
                 }
+                return false;
             });
         });
 
@@ -123,48 +129,6 @@ public class MoviesController extends AllesinOrdnungController {
         tableView.setItems(filteredData);
 
     }
-    private boolean compareRating(Double rating, String filter) {
-        System.out.println("Rating: " + rating + ", Filter: " + filter);
-
-        try {
-            if (rating == null || rating < 0 || rating > 10) {
-                // Exclude null ratings and those outside the range [0, 10]
-                return false;
-            }
-
-            char operator;
-            double filterValue;
-
-            if (filter.matches("\\d+")) {
-                // If the filter contains only digits (no operator), set the operator to '='
-                operator = '=';
-                filterValue = Double.parseDouble(filter);
-            } else {
-                // Extract operator and filter value
-                operator = filter.charAt(0);
-                filterValue = Double.parseDouble(filter.substring(1));
-            }
-
-            // Check if the filter value is within the range (1 to 10, inclusive)
-            boolean excludeYear = (filterValue > 0 && filterValue <= 10);
-
-            // Adjust the comparison based on the operator
-            switch (operator) {
-                case '>':
-                    return excludeYear && rating > filterValue;
-                case '<':
-                    return excludeYear && rating < filterValue;
-                case '=':
-                    return excludeYear && Math.floor(rating) == filterValue;
-                default:
-                    // If no operator is provided, default to '>=' comparison
-                    return excludeYear && rating >= filterValue;
-            }
-        } catch (NumberFormatException | StringIndexOutOfBoundsException e) {
-            // Handle the case where the input is not a valid double or does not contain a valid operator
-            return false;
-        }
-    }
 
     @FXML
     private void addNewMovie() {
@@ -174,8 +138,6 @@ public class MoviesController extends AllesinOrdnungController {
         String genre = genreField.getText();
         Double rating = parseDoubleOrNull(ratingField.getText()); // Bewertung oder null parsen
         String comment = commentField.getText(); // Kommentar holen
-
-
 
         // Neues Movie-Objekt erstellen
         Movie newMovie = new Movie(releaseYear, title, director, rating, genre, comment);
@@ -250,8 +212,8 @@ public class MoviesController extends AllesinOrdnungController {
             titleField.clear();
             releaseYearField.clear();
             genreField.clear();
-            ratingField.clear(); // Bewertungsfeld leeren
-            commentField.clear(); // Kommentarfeld leeren
+            ratingField.clear();
+            commentField.clear();
         }
     }
 
@@ -264,8 +226,8 @@ public class MoviesController extends AllesinOrdnungController {
             String title = titleField.getText();
             int releaseYear = Integer.parseInt(releaseYearField.getText());
             String genre = genreField.getText();
-            double rating = Double.parseDouble(ratingField.getText()); // Bewertungsfeld hinzugefügt
-            String comment = commentField.getText(); // Kommentarfeld hinzugefügt
+            double rating = Double.parseDouble(ratingField.getText());
+            String comment = commentField.getText();
 
 
             selectedMovie.setRating(rating);
@@ -274,8 +236,8 @@ public class MoviesController extends AllesinOrdnungController {
             selectedMovie.setTitle(title);
             selectedMovie.setYear(releaseYear);
             selectedMovie.setGenre(genre);
-            selectedMovie.setRating(rating); // Bewertungsfeld setzen
-            selectedMovie.setComment(comment); // Kommentarfeld setzen
+            selectedMovie.setRating(rating);
+            selectedMovie.setComment(comment);
 
             movieData.set(movieData.indexOf(selectedMovie), selectedMovie);
 
