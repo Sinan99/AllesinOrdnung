@@ -1,1 +1,127 @@
-[{"artistName":"Adele","songTitle":"Someone Like You","songDate":"2011","rating":4.9,"comment":"Herzzerreißende Ballade."},{"artistName":"Nirvana","songTitle":"Smells Like Teen Spirit","songDate":"1991","rating":4.7,"comment":"Grunge-Klassiker."},{"artistName":"Madonna","songTitle":"Like a Virgin","songDate":"1984","rating":4.6,"comment":"Pop-Ikone."},{"artistName":"Eminem","songTitle":"Lose Yourself","songDate":"2002","rating":4.8,"comment":"Rap-Meisterwerk."},{"artistName":"David Bowie","songTitle":"Space Oddity","songDate":"1969","rating":4.7,"comment":"Kultsong aus dem Weltraum."},{"artistName":"Coldplay","songTitle":"Fix You","songDate":"2005","rating":4.8,"comment":"Eine emotionale Hymne."},{"artistName":"Beyoncé","songTitle":"Single Ladies (Put a Ring on It)","songDate":"2008","rating":4.7,"comment":"Ein Hit zum Tanzen."},{"artistName":"Ed Sheeran","songTitle":"Shape of You","songDate":"2017","rating":4.9,"comment":"Ein Ohrwurm."},{"artistName":"Ariana Grande","songTitle":"Thank U, Next","songDate":"2019","rating":4.8,"comment":"Girl-Power-Anthem."},{"artistName":"Led Zeppelin","songTitle":"Stairway to Heaven","songDate":"1971","rating":4.9,"comment":"Ein Rockepos."},{"artistName":"Taylor Swift","songTitle":"Love Story","songDate":"2008","rating":4.7,"comment":"Eine moderne Romeo-und-Julia-Geschichte."},{"artistName":"Pink Floyd","songTitle":"Comfortably Numb","songDate":"1979","rating":4.9,"comment":"Ein psychedelischer Klassiker."},{"artistName":"The Rolling Stones","songTitle":"(I Can't Get No) Satisfaction","songDate":"1965","rating":4.8,"comment":"Ein Rock'n'Roll-Hit."},{"artistName":"Whitney Houston","songTitle":"I Will Always Love You","songDate":"1992","rating":4.9,"comment":"Eine der größten Balladen aller Zeiten."},{"artistName":"Elton John","songTitle":"Rocket Man","songDate":"1972","rating":4.7,"comment":"Eine Reise ins All."},{"artistName":"Adele","songTitle":"Someone Like You","songDate":"2011","rating":6.0,"comment":"Herzzerreißende Ballade."},{"artistName":"Madonna","songTitle":"Like a Virgin","songDate":"1984","rating":8.0,"comment":"Pop-Ikone."},{"artistName":"David Bowie","songTitle":"Space Oddity","songDate":"1969","rating":9.0,"comment":"Kultsong aus dem Weltraum."},{"artistName":"Ariana Grande","songTitle":"Thank U, Next","songDate":"2019","rating":9.0,"comment":"Girl-Power-Anthem."},{"artistName":"Adele","songTitle":"Someone Like You","songDate":"2011","rating":5.0,"comment":"Herzzerreißende Ballade."},{"artistName":"Eminem","songTitle":"Lose Yourself","songDate":"2002","rating":6.0,"comment":"Rap-Meisterwerk."}]
+[ {
+  "artistName" : "Adele",
+  "songTitle" : "Someone Like You",
+  "songDate" : "2011",
+  "rating" : 4.9,
+  "comment" : "Herzzerreißende Ballade."
+}, {
+  "artistName" : "Nirvana",
+  "songTitle" : "Smells Like Teen Spirit",
+  "songDate" : "1991",
+  "rating" : 4.7,
+  "comment" : "Grunge-Klassiker."
+}, {
+  "artistName" : "Madonna",
+  "songTitle" : "Like a Virgin",
+  "songDate" : "1984",
+  "rating" : 4.6,
+  "comment" : "Pop-Ikone."
+}, {
+  "artistName" : "Eminem",
+  "songTitle" : "Lose Yourself",
+  "songDate" : "2002",
+  "rating" : 4.8,
+  "comment" : "Rap-Meisterwerk."
+}, {
+  "artistName" : "David Bowie",
+  "songTitle" : "Space Oddity",
+  "songDate" : "1969",
+  "rating" : 4.7,
+  "comment" : "Kultsong aus dem Weltraum."
+}, {
+  "artistName" : "Coldplay",
+  "songTitle" : "Fix You",
+  "songDate" : "2005",
+  "rating" : 4.8,
+  "comment" : "Eine emotionale Hymne."
+}, {
+  "artistName" : "Beyoncé",
+  "songTitle" : "Single Ladies (Put a Ring on It)",
+  "songDate" : "2008",
+  "rating" : 4.7,
+  "comment" : "Ein Hit zum Tanzen."
+}, {
+  "artistName" : "Ed Sheeran",
+  "songTitle" : "Shape of You",
+  "songDate" : "2017",
+  "rating" : 4.9,
+  "comment" : "Ein Ohrwurm."
+}, {
+  "artistName" : "Ariana Grande",
+  "songTitle" : "Thank U, Next",
+  "songDate" : "2019",
+  "rating" : 4.8,
+  "comment" : "Girl-Power-Anthem."
+}, {
+  "artistName" : "Led Zeppelin",
+  "songTitle" : "Stairway to Heaven",
+  "songDate" : "1971",
+  "rating" : 4.9,
+  "comment" : "Ein Rockepos."
+}, {
+  "artistName" : "Taylor Swift",
+  "songTitle" : "Love Story",
+  "songDate" : "2008",
+  "rating" : 4.7,
+  "comment" : "Eine moderne Romeo-und-Julia-Geschichte."
+}, {
+  "artistName" : "Pink Floyd",
+  "songTitle" : "Comfortably Numb",
+  "songDate" : "1979",
+  "rating" : 4.9,
+  "comment" : "Ein psychedelischer Klassiker."
+}, {
+  "artistName" : "The Rolling Stones",
+  "songTitle" : "(I Can't Get No) Satisfaction",
+  "songDate" : "1965",
+  "rating" : 4.8,
+  "comment" : "Ein Rock'n'Roll-Hit."
+}, {
+  "artistName" : "Whitney Houston",
+  "songTitle" : "I Will Always Love You",
+  "songDate" : "1992",
+  "rating" : 4.9,
+  "comment" : "Eine der größten Balladen aller Zeiten."
+}, {
+  "artistName" : "Elton John",
+  "songTitle" : "Rocket Man",
+  "songDate" : "1972",
+  "rating" : 4.7,
+  "comment" : "Eine Reise ins All."
+}, {
+  "artistName" : "Adele",
+  "songTitle" : "Someone Like You",
+  "songDate" : "2011",
+  "rating" : 6.0,
+  "comment" : "Herzzerreißende Ballade."
+}, {
+  "artistName" : "Madonna",
+  "songTitle" : "Like a Virgin",
+  "songDate" : "1984",
+  "rating" : 8.0,
+  "comment" : "Pop-Ikone."
+}, {
+  "artistName" : "David Bowie",
+  "songTitle" : "Space Oddity",
+  "songDate" : "1969",
+  "rating" : 9.0,
+  "comment" : "Kultsong aus dem Weltraum."
+}, {
+  "artistName" : "Ariana Grande",
+  "songTitle" : "Thank U, Next",
+  "songDate" : "2019",
+  "rating" : 9.0,
+  "comment" : "Girl-Power-Anthem."
+}, {
+  "artistName" : "Adele",
+  "songTitle" : "Someone Like You",
+  "songDate" : "2011",
+  "rating" : 5.0,
+  "comment" : "Herzzerreißende Ballade."
+}, {
+  "artistName" : "Eminem",
+  "songTitle" : "Lose Yourself",
+  "songDate" : "2002",
+  "rating" : 6.0,
+  "comment" : "Rap-Meisterwerk."
+} ]

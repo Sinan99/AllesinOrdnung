@@ -2,6 +2,7 @@ package com.example.allesinordnung;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -196,6 +197,7 @@ public class MoviesController extends AllesinOrdnungController {
 
     public void saveMovieDataToJson() {
         ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         try {
             objectMapper.writeValue(new File("src/main/resources/data/movies.json"), movieData);
         } catch (IOException e) {

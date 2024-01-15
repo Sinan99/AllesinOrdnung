@@ -1,6 +1,7 @@
 package com.example.allesinordnung;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -185,6 +186,7 @@ public class BooksController extends AllesinOrdnungController {
 
     public void saveBookDataToJson() {
         ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         try {
             objectMapper.writeValue(new File("src/main/resources/data/books.json"), bookData);
         } catch (IOException e) {
