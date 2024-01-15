@@ -8,6 +8,8 @@ import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,6 +32,10 @@ public class MusicController extends AllesinOrdnungController {
     private TextField ratingField;
     @FXML
     private TextField commentField;
+    @FXML
+    private AnchorPane body;
+    @FXML
+    private Rectangle headerBG;
 
     @FXML
     private Button home;
@@ -52,7 +58,9 @@ public class MusicController extends AllesinOrdnungController {
     private FilteredList<Music> filteredData;
 
     @FXML
-    private void initialize() {
+    public void initialize() {
+        headerBG.widthProperty().bind(body.widthProperty());
+
         // Initialisierung der TableView-Spalten
         artistNameColumn.setCellValueFactory(new PropertyValueFactory<>("artistName"));
         songTitleColumn.setCellValueFactory(new PropertyValueFactory<>("songTitle"));

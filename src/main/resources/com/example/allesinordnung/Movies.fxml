@@ -16,10 +16,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.allesinordnung.MoviesController">
-    <Rectangle fill="#252525" height="110.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="900.0" AnchorPane.topAnchor="0.0" />
-    <Rectangle fill="WHITE" height="490.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="900.0" AnchorPane.bottomAnchor="0.0" />
-    <VBox alignment="CENTER" prefHeight="110.0" prefWidth="900.0" AnchorPane.topAnchor="0.0">
+<AnchorPane fx:id="body" minHeight="600.0" minWidth="900.0" style="-fx-background-color: #FFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.allesinordnung.MoviesController">
+    <Rectangle fx:id="headerBG" fill="#252525" height="110.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+    <VBox alignment="CENTER" minHeight="110.0" minWidth="900.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <children>
             <Text fill="WHITE" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Movies" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="500.0">
                 <font>
@@ -28,7 +27,7 @@
             </Text>
         </children>
     </VBox>
-    <VBox alignment="CENTER" layoutY="100.0" prefHeight="470.0" prefWidth="270.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
+    <VBox alignment="TOP_CENTER" maxWidth="270.0" minHeight="470.0" minWidth="270.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="120.0">
         <children>
             <Button fx:id="home" graphicTextGap="0.0" mnemonicParsing="false" onAction="#Home" prefHeight="49.0" prefWidth="270.0" style="-fx-background-color: #252525;" text="🏠" textAlignment="CENTER" textFill="WHITE">
                 <font>
@@ -40,8 +39,8 @@
             </Button>
             <GridPane alignment="CENTER_LEFT" vgap="20.0">
                 <columnConstraints>
-                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="100.0" />
+                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="150.0" percentWidth="0.0" />
                     <ColumnConstraints />
                 </columnConstraints>
                 <rowConstraints>
@@ -97,7 +96,7 @@
 
                 </children>
             </GridPane>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="15.0">
                 <children>
                     <Button fx:id="cancelAddMovie" mnemonicParsing="false" onAction="#deleteSelectedMovie" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: red;" text="❌" textAlignment="CENTER" textFill="WHITE">
                         <font>
@@ -115,7 +114,7 @@
                             <Insets bottom="-5.0" top="-5.0" />
                         </padding>
                         <HBox.margin>
-                            <Insets left="15.0" right="15.0" />
+                            <Insets />
                         </HBox.margin>
                     </Button>
                     <Button fx:id="saveMovie" alignment="CENTER" contentDisplay="CENTER" onAction="#addNewMovie" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: green;" text="Save" textAlignment="CENTER" textFill="WHITE">
@@ -131,36 +130,36 @@
                     </Button>
                 </children>
                 <VBox.margin>
-                    <Insets top="20.0" />
+                    <Insets bottom="20.0" top="20.0" />
                 </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="300.0">
                 <children>
-                    <TextField fx:id="searchField" prefHeight="50.0" prefWidth="220.0" promptText="Search">
+                    <TextField fx:id="searchField" prefHeight="50.0" prefWidth="215.0" promptText="Search">
                         <font>
                             <Font size="20.0" />
                         </font>
                     </TextField>
-                    <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="60.0" style="-fx-background-color: #252525;" text="🔍" textAlignment="CENTER" textFill="WHITE">
+                    <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="55.0" style="-fx-background-color: #252525;" text="🔍" textAlignment="CENTER" textFill="WHITE">
                         <font>
                             <Font size="23.0" />
                         </font>
                     </Button>
                 </children>
                 <VBox.margin>
-                    <Insets top="20.0" />
+                    <Insets />
                 </VBox.margin>
             </HBox>
         </children>
     </VBox>
-    <TableView fx:id="tableView" fixedCellSize="0.0" layoutX="300.0" layoutY="100.0" prefHeight="470.0" prefWidth="600.0" stylesheets="@TableViewCSS.css" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+    <TableView fx:id="tableView" editable="true" fixedCellSize="0.0" layoutX="300.0" layoutY="100.0" minHeight="470.0" minWidth="600.0" stylesheets="@TableViewCSS.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="120.0">
         <columns>
-            <TableColumn fx:id="titleColumn" minWidth="150.0" prefWidth="150.0" styleClass="header" text="Title" />
-            <TableColumn fx:id="directorColumn" minWidth="110.0" prefWidth="110.0" styleClass="header" text="Director" />
-            <TableColumn fx:id="releaseYearColumn" minWidth="60.0" prefWidth="60.0" styleClass="header" text="Year" />
-            <TableColumn fx:id="genreColumn" minWidth="100.0" prefWidth="100.0" styleClass="header" text="Genre" />
-            <TableColumn fx:id="ratingColumn" minWidth="60.0" prefWidth="60.0" styleClass="header" text="★" />
-            <TableColumn fx:id="commentColumn" prefWidth="120.0" styleClass="header" text="Comment" />
+            <TableColumn fx:id="titleColumn" maxWidth="250.0" minWidth="150.0" prefWidth="-1.0" styleClass="header" text="Title" />
+            <TableColumn fx:id="directorColumn" maxWidth="200.0" minWidth="110.0" prefWidth="-1.0" styleClass="header" text="Director" />
+            <TableColumn fx:id="releaseYearColumn" maxWidth="60.0" minWidth="60.0" prefWidth="-1.0" styleClass="header" text="Year" />
+            <TableColumn fx:id="genreColumn" maxWidth="150.0" minWidth="100.0" prefWidth="-1.0" styleClass="header" text="Genre" />
+            <TableColumn fx:id="ratingColumn" maxWidth="60.0" minWidth="60.0" prefWidth="-1.0" styleClass="header" text="★" />
+            <TableColumn fx:id="commentColumn" minWidth="120.0" prefWidth="-1.0" styleClass="header" text="Comment" />
         </columns>
         <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

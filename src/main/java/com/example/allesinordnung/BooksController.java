@@ -8,6 +8,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -17,6 +21,10 @@ public class BooksController extends AllesinOrdnungController {
     private Button cancelAddBook;
     @FXML
     private Button saveBook;
+    @FXML
+    private AnchorPane body;
+    @FXML
+    private Rectangle headerBG;
     @FXML
     private TextField searchField;
     @FXML
@@ -51,7 +59,8 @@ public class BooksController extends AllesinOrdnungController {
     private FilteredList<Book> filteredData;
 
     @FXML
-    private void initialize() {
+    public void initialize() {
+        headerBG.widthProperty().bind(body.widthProperty());
         // Initialisieren der TableView-Spalten
         genreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
         yearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));

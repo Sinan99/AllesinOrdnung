@@ -8,6 +8,8 @@ import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,7 +28,10 @@ public class MoviesController extends AllesinOrdnungController {
     private Button cancelAddMovie;
     @FXML
     private Button saveMovie;
-
+    @FXML
+    private AnchorPane body;
+    @FXML
+    private Rectangle headerBG;
     @FXML
     private TextField directorField;
     @FXML
@@ -35,8 +40,6 @@ public class MoviesController extends AllesinOrdnungController {
     private TextField releaseYearField;
     @FXML
     private TextField genreField;
-    @FXML
-    private TextField rattingField; // Hinzugefügtes Bewertungsfeld
     @FXML
     private TextField commentField; // Hinzugefügtes Kommentarfeld
 
@@ -67,7 +70,9 @@ public class MoviesController extends AllesinOrdnungController {
 
 
     @FXML
-    private void initialize() {
+    public void initialize() {
+        headerBG.widthProperty().bind(body.widthProperty());
+
         // Initialisieren der TableView-Spalten
         directorColumn.setCellValueFactory(new PropertyValueFactory<>("director"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
