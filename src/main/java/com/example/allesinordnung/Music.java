@@ -16,11 +16,13 @@ public class Music {
                  @JsonProperty("songDate") String songDate,
                  @JsonProperty("rating") Double rating,
                  @JsonProperty("comment") String comment) {
+
         this.artistName = artistName;
         this.songTitle = songTitle;
         this.songDate = songDate;
         this.rating = rating;
         this.comment = comment;
+
     }
 
     public String getArtistName() {
