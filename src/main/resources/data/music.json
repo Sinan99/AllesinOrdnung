@@ -21,13 +21,6 @@
     "comment": "Gro\u00dfartige Produktion."
   },
   {
-    "artistName": "Drake",
-    "songTitle": "God's Plan",
-    "songDate": "2002",
-    "rating": 3.7,
-    "comment": "Sehr emotional."
-  },
-  {
     "artistName": "Katy Perry",
     "songTitle": "Roar",
     "songDate": "2015",
@@ -47,13 +40,6 @@
     "songDate": "2017",
     "rating": 5.0,
     "comment": "Uplifting and energetic."
-  },
-  {
-    "artistName": "Drake",
-    "songTitle": "Hotline Bling",
-    "songDate": "2000",
-    "rating": 6.5,
-    "comment": "Ein Klassiker."
   },
   {
     "artistName": "Taylor Swift",
