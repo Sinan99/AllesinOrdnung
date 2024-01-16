@@ -1,127 +1,1402 @@
-[ {
-  "artistName" : "Adele",
-  "songTitle" : "Someone Like You",
-  "songDate" : "2011",
-  "rating" : 4.9,
-  "comment" : "Herzzerreißende Ballade."
-}, {
-  "artistName" : "Nirvana",
-  "songTitle" : "Smells Like Teen Spirit",
-  "songDate" : "1991",
-  "rating" : 4.7,
-  "comment" : "Grunge-Klassiker."
-}, {
-  "artistName" : "Madonna",
-  "songTitle" : "Like a Virgin",
-  "songDate" : "1984",
-  "rating" : 4.6,
-  "comment" : "Pop-Ikone."
-}, {
-  "artistName" : "Eminem",
-  "songTitle" : "Lose Yourself",
-  "songDate" : "2002",
-  "rating" : 4.8,
-  "comment" : "Rap-Meisterwerk."
-}, {
-  "artistName" : "David Bowie",
-  "songTitle" : "Space Oddity",
-  "songDate" : "1969",
-  "rating" : 4.7,
-  "comment" : "Kultsong aus dem Weltraum."
-}, {
-  "artistName" : "Coldplay",
-  "songTitle" : "Fix You",
-  "songDate" : "2005",
-  "rating" : 4.8,
-  "comment" : "Eine emotionale Hymne."
-}, {
-  "artistName" : "Beyoncé",
-  "songTitle" : "Single Ladies (Put a Ring on It)",
-  "songDate" : "2008",
-  "rating" : 4.7,
-  "comment" : "Ein Hit zum Tanzen."
-}, {
-  "artistName" : "Ed Sheeran",
-  "songTitle" : "Shape of You",
-  "songDate" : "2017",
-  "rating" : 4.9,
-  "comment" : "Ein Ohrwurm."
-}, {
-  "artistName" : "Ariana Grande",
-  "songTitle" : "Thank U, Next",
-  "songDate" : "2019",
-  "rating" : 4.8,
-  "comment" : "Girl-Power-Anthem."
-}, {
-  "artistName" : "Led Zeppelin",
-  "songTitle" : "Stairway to Heaven",
-  "songDate" : "1971",
-  "rating" : 4.9,
-  "comment" : "Ein Rockepos."
-}, {
-  "artistName" : "Taylor Swift",
-  "songTitle" : "Love Story",
-  "songDate" : "2008",
-  "rating" : 4.7,
-  "comment" : "Eine moderne Romeo-und-Julia-Geschichte."
-}, {
-  "artistName" : "Pink Floyd",
-  "songTitle" : "Comfortably Numb",
-  "songDate" : "1979",
-  "rating" : 4.9,
-  "comment" : "Ein psychedelischer Klassiker."
-}, {
-  "artistName" : "The Rolling Stones",
-  "songTitle" : "(I Can't Get No) Satisfaction",
-  "songDate" : "1965",
-  "rating" : 4.8,
-  "comment" : "Ein Rock'n'Roll-Hit."
-}, {
-  "artistName" : "Whitney Houston",
-  "songTitle" : "I Will Always Love You",
-  "songDate" : "1992",
-  "rating" : 4.9,
-  "comment" : "Eine der größten Balladen aller Zeiten."
-}, {
-  "artistName" : "Elton John",
-  "songTitle" : "Rocket Man",
-  "songDate" : "1972",
-  "rating" : 4.7,
-  "comment" : "Eine Reise ins All."
-}, {
-  "artistName" : "Adele",
-  "songTitle" : "Someone Like You",
-  "songDate" : "2011",
-  "rating" : 6.0,
-  "comment" : "Herzzerreißende Ballade."
-}, {
-  "artistName" : "Madonna",
-  "songTitle" : "Like a Virgin",
-  "songDate" : "1984",
-  "rating" : 8.0,
-  "comment" : "Pop-Ikone."
-}, {
-  "artistName" : "David Bowie",
-  "songTitle" : "Space Oddity",
-  "songDate" : "1969",
-  "rating" : 9.0,
-  "comment" : "Kultsong aus dem Weltraum."
-}, {
-  "artistName" : "Ariana Grande",
-  "songTitle" : "Thank U, Next",
-  "songDate" : "2019",
-  "rating" : 9.0,
-  "comment" : "Girl-Power-Anthem."
-}, {
-  "artistName" : "Adele",
-  "songTitle" : "Someone Like You",
-  "songDate" : "2011",
-  "rating" : 5.0,
-  "comment" : "Herzzerreißende Ballade."
-}, {
-  "artistName" : "Eminem",
-  "songTitle" : "Lose Yourself",
-  "songDate" : "2002",
-  "rating" : 6.0,
-  "comment" : "Rap-Meisterwerk."
-} ]
+[
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Roar",
+    "songDate": "2017",
+    "rating": 2.5,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Perfect",
+    "songDate": "2013",
+    "rating": 3.0,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Firework",
+    "songDate": "2015",
+    "rating": 5.0,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Drake",
+    "songTitle": "God's Plan",
+    "songDate": "2002",
+    "rating": 3.7,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Roar",
+    "songDate": "2015",
+    "rating": 1.6,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Crazy in Love",
+    "songDate": "2014",
+    "rating": 1.1,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Rolling in the Deep",
+    "songDate": "2017",
+    "rating": 5.0,
+    "comment": "Uplifting and energetic."
+  },
+  {
+    "artistName": "Drake",
+    "songTitle": "Hotline Bling",
+    "songDate": "2000",
+    "rating": 6.5,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Taylor Swift",
+    "songTitle": "Blank Space",
+    "songDate": "2010",
+    "rating": 0.4,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Drake",
+    "songTitle": "God's Plan",
+    "songDate": "2007",
+    "rating": 2.3,
+    "comment": "Party-Hit."
+  },
+  {
+    "artistName": "Drake",
+    "songTitle": "God's Plan",
+    "songDate": "2020",
+    "rating": 2.9,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Drake",
+    "songTitle": "Hotline Bling",
+    "songDate": "2003",
+    "rating": 5.9,
+    "comment": "Party-Hit."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Perfect",
+    "songDate": "2000",
+    "rating": 0.0,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Rolling in the Deep",
+    "songDate": "2016",
+    "rating": 5.4,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Bruno Mars",
+    "songTitle": "Uptown Funk",
+    "songDate": "2019",
+    "rating": 5.0,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Halo",
+    "songDate": "2015",
+    "rating": 2.6,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Shape of You",
+    "songDate": "2006",
+    "rating": 7.2,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Someone Like You",
+    "songDate": "2005",
+    "rating": 4.0,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Hello",
+    "songDate": "2022",
+    "rating": 6.7,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Crazy in Love",
+    "songDate": "2013",
+    "rating": 1.8,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Single Ladies",
+    "songDate": "2019",
+    "rating": 9.4,
+    "comment": "Party-Hit."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Shape of You",
+    "songDate": "2003",
+    "rating": 6.9,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Poker Face",
+    "songDate": "2016",
+    "rating": 3.7,
+    "comment": "Uplifting and energetic."
+  },
+  {
+    "artistName": "Drake",
+    "songTitle": "God's Plan",
+    "songDate": "2004",
+    "rating": 8.7,
+    "comment": "Uplifting and energetic."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Rolling in the Deep",
+    "songDate": "2022",
+    "rating": 5.9,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Roar",
+    "songDate": "2002",
+    "rating": 4.3,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Bruno Mars",
+    "songTitle": "Uptown Funk",
+    "songDate": "2000",
+    "rating": 8.3,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Roar",
+    "songDate": "2020",
+    "rating": 6.0,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Rolling in the Deep",
+    "songDate": "2001",
+    "rating": 3.9,
+    "comment": "Uplifting and energetic."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Firework",
+    "songDate": "2018",
+    "rating": 4.8,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Perfect",
+    "songDate": "2015",
+    "rating": 4.2,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Shallow",
+    "songDate": "2013",
+    "rating": 0.8,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Hello",
+    "songDate": "2004",
+    "rating": 6.5,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Taylor Swift",
+    "songTitle": "Shake It Off",
+    "songDate": "2017",
+    "rating": 5.9,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Roar",
+    "songDate": "2023",
+    "rating": 1.6,
+    "comment": "Uplifting and energetic."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Crazy in Love",
+    "songDate": "2001",
+    "rating": 3.1,
+    "comment": "Party-Hit."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Single Ladies",
+    "songDate": "2016",
+    "rating": 0.3,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Hello",
+    "songDate": "2021",
+    "rating": 4.8,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Drake",
+    "songTitle": "In My Feelings",
+    "songDate": "2010",
+    "rating": 1.3,
+    "comment": "Uplifting and energetic."
+  },
+  {
+    "artistName": "Drake",
+    "songTitle": "In My Feelings",
+    "songDate": "2017",
+    "rating": 2.0,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Rolling in the Deep",
+    "songDate": "2012",
+    "rating": 9.9,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Crazy in Love",
+    "songDate": "2011",
+    "rating": 6.2,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Taylor Swift",
+    "songTitle": "Shake It Off",
+    "songDate": "2004",
+    "rating": 2.5,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Shape of You",
+    "songDate": "2014",
+    "rating": 0.7,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Halo",
+    "songDate": "2000",
+    "rating": 2.4,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Taylor Swift",
+    "songTitle": "Blank Space",
+    "songDate": "2015",
+    "rating": 0.4,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Taylor Swift",
+    "songTitle": "Shake It Off",
+    "songDate": "2006",
+    "rating": 7.1,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Bruno Mars",
+    "songTitle": "Just the Way You Are",
+    "songDate": "2008",
+    "rating": 6.9,
+    "comment": "Uplifting and energetic."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Photograph",
+    "songDate": "2015",
+    "rating": 4.8,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Shape of You",
+    "songDate": "2002",
+    "rating": 7.0,
+    "comment": "Uplifting and energetic."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Bad Romance",
+    "songDate": "2013",
+    "rating": 1.3,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Poker Face",
+    "songDate": "2019",
+    "rating": 6.1,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Shape of You",
+    "songDate": "2016",
+    "rating": 2.1,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Someone Like You",
+    "songDate": "2020",
+    "rating": 6.2,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Bruno Mars",
+    "songTitle": "Just the Way You Are",
+    "songDate": "2019",
+    "rating": 8.5,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Someone Like You",
+    "songDate": "2016",
+    "rating": 1.2,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Halo",
+    "songDate": "2014",
+    "rating": 0.2,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Bruno Mars",
+    "songTitle": "Grenade",
+    "songDate": "2002",
+    "rating": 8.5,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Firework",
+    "songDate": "2019",
+    "rating": 8.3,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Dark Horse",
+    "songDate": "2000",
+    "rating": 3.7,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Rolling in the Deep",
+    "songDate": "2013",
+    "rating": 5.2,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Bad Romance",
+    "songDate": "2008",
+    "rating": 3.8,
+    "comment": "Party-Hit."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Someone Like You",
+    "songDate": "2022",
+    "rating": 0.8,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Dark Horse",
+    "songDate": "2003",
+    "rating": 0.6,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Drake",
+    "songTitle": "In My Feelings",
+    "songDate": "2005",
+    "rating": 3.1,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Crazy in Love",
+    "songDate": "2015",
+    "rating": 0.8,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Hello",
+    "songDate": "2011",
+    "rating": 4.6,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Bruno Mars",
+    "songTitle": "Grenade",
+    "songDate": "2009",
+    "rating": 8.5,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Taylor Swift",
+    "songTitle": "Blank Space",
+    "songDate": "2014",
+    "rating": 2.1,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Shape of You",
+    "songDate": "2016",
+    "rating": 8.9,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Dark Horse",
+    "songDate": "2003",
+    "rating": 1.4,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Photograph",
+    "songDate": "2012",
+    "rating": 2.3,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Taylor Swift",
+    "songTitle": "Blank Space",
+    "songDate": "2022",
+    "rating": 3.8,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Perfect",
+    "songDate": "2021",
+    "rating": 5.1,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Firework",
+    "songDate": "2021",
+    "rating": 5.0,
+    "comment": "Uplifting and energetic."
+  },
+  {
+    "artistName": "Drake",
+    "songTitle": "Hotline Bling",
+    "songDate": "2012",
+    "rating": 2.7,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Perfect",
+    "songDate": "2019",
+    "rating": 7.9,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Bruno Mars",
+    "songTitle": "Uptown Funk",
+    "songDate": "2007",
+    "rating": 2.3,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Drake",
+    "songTitle": "In My Feelings",
+    "songDate": "2009",
+    "rating": 9.9,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Shallow",
+    "songDate": "2015",
+    "rating": 3.1,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Hello",
+    "songDate": "2023",
+    "rating": 1.2,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Hello",
+    "songDate": "2014",
+    "rating": 8.1,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Dark Horse",
+    "songDate": "2007",
+    "rating": 4.8,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Drake",
+    "songTitle": "God's Plan",
+    "songDate": "2012",
+    "rating": 6.3,
+    "comment": "Uplifting and energetic."
+  },
+  {
+    "artistName": "Drake",
+    "songTitle": "In My Feelings",
+    "songDate": "2015",
+    "rating": 5.4,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Rolling in the Deep",
+    "songDate": "2001",
+    "rating": 0.6,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Halo",
+    "songDate": "2020",
+    "rating": 6.2,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Bad Romance",
+    "songDate": "2022",
+    "rating": 3.6,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Single Ladies",
+    "songDate": "2012",
+    "rating": 1.6,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Drake",
+    "songTitle": "In My Feelings",
+    "songDate": "2010",
+    "rating": 4.6,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Hello",
+    "songDate": "2014",
+    "rating": 0.4,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Bruno Mars",
+    "songTitle": "Uptown Funk",
+    "songDate": "2002",
+    "rating": 6.4,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Photograph",
+    "songDate": "2018",
+    "rating": 0.3,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Bruno Mars",
+    "songTitle": "Just the Way You Are",
+    "songDate": "2023",
+    "rating": 6.7,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Single Ladies",
+    "songDate": "2023",
+    "rating": 9.7,
+    "comment": "Party-Hit."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Rolling in the Deep",
+    "songDate": "2001",
+    "rating": 9.9,
+    "comment": "Uplifting and energetic."
+  },
+  {
+    "artistName": "Drake",
+    "songTitle": "Hotline Bling",
+    "songDate": "2019",
+    "rating": 5.7,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Bruno Mars",
+    "songTitle": "Uptown Funk",
+    "songDate": "2021",
+    "rating": 1.3,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Dark Horse",
+    "songDate": "2019",
+    "rating": 3.1,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Taylor Swift",
+    "songTitle": "Blank Space",
+    "songDate": "2007",
+    "rating": 2.1,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Someone Like You",
+    "songDate": "2014",
+    "rating": 2.1,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Poker Face",
+    "songDate": "2021",
+    "rating": 7.1,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Dark Horse",
+    "songDate": "2012",
+    "rating": 8.9,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Firework",
+    "songDate": "2005",
+    "rating": 3.9,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Dark Horse",
+    "songDate": "2022",
+    "rating": 7.6,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Bad Romance",
+    "songDate": "2017",
+    "rating": 1.8,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Poker Face",
+    "songDate": "2016",
+    "rating": 9.0,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Shape of You",
+    "songDate": "2014",
+    "rating": 5.7,
+    "comment": "Party-Hit."
+  },
+  {
+    "artistName": "Taylor Swift",
+    "songTitle": "Love Story",
+    "songDate": "2020",
+    "rating": 0.9,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Bruno Mars",
+    "songTitle": "Uptown Funk",
+    "songDate": "2012",
+    "rating": 2.1,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Bad Romance",
+    "songDate": "2007",
+    "rating": 7.5,
+    "comment": "Party-Hit."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Photograph",
+    "songDate": "2012",
+    "rating": 1.9,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Crazy in Love",
+    "songDate": "2014",
+    "rating": 4.4,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Taylor Swift",
+    "songTitle": "Love Story",
+    "songDate": "2006",
+    "rating": 6.7,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Single Ladies",
+    "songDate": "2005",
+    "rating": 2.8,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Poker Face",
+    "songDate": "2006",
+    "rating": 8.8,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Drake",
+    "songTitle": "God's Plan",
+    "songDate": "2015",
+    "rating": 4.4,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Hello",
+    "songDate": "2003",
+    "rating": 8.1,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Bruno Mars",
+    "songTitle": "Grenade",
+    "songDate": "2000",
+    "rating": 8.0,
+    "comment": "Uplifting and energetic."
+  },
+  {
+    "artistName": "Bruno Mars",
+    "songTitle": "Grenade",
+    "songDate": "2023",
+    "rating": 8.5,
+    "comment": "Party-Hit."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Roar",
+    "songDate": "2010",
+    "rating": 5.2,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Rolling in the Deep",
+    "songDate": "2019",
+    "rating": 9.9,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Rolling in the Deep",
+    "songDate": "2000",
+    "rating": 0.3,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Crazy in Love",
+    "songDate": "2010",
+    "rating": 0.6,
+    "comment": "Uplifting and energetic."
+  },
+  {
+    "artistName": "Taylor Swift",
+    "songTitle": "Love Story",
+    "songDate": "2000",
+    "rating": 7.7,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Bad Romance",
+    "songDate": "2014",
+    "rating": 0.3,
+    "comment": "Uplifting and energetic."
+  },
+  {
+    "artistName": "Drake",
+    "songTitle": "God's Plan",
+    "songDate": "2004",
+    "rating": 1.5,
+    "comment": "Party-Hit."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Hello",
+    "songDate": "2015",
+    "rating": 0.7,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Single Ladies",
+    "songDate": "2022",
+    "rating": 4.3,
+    "comment": "Party-Hit."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Poker Face",
+    "songDate": "2001",
+    "rating": 8.8,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Someone Like You",
+    "songDate": "2021",
+    "rating": 0.7,
+    "comment": "Party-Hit."
+  },
+  {
+    "artistName": "Drake",
+    "songTitle": "God's Plan",
+    "songDate": "2005",
+    "rating": 6.9,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Firework",
+    "songDate": "2002",
+    "rating": 5.5,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Crazy in Love",
+    "songDate": "2015",
+    "rating": 5.1,
+    "comment": "Party-Hit."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Halo",
+    "songDate": "2014",
+    "rating": 0.1,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Hello",
+    "songDate": "2012",
+    "rating": 8.7,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Shallow",
+    "songDate": "2021",
+    "rating": 2.2,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Shallow",
+    "songDate": "2014",
+    "rating": 2.8,
+    "comment": "Uplifting and energetic."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Shallow",
+    "songDate": "2001",
+    "rating": 5.8,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Bruno Mars",
+    "songTitle": "Uptown Funk",
+    "songDate": "2016",
+    "rating": 8.8,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Firework",
+    "songDate": "2020",
+    "rating": 2.6,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Shallow",
+    "songDate": "2017",
+    "rating": 2.9,
+    "comment": "Party-Hit."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Photograph",
+    "songDate": "2022",
+    "rating": 2.5,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Taylor Swift",
+    "songTitle": "Shake It Off",
+    "songDate": "2007",
+    "rating": 1.6,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Rolling in the Deep",
+    "songDate": "2007",
+    "rating": 9.8,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Bad Romance",
+    "songDate": "2007",
+    "rating": 8.6,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Single Ladies",
+    "songDate": "2004",
+    "rating": 5.2,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Photograph",
+    "songDate": "2022",
+    "rating": 4.1,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Bad Romance",
+    "songDate": "2018",
+    "rating": 7.6,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Rolling in the Deep",
+    "songDate": "2006",
+    "rating": 4.9,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Dark Horse",
+    "songDate": "2007",
+    "rating": 0.4,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Shape of You",
+    "songDate": "2018",
+    "rating": 2.0,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Halo",
+    "songDate": "2021",
+    "rating": 9.0,
+    "comment": "Uplifting and energetic."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Single Ladies",
+    "songDate": "2009",
+    "rating": 1.5,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Shallow",
+    "songDate": "2020",
+    "rating": 8.3,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Photograph",
+    "songDate": "2006",
+    "rating": 0.0,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Shallow",
+    "songDate": "2016",
+    "rating": 0.4,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Photograph",
+    "songDate": "2019",
+    "rating": 6.8,
+    "comment": "Party-Hit."
+  },
+  {
+    "artistName": "Taylor Swift",
+    "songTitle": "Shake It Off",
+    "songDate": "2014",
+    "rating": 6.2,
+    "comment": "Uplifting and energetic."
+  },
+  {
+    "artistName": "Drake",
+    "songTitle": "In My Feelings",
+    "songDate": "2006",
+    "rating": 6.8,
+    "comment": "Party-Hit."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Someone Like You",
+    "songDate": "2004",
+    "rating": 9.4,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Taylor Swift",
+    "songTitle": "Love Story",
+    "songDate": "2003",
+    "rating": 8.8,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Crazy in Love",
+    "songDate": "2002",
+    "rating": 1.1,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Dark Horse",
+    "songDate": "2011",
+    "rating": 2.2,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Shallow",
+    "songDate": "2004",
+    "rating": 3.3,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Halo",
+    "songDate": "2022",
+    "rating": 4.9,
+    "comment": "Party-Hit."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Poker Face",
+    "songDate": "2005",
+    "rating": 3.3,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Bruno Mars",
+    "songTitle": "Just the Way You Are",
+    "songDate": "2018",
+    "rating": 8.5,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Bruno Mars",
+    "songTitle": "Uptown Funk",
+    "songDate": "2013",
+    "rating": 4.0,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Photograph",
+    "songDate": "2019",
+    "rating": 7.7,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Taylor Swift",
+    "songTitle": "Shake It Off",
+    "songDate": "2018",
+    "rating": 9.2,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Shallow",
+    "songDate": "2013",
+    "rating": 9.1,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Taylor Swift",
+    "songTitle": "Shake It Off",
+    "songDate": "2007",
+    "rating": 6.1,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Bruno Mars",
+    "songTitle": "Uptown Funk",
+    "songDate": "2021",
+    "rating": 7.4,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Drake",
+    "songTitle": "In My Feelings",
+    "songDate": "2011",
+    "rating": 2.7,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Drake",
+    "songTitle": "In My Feelings",
+    "songDate": "2012",
+    "rating": 2.3,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Photograph",
+    "songDate": "2004",
+    "rating": 3.1,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Rolling in the Deep",
+    "songDate": "2021",
+    "rating": 7.3,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Photograph",
+    "songDate": "2023",
+    "rating": 4.9,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Dark Horse",
+    "songDate": "2022",
+    "rating": 1.4,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Crazy in Love",
+    "songDate": "2019",
+    "rating": 2.8,
+    "comment": "Party-Hit."
+  },
+  {
+    "artistName": "Beyonce",
+    "songTitle": "Halo",
+    "songDate": "2006",
+    "rating": 0.0,
+    "comment": "Uplifting and energetic."
+  },
+  {
+    "artistName": "Taylor Swift",
+    "songTitle": "Shake It Off",
+    "songDate": "2020",
+    "rating": 8.5,
+    "comment": "Uplifting and energetic."
+  },
+  {
+    "artistName": "Drake",
+    "songTitle": "Hotline Bling",
+    "songDate": "2017",
+    "rating": 7.9,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Shallow",
+    "songDate": "2008",
+    "rating": 2.5,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Taylor Swift",
+    "songTitle": "Shake It Off",
+    "songDate": "2006",
+    "rating": 5.1,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Rolling in the Deep",
+    "songDate": "2010",
+    "rating": 5.1,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Adele",
+    "songTitle": "Hello",
+    "songDate": "2010",
+    "rating": 9.5,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Poker Face",
+    "songDate": "2010",
+    "rating": 8.9,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Photograph",
+    "songDate": "2012",
+    "rating": 4.6,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Shape of You",
+    "songDate": "2019",
+    "rating": 1.2,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Shape of You",
+    "songDate": "2015",
+    "rating": 7.1,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Taylor Swift",
+    "songTitle": "Love Story",
+    "songDate": "2007",
+    "rating": 4.8,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Roar",
+    "songDate": "2020",
+    "rating": 9.1,
+    "comment": "Tiefgr\u00fcndige Lyrik."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Roar",
+    "songDate": "2007",
+    "rating": 6.6,
+    "comment": "Sehr emotional."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Shape of You",
+    "songDate": "2019",
+    "rating": 5.4,
+    "comment": "Unvergesslicher Refrain."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Bad Romance",
+    "songDate": "2001",
+    "rating": 5.0,
+    "comment": "Gro\u00dfartige Produktion."
+  },
+  {
+    "artistName": "Katy Perry",
+    "songTitle": "Firework",
+    "songDate": "2017",
+    "rating": 7.4,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Ed Sheeran",
+    "songTitle": "Perfect",
+    "songDate": "2004",
+    "rating": 8.5,
+    "comment": "Ein Klassiker."
+  },
+  {
+    "artistName": "Lady Gaga",
+    "songTitle": "Bad Romance",
+    "songDate": "2004",
+    "rating": 0.4,
+    "comment": "Herzzerrei\u00dfende Ballade."
+  }
+]

@@ -132,9 +132,6 @@ public class MoviesController extends AllesinOrdnungController {
             }
         });
 
-        // Set the filtered data as the data source for the TableView
-        tableView.setItems(filteredData);
-
     }
 
     @FXML

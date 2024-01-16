@@ -111,16 +111,6 @@ public class BooksController extends AllesinOrdnungController {
             });
         });
 
-        // Setzen der gefilterten Liste als Datenquelle für die TableView
-        tableView.setItems(filteredData);
-
-        // Listener für die Auswahl von Zeilen in der TableView
-        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null) {
-                fillFormWithBook(newSelection);
-            }
-        });
-
         // Setzt die gefilterte Liste als Datenquelle für die TableView
         tableView.setItems(filteredData);
 

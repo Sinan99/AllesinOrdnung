@@ -91,7 +91,7 @@ public class MusicController extends AllesinOrdnungController {
                 }
                 String lowerCaseFilter = newValue.toLowerCase();
                 // Wenn ja, wird 'true' zurückgegeben und das Buch wird angezeigt, sonst wird 'false' zurückgegeben und das Buch wird ausgeblendet.
-                if (music.getSongTitle().toLowerCase().contains(lowerCaseFilter)){
+                if (music.getSongTitle().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 } else if (music.getArtistName().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
@@ -106,15 +106,6 @@ public class MusicController extends AllesinOrdnungController {
             });
         });
 
-        // Set the filtered data as the data source for the TableView
-        tableView.setItems(filteredData);
-
-        // Add a listener for the selection of rows in the TableView
-        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null) {
-                fillFormWithMusic(newSelection);
-            }
-        });
         // Setzen der gefilterten Daten als Datenquelle für die TableView
         tableView.setItems(filteredData);
 
@@ -243,6 +234,7 @@ public class MusicController extends AllesinOrdnungController {
     private void Home() {
         openPage(home, "Homepage.fxml");
     }
+
     private <T> void setTooltipForColumn(TableColumn<Music, T> column) {
         column.setCellFactory(tc -> new TableCell<Music, T>() {
             @Override
