@@ -151,14 +151,14 @@ public class MusicController extends AllesinOrdnungController {
     @FXML
     private void addNewMusic() {
         // Erfassen der Benutzereingaben
-        String artist = artistNameField.getText();
-        String title = songTitleField.getText();
-        int releaseYear = Integer.parseInt(songDateField.getText());
-        Double rating = Double.valueOf(ratingField.getText());
-        String genre = genreField.getText();
-        String comment = commentField.getText();
+        String artist = artistNameField.getText().isEmpty() ? null : artistNameField.getText();
+        String title = songTitleField.getText().isEmpty() ? null : songTitleField.getText();
+        int releaseYear = songDateField.getText().isEmpty() ? 0 : Integer.parseInt(songDateField.getText());
+        Double rating = ratingField.getText().isEmpty() ? 0 : Double.parseDouble(ratingField.getText());
+        String genre = genreField.getText().isEmpty() ? null : genreField.getText();
+        String comment = commentField.getText().isEmpty() ? null : commentField.getText();
 
-        if (!isValidArtistName(artistName)) {
+        if (!isValidArtistName(artist)) {
             showAlert("Nur Buchstaben sind akzeptabel für.");
             return; // Abbrechen, wenn die Validierung nicht erfolgreich ist
         }

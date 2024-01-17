@@ -157,12 +157,14 @@ public class MoviesController extends AllesinOrdnungController {
 
     @FXML
     private void addNewMovie() {
-        String director = directorField.getText();
-        String title = titleField.getText();
-        int releaseYear = Integer.parseInt(releaseYearField.getText());
-        String genre = genreField.getText();
-        Double rating = parseDoubleOrNull(ratingField.getText()); // Bewertung oder null parsen
-        String comment = commentField.getText(); // Kommentar holen
+
+        //Textfelder in Variablen packen -> Falls Textfelder leer sind -> null rein packen
+        String director = directorField.getText().isEmpty() ? null : directorField.getText();
+        String title = titleField.getText().isEmpty() ? null : titleField.getText();
+        Integer releaseYear = releaseYearField.getText().isEmpty() ? 0 : Integer.parseInt(releaseYearField.getText());
+        String genre = genreField.getText().isEmpty() ? null : genreField.getText();
+        Double rating = ratingField.getText().isEmpty() ? 0 : Double.parseDouble(ratingField.getText());
+        String comment = commentField.getText().isEmpty() ? null : commentField.getText();
 
         // Neues Movie-Objekt erstellen
         Movie newMovie = new Movie(releaseYear, title, director, rating, genre, comment);
