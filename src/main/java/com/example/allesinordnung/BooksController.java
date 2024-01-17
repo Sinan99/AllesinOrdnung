@@ -160,12 +160,12 @@ public class BooksController extends AllesinOrdnungController {
     @FXML
     private void addNewBook() {
         // Erfasst die Benutzereingaben
-        String genre = genreField.getText();
-        int year = Integer.parseInt(yearField.getText());
-        String author = authorField.getText();
-        String title = titleField.getText();
-        String comment = commentField.getText();
-        double rating = Double.parseDouble(ratingField.getText());
+        String genre = genreField.getText().isEmpty() ? null : genreField.getText();
+        int year = yearField.getText().isEmpty() ? 0 : Integer.parseInt(yearField.getText());
+        String author = authorField.getText().isEmpty() ? null : authorField.getText();
+        String title = titleField.getText().isEmpty() ? null : titleField.getText();
+        String comment = commentField.getText().isEmpty() ? null : commentField.getText();
+        double rating = ratingField.getText().isEmpty() ? 0 : Double.parseDouble(ratingField.getText());
 
         // Erstellt ein neues Buchobjekt
         Book newBook = new Book(genre, year, author, title, rating, comment);
