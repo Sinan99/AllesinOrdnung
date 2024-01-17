@@ -142,6 +142,12 @@ public class MusicController extends AllesinOrdnungController {
         }
     }
 
+    private boolean isValidArtistName(String artistName) {
+        return false;
+    }
+    private void showAlert(String s) {
+    }
+
     @FXML
     private void addNewMusic() {
         // Erfassen der Benutzereingaben
@@ -151,6 +157,11 @@ public class MusicController extends AllesinOrdnungController {
         Double rating = Double.valueOf(ratingField.getText());
         String genre = genreField.getText();
         String comment = commentField.getText();
+
+        if (!isValidArtistName(artistName)) {
+            showAlert("Nur Buchstaben sind akzeptabel für.");
+            return; // Abbrechen, wenn die Validierung nicht erfolgreich ist
+        }
 
         // Erstellen eines neuen Musikobjekts
         Music newMusic = new Music(releaseYear, title, artist, rating, genre, comment);
@@ -170,6 +181,7 @@ public class MusicController extends AllesinOrdnungController {
         genreField.clear();
         commentField.clear();
     }
+
 
     private void fillFormWithMusic(Music music) {
         // Befüllen der Formularfelder mit den Daten des ausgewählten Musikstücks
