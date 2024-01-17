@@ -2,6 +2,8 @@ package com.example.allesinordnung;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -16,6 +18,7 @@ import javafx.scene.shape.Rectangle;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class BooksController extends AllesinOrdnungController {
     @FXML
@@ -61,6 +64,7 @@ public class BooksController extends AllesinOrdnungController {
 
     @FXML
     public void initialize() {
+
         headerBG.widthProperty().bind(body.widthProperty());
         // Initialisieren der TableView-Spalten
         genreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
@@ -83,32 +87,40 @@ public class BooksController extends AllesinOrdnungController {
         // Erstellt eine gefilterte Liste für die Suche
         filteredData = new FilteredList<>(bookData, p -> true);
 
-        // Change Listener der auf änderungen im Suchfeld reagiert
-        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-            // Hier wird ein neues Filterkriterium für die gefilterte Datenliste festgelegt
-            // wenn 'true' anzeigen / wenn 'false' ausblenden
-            filteredData.setPredicate(book -> {
-                //
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-                String lowerCaseFilter = newValue.toLowerCase();
-                // Wenn ja, wird 'true' zurückgegeben und das Buch wird angezeigt, sonst wird 'false' zurückgegeben und das Buch wird ausgeblendet.
-                if (book.getTitle().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                } else if (book.getAuthor().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                } else if (String.valueOf(book.getYear()).contains(newValue)) {
-                    return true;
-                } else if (book.getGenre().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                } else if (String.valueOf(book.getRating()).contains(newValue)) {
-                    return true;
-                } else if (book.getComment().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                }
-                return false;
-            });
+        // Hinzufügen eines ChangeListeners zum searchField
+        searchField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                filteredData.setPredicate(new Predicate<Book>() {
+                    @Override
+                    public boolean test(Book book) {
+                        if (newValue == null || newValue.isEmpty()) {
+                            return true;
+                        }
+
+                        String lowerCaseFilter = newValue.toLowerCase();
+
+                        // Prüfen, ob die Eingabe ein Zahl ist
+                        if (isNumeric(lowerCaseFilter)) {
+                            double numericInput = Double.parseDouble(lowerCaseFilter);
+                            // Prüfen, ob die Zahl <=10 , wenn ja -> ist es ein Rating
+                            if (numericInput <= 10) {
+                                // Sucht nach Büchern mit einem höheren Rating
+                                return book.getRating() >= numericInput;
+                            }
+                            // wenn nein -> wird nach dem Jahr gesucht
+                            else{
+                                return book.getYear() == numericInput;
+                            }
+                        }
+
+                        return book.getTitle().toLowerCase().contains(lowerCaseFilter) ||
+                                book.getAuthor().toLowerCase().contains(lowerCaseFilter) ||
+                                book.getGenre().toLowerCase().contains(lowerCaseFilter) ||
+                                book.getComment().toLowerCase().contains(lowerCaseFilter);
+                    }
+                });
+            }
         });
 
         // Setzt die gefilterte Liste als Datenquelle für die TableView
@@ -122,6 +134,14 @@ public class BooksController extends AllesinOrdnungController {
         });
     }
 
+    private boolean isNumeric(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch(NumberFormatException e) {
+            return false;
+        }
+    }
 
     @FXML
     private void addNewBook() {
