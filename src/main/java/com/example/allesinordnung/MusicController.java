@@ -149,12 +149,12 @@ public class MusicController extends AllesinOrdnungController {
     @FXML
     private void addNewMusic() {
         // Erfassen der Benutzereingaben
-        String artist = artistNameField.getText();
-        String title = songTitleField.getText();
-        int releaseYear = Integer.parseInt(songDateField.getText());
-        Double rating = Double.valueOf(ratingField.getText());
-        String genre = genreField.getText();
-        String comment = commentField.getText();
+        String artist = artistNameField.getText().isEmpty() ? null : artistNameField.getText();
+        String title = songTitleField.getText().isEmpty() ? null : songTitleField.getText();
+        int releaseYear = songDateField.getText().isEmpty() ? 0 : Integer.parseInt(commentField.getText());
+        Double rating = ratingField.getText().isEmpty() ? 0 : Double.parseDouble(commentField.getText());
+        String genre = genreField.getText().isEmpty() ? null : genreField.getText();
+        String comment = commentField.getText().isEmpty() ? null : commentField.getText();
 
 
         if (!artist.matches("^[a-zA-Z]+$")) {
