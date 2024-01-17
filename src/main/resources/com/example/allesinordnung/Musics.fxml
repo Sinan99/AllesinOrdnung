@@ -78,13 +78,19 @@
                         </font>
                     </Label>
                     <TextField fx:id="ratingField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-
-                    <Label text="Comment:" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                    <Label text="Genre:" GridPane.columnIndex="0" GridPane.rowIndex="4">
                         <font>
                             <Font size="15.0" />
                         </font>
                     </Label>
-                    <TextField fx:id="commentField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                    <TextField fx:id="genreField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                    <Label text="Comment:" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </Label>
+                    <TextField fx:id="commentField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                 </children>
                 <VBox.margin>
                     <Insets />
@@ -146,6 +152,7 @@
             <TableColumn fx:id="artistNameColumn" maxWidth="200.0" minWidth="130.0" prefWidth="-1.0" styleClass="header" text="Artist" />
             <TableColumn fx:id="songDateColumn" maxWidth="90.0" minWidth="90.0" prefWidth="-1.0" styleClass="header" text="Date" />
             <TableColumn fx:id="ratingColumn" maxWidth="60.0" minWidth="60.0" prefWidth="-1.0" styleClass="header" text="★" />
+            <TableColumn fx:id="genreColumn" maxWidth="150.0" minWidth="90.0" prefWidth="-1.0" styleClass="header" text="Genre"/>
             <TableColumn fx:id="commentColumn" minWidth="150.0" prefWidth="-1.0" styleClass="header" text="Comment" />
         </columns>
         <columnResizePolicy>

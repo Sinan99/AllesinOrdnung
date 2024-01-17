@@ -5,9 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Movie extends MediaItem {
-
     private String director;
-
     @JsonCreator
     public Movie(@JsonProperty("releaseYear") @JsonInclude(JsonInclude.Include.NON_NULL) Integer year,
                  @JsonProperty("title") String title,

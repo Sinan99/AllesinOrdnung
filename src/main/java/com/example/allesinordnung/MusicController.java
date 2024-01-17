@@ -35,6 +35,8 @@ public class MusicController extends AllesinOrdnungController {
     @FXML
     private TextField ratingField;
     @FXML
+    private TextField genreField;
+    @FXML
     private TextField commentField;
     @FXML
     private AnchorPane body;
@@ -46,17 +48,16 @@ public class MusicController extends AllesinOrdnungController {
     @FXML
     private TableView<Music> tableView;
     private ObservableList<Music> musicData = FXCollections.observableArrayList();
-
     @FXML
     private TableColumn<Music, String> artistNameColumn;
-
     @FXML
     private TableColumn<Music, String> songTitleColumn;
-
     @FXML
     private TableColumn<Music, String> songDateColumn;
     @FXML
     private TableColumn<Music, Double> ratingColumn;
+    @FXML
+    private TableColumn<Music, String> genreColumn;
     @FXML
     private TableColumn<Music, String> commentColumn;
     private FilteredList<Music> filteredData;
@@ -70,11 +71,13 @@ public class MusicController extends AllesinOrdnungController {
         songTitleColumn.setCellValueFactory(new PropertyValueFactory<>("songTitle"));
         songDateColumn.setCellValueFactory(new PropertyValueFactory<>("songDate"));
         ratingColumn.setCellValueFactory(new PropertyValueFactory<>("rating"));
+        genreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
         commentColumn.setCellValueFactory(new PropertyValueFactory<>("comment"));
         setTooltipForColumn(artistNameColumn);
         setTooltipForColumn(songTitleColumn);
         setTooltipForColumn(songDateColumn);
         setTooltipForColumn(ratingColumn);
+        setTooltipForColumn(genreColumn);
         setTooltipForColumn(commentColumn);
 
 
@@ -106,12 +109,12 @@ public class MusicController extends AllesinOrdnungController {
                             }
                             // Wenn nein -> wird nach dem Jahr gesucht
                             else{
-                                return music.getSongDate() == numericInput;
+                                return music.getYear() == numericInput;
                             }
                         }
 
-                        return  music.getSongTitle().toLowerCase().contains(lowerCaseFilter) ||
-                                music.getArtistName().toLowerCase().contains(lowerCaseFilter) ||
+                        return  music.getTitle().toLowerCase().contains(lowerCaseFilter) ||
+                                music.getArtist().toLowerCase().contains(lowerCaseFilter) ||
                                 music.getGenre().toLowerCase().contains(lowerCaseFilter) ||
                                 music.getComment().toLowerCase().contains(lowerCaseFilter);
                     }
@@ -146,10 +149,12 @@ public class MusicController extends AllesinOrdnungController {
         String songTitle = songTitleField.getText();
         String songDate = songDateField.getText();
         Double rating = Double.valueOf(ratingField.getText());
+        String genre = genreField.getText();
         String comment = commentField.getText();
 
         // Erstellen eines neuen Musikobjekts
-        Music newMusic = new Music(artistName, songTitle, songDate, rating, comment);
+        Music newMusic = new Music(artistName, songTitle, songDate, rating, genre, comment);
+
 
         // Hinzufügen des neuen Musikstücks zur Liste
         addMusicData(newMusic);
@@ -162,15 +167,17 @@ public class MusicController extends AllesinOrdnungController {
         songTitleField.clear();
         songDateField.clear();
         ratingField.clear();
+        genreField.clear();
         commentField.clear();
     }
 
     private void fillFormWithMusic(Music music) {
         // Befüllen der Formularfelder mit den Daten des ausgewählten Musikstücks
-        artistNameField.setText(music.getArtistName());
-        songTitleField.setText(music.getSongTitle());
-        songDateField.setText(music.getSongDate());
+        artistNameField.setText(music.getArtist());
+        songTitleField.setText(music.getTitle());
+        songDateField.setText(String.valueOf(music.getYear()));
         ratingField.setText(String.valueOf(music.getRating()));
+        genreField.setText(String.valueOf(music.getGenre()));
         commentField.setText(music.getComment());
     }
 
@@ -219,6 +226,7 @@ public class MusicController extends AllesinOrdnungController {
             songTitleField.clear();
             songDateField.clear();
             ratingField.clear();
+            genreField.clear();
             commentField.clear();
         }
     }
@@ -235,13 +243,15 @@ public class MusicController extends AllesinOrdnungController {
             String songTitle = songTitleField.getText();
             String songDate = songDateField.getText();
             double rating = Double.parseDouble(ratingField.getText());
+            String genre = genreField.getText();
             String comment = commentField.getText();
 
             // Aktualisieren der Musikdaten
-            selectedMusic.setArtistName(artistName);
-            selectedMusic.setSongTitle(songTitle);
-            selectedMusic.setSongDate(songDate);
+            selectedMusic.setArtist(artistName);
+            selectedMusic.setTitle(songTitle);
+            selectedMusic.setYear(Integer.parseInt(songDate));
             selectedMusic.setRating(rating);
+            selectedMusic.setGenre(genre);
             selectedMusic.setComment(comment);
 
             // Aktualisieren des Musikstücks in der Liste

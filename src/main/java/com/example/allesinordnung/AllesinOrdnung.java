@@ -11,7 +11,6 @@ import java.io.IOException;
 
 public class AllesinOrdnung extends Application {
 
-
     @Override
     public void start(Stage stage) throws IOException {
         // Hier wird ein FXMLLoader erstellt, um die grafische Benutzeroberfläche aus der Datei "Homepage.fxml" zu laden.

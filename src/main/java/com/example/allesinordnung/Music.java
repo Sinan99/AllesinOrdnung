@@ -10,13 +10,22 @@ public class Music extends MediaItem{
     @JsonCreator
     public Music(@JsonProperty("releaseYear") @JsonInclude(JsonInclude.Include.NON_NULL) Integer year,
                  @JsonProperty("title") String title,
-                 @JsonProperty("artis") String artis,
+                 @JsonProperty("artist") String artist,
                  @JsonProperty("rating") @JsonInclude(JsonInclude.Include.NON_NULL) Double rating,
                  @JsonProperty("genre") String genre,
                  @JsonProperty("comment") String comment) {
 
         super(genre, (year != null) ? year : 0, title, comment, rating);
-        this.artist = artis;
+        this.artist = artist;
+    }
+
+    public Music(String artistName, String songTitle, String songDate, Double rating, String genre, String comment) {
+        this.artist = artistName;
+        this.setTitle(songTitle);
+        this.setYear(Integer.parseInt(songDate));
+        this.setRating(rating);
+        this.setGenre(genre);
+        this.setComment(comment);
     }
 
     public String getArtist() {
