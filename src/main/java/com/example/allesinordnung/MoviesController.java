@@ -3,6 +3,8 @@ package com.example.allesinordnung;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -16,6 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
 
 public class MoviesController extends AllesinOrdnungController {
     @FXML
@@ -95,32 +98,41 @@ public class MoviesController extends AllesinOrdnungController {
         // Erstellen einer gefilterten Liste für die Suche
         filteredData = new FilteredList<>(movieData, p -> true);
 
-        // Change Listener der auf änderungen im Suchfeld reagiert
-        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-            // Hier wird ein neues Filterkriterium für die gefilterte Datenliste festgelegt
-            // wenn 'true' anzeigen / wenn 'false' ausblenden
-            filteredData.setPredicate(movie -> {
-                //
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-                String lowerCaseFilter = newValue.toLowerCase();
-                // Wenn ja, wird 'true' zurückgegeben und das Buch wird angezeigt, sonst wird 'false' zurückgegeben und das Buch wird ausgeblendet.
-                if (movie.getTitle().toLowerCase().contains(lowerCaseFilter)){
-                    return true;
-                } else if (movie.getDirector().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                } else if (movie.getGenre().contains(lowerCaseFilter)) {
-                    return true;
-                } else if (String.valueOf(movie.getRating()).contains(newValue)) {
-                    return true;
-                } else if (movie.getComment().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                }
-                return false;
-            });
-        });
+        searchField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                filteredData.setPredicate(new Predicate<Movie>() {
+                    @Override
+                    public boolean test(Movie movie) {
 
+                        if (newValue == null || newValue.isEmpty()) {
+                            return true;
+                        }
+
+                        String lowerCaseFilter = newValue.toLowerCase();
+
+                        // Prüfen, ob die Eingabe ein Zahl ist
+                        if (isNumeric(lowerCaseFilter)) {
+                            double numericInput = Double.parseDouble(lowerCaseFilter);
+                            // Prüfen, ob die Zahl <=10 , wenn ja -> ist es ein Rating
+                            if (numericInput <= 10) {
+                                // Sucht nach Büchern mit einem höheren Rating
+                                return movie.getRating() >= numericInput;
+                            }
+                            // Wenn nein -> wird nach dem Jahr gesucht
+                            else{
+                                return movie.getYear() == numericInput;
+                            }
+                        }
+
+                        return  movie.getTitle().toLowerCase().contains(lowerCaseFilter) ||
+                                movie.getDirector().toLowerCase().contains(lowerCaseFilter) ||
+                                movie.getGenre().toLowerCase().contains(lowerCaseFilter) ||
+                                movie.getComment().toLowerCase().contains(lowerCaseFilter);
+                    }
+                });
+            }
+        });
 
         // Setzen der gefilterten Liste als Datenquelle für die TableView
         tableView.setItems(filteredData);
@@ -132,6 +144,15 @@ public class MoviesController extends AllesinOrdnungController {
             }
         });
 
+    }
+
+    private boolean isNumeric(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch(NumberFormatException e) {
+            return false;
+        }
     }
 
     @FXML

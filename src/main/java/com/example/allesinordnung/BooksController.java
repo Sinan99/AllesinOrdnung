@@ -94,6 +94,7 @@ public class BooksController extends AllesinOrdnungController {
                 filteredData.setPredicate(new Predicate<Book>() {
                     @Override
                     public boolean test(Book book) {
+
                         if (newValue == null || newValue.isEmpty()) {
                             return true;
                         }
@@ -108,7 +109,7 @@ public class BooksController extends AllesinOrdnungController {
                                 // Sucht nach Büchern mit einem höheren Rating
                                 return book.getRating() >= numericInput;
                             }
-                            // wenn nein -> wird nach dem Jahr gesucht
+                            // Wenn nein -> wird nach dem Jahr gesucht
                             else{
                                 return book.getYear() == numericInput;
                             }

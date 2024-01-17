@@ -3,6 +3,8 @@ package com.example.allesinordnung;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -15,6 +17,7 @@ import javafx.scene.shape.Rectangle;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class MusicController extends AllesinOrdnungController {
     @FXML
@@ -80,30 +83,40 @@ public class MusicController extends AllesinOrdnungController {
         // Erstellung einer gefilterten Datenliste
         filteredData = new FilteredList<>(musicData, p -> true);
 
-        // Change Listener der auf änderungen im Suchfeld reagiert
-        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-            // Hier wird ein neues Filterkriterium für die gefilterte Datenliste festgelegt
-            // wenn 'true' anzeigen / wenn 'false' ausblenden
-            filteredData.setPredicate(music -> {
-                //
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-                String lowerCaseFilter = newValue.toLowerCase();
-                // Wenn ja, wird 'true' zurückgegeben und das Buch wird angezeigt, sonst wird 'false' zurückgegeben und das Buch wird ausgeblendet.
-                if (music.getSongTitle().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                } else if (music.getArtistName().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                } else if (String.valueOf(music.getSongDate()).contains(newValue)) {
-                    return true;
-                } else if (String.valueOf(music.getRating()).contains(newValue)) {
-                    return true;
-                } else if (music.getComment().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                }
-                return false;
-            });
+        searchField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                filteredData.setPredicate(new Predicate<Music>() {
+                    @Override
+                    public boolean test(Music music) {
+
+                        if (newValue == null || newValue.isEmpty()) {
+                            return true;
+                        }
+
+                        String lowerCaseFilter = newValue.toLowerCase();
+
+                        // Prüfen, ob die Eingabe ein Zahl ist
+                        if (isNumeric(lowerCaseFilter)) {
+                            double numericInput = Double.parseDouble(lowerCaseFilter);
+                            // Prüfen, ob die Zahl <=10 , wenn ja -> ist es ein Rating
+                            if (numericInput <= 10) {
+                                // Sucht nach Büchern mit einem höheren Rating
+                                return music.getRating() >= numericInput;
+                            }
+                            // Wenn nein -> wird nach dem Jahr gesucht
+                            else{
+                                return music.getSongDate() == numericInput;
+                            }
+                        }
+
+                        return  music.getSongTitle().toLowerCase().contains(lowerCaseFilter) ||
+                                music.getArtistName().toLowerCase().contains(lowerCaseFilter) ||
+                                music.getGenre().toLowerCase().contains(lowerCaseFilter) ||
+                                music.getComment().toLowerCase().contains(lowerCaseFilter);
+                    }
+                });
+            }
         });
 
         // Setzen der gefilterten Daten als Datenquelle für die TableView
@@ -115,6 +128,15 @@ public class MusicController extends AllesinOrdnungController {
                 fillFormWithMusic(newSelection);
             }
         });
+    }
+
+    private boolean isNumeric(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch(NumberFormatException e) {
+            return false;
+        }
     }
 
     @FXML
