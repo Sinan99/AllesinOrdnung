@@ -158,11 +158,6 @@ public class MusicController extends AllesinOrdnungController {
         String genre = genreField.getText();
         String comment = commentField.getText();
 
-        if (!isValidArtistName(artistName)) {
-            showAlert("Nur Buchstaben sind akzeptabel für.");
-            return; // Abbrechen, wenn die Validierung nicht erfolgreich ist
-        }
-
         // Erstellen eines neuen Musikobjekts
         Music newMusic = new Music(releaseYear, title, artist, rating, genre, comment);
 
