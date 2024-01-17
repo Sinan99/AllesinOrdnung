@@ -18,6 +18,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.function.Predicate;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class MusicController extends AllesinOrdnungController {
     @FXML
@@ -142,12 +144,6 @@ public class MusicController extends AllesinOrdnungController {
         }
     }
 
-    private boolean isValidArtistName(String artistName) {
-        return false;
-    }
-    private void showAlert(String s) {
-    }
-
     @FXML
     private void addNewMusic() {
         // Erfassen der Benutzereingaben
@@ -157,6 +153,12 @@ public class MusicController extends AllesinOrdnungController {
         Double rating = Double.valueOf(ratingField.getText());
         String genre = genreField.getText();
         String comment = commentField.getText();
+
+
+        if (!artist.matches("^[a-zA-Z]+$")) {
+            showAlert("Nur Buchstaben sind für den Namen erlaubt.");
+            return;
+        }
 
         // Erstellen eines neuen Musikobjekts
         Music newMusic = new Music(releaseYear, title, artist, rating, genre, comment);
@@ -177,6 +179,13 @@ public class MusicController extends AllesinOrdnungController {
         commentField.clear();
     }
 
+    private void showAlert(String message) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Fehler");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
     private void fillFormWithMusic(Music music) {
         // Befüllen der Formularfelder mit den Daten des ausgewählten Musikstücks
