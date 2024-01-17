@@ -31,6 +31,8 @@ public class MoviesController extends AllesinOrdnungController {
     @FXML
     private Button cancelAddMovie;
     @FXML
+    private Button updateButton;
+    @FXML
     private Button saveMovie;
     @FXML
     private AnchorPane body;
@@ -90,6 +92,16 @@ public class MoviesController extends AllesinOrdnungController {
         setTooltipForColumn(genreColumn);
         setTooltipForColumn(ratingColumn);
         setTooltipForColumn(commentColumn);
+        //Tooltips für Knöpfe
+        Tooltip cancelAddMovieTooltip = new Tooltip("Deletes Selected Entry");
+        Tooltip updateButtonTooltip = new Tooltip("Adopts Changes");
+        Tooltip saveMovieTooltip = new Tooltip("Save Movie");
+        Tooltip homeButtonTooltip = new Tooltip("Go to Homepage");
+
+        cancelAddMovie.setTooltip(cancelAddMovieTooltip);
+        updateButton.setTooltip(updateButtonTooltip);
+        saveMovie.setTooltip(saveMovieTooltip);
+        home.setTooltip(homeButtonTooltip);
 
 
         // Daten aus der JSON-Datei laden
