@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Book extends MediaItem {
     private String author;
 
+
     @JsonCreator
     public Book(@JsonProperty("genre") String genre,
                 @JsonProperty("year") int year,
