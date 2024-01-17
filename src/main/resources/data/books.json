@@ -33,4 +33,11 @@
   "title" : "xxx",
   "rating" : 7.7,
   "comment" : "sdfds"
+}, {
+  "genre" : "asd",
+  "year" : 1234,
+  "author" : "a",
+  "title" : "b",
+  "rating" : 12.0,
+  "comment" : ""
 } ]
