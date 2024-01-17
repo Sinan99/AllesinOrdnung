@@ -18,6 +18,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.function.Predicate;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class MusicController extends AllesinOrdnungController {
     @FXML
@@ -142,25 +144,20 @@ public class MusicController extends AllesinOrdnungController {
         }
     }
 
-    private boolean isValidArtistName(String artistName) {
-        return false;
-    }
-    private void showAlert(String s) {
-    }
-
     @FXML
     private void addNewMusic() {
         // Erfassen der Benutzereingaben
-        String artist = artistNameField.getText().isEmpty() ? null : artistNameField.getText();
-        String title = songTitleField.getText().isEmpty() ? null : songTitleField.getText();
-        int releaseYear = songDateField.getText().isEmpty() ? 0 : Integer.parseInt(songDateField.getText());
-        Double rating = ratingField.getText().isEmpty() ? 0 : Double.parseDouble(ratingField.getText());
-        String genre = genreField.getText().isEmpty() ? null : genreField.getText();
-        String comment = commentField.getText().isEmpty() ? null : commentField.getText();
+        String artist = artistNameField.getText();
+        String title = songTitleField.getText();
+        int releaseYear = Integer.parseInt(songDateField.getText());
+        Double rating = Double.valueOf(ratingField.getText());
+        String genre = genreField.getText();
+        String comment = commentField.getText();
 
-        if (!isValidArtistName(artist)) {
-            showAlert("Nur Buchstaben sind akzeptabel für.");
-            return; // Abbrechen, wenn die Validierung nicht erfolgreich ist
+
+        if (!artist.matches("^[a-zA-Z]+$")) {
+            showAlert("Nur Buchstaben sind für den Namen erlaubt.");
+            return;
         }
 
         // Erstellen eines neuen Musikobjekts
@@ -182,6 +179,13 @@ public class MusicController extends AllesinOrdnungController {
         commentField.clear();
     }
 
+    private void showAlert(String message) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Fehler");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
     private void fillFormWithMusic(Music music) {
         // Befüllen der Formularfelder mit den Daten des ausgewählten Musikstücks
