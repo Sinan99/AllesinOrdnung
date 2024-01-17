@@ -58,14 +58,14 @@
                     </Label>
                     <TextField fx:id="artistNameField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-                    <Label text="Song Title:" GridPane.rowIndex="1">
+                    <Label text="Title:" GridPane.rowIndex="1">
                         <font>
                             <Font size="15.0" />
                         </font>
                     </Label>
                     <TextField fx:id="songTitleField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-                    <Label text="Song Date:" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                    <Label text="Year:" GridPane.columnIndex="0" GridPane.rowIndex="2">
                         <font>
                             <Font size="15.0" />
                         </font>
