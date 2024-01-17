@@ -19,15 +19,6 @@ public class Music extends MediaItem{
         this.artist = artist;
     }
 
-    public Music(String artistName, String songTitle, String songDate, Double rating, String genre, String comment) {
-        this.artist = artistName;
-        this.setTitle(songTitle);
-        this.setYear(Integer.parseInt(songDate));
-        this.setRating(rating);
-        this.setGenre(genre);
-        this.setComment(comment);
-    }
-
     public String getArtist() {
         return artist;
     }

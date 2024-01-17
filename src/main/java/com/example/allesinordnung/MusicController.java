@@ -67,9 +67,9 @@ public class MusicController extends AllesinOrdnungController {
         headerBG.widthProperty().bind(body.widthProperty());
 
         // Initialisierung der TableView-Spalten
-        artistNameColumn.setCellValueFactory(new PropertyValueFactory<>("artistName"));
-        songTitleColumn.setCellValueFactory(new PropertyValueFactory<>("songTitle"));
-        songDateColumn.setCellValueFactory(new PropertyValueFactory<>("songDate"));
+        artistNameColumn.setCellValueFactory(new PropertyValueFactory<>("artist"));
+        songTitleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        songDateColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
         ratingColumn.setCellValueFactory(new PropertyValueFactory<>("rating"));
         genreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
         commentColumn.setCellValueFactory(new PropertyValueFactory<>("comment"));
@@ -145,15 +145,15 @@ public class MusicController extends AllesinOrdnungController {
     @FXML
     private void addNewMusic() {
         // Erfassen der Benutzereingaben
-        String artistName = artistNameField.getText();
-        String songTitle = songTitleField.getText();
-        String songDate = songDateField.getText();
+        String artist = artistNameField.getText();
+        String title = songTitleField.getText();
+        int releaseYear = Integer.parseInt(songDateField.getText());
         Double rating = Double.valueOf(ratingField.getText());
         String genre = genreField.getText();
         String comment = commentField.getText();
 
         // Erstellen eines neuen Musikobjekts
-        Music newMusic = new Music(artistName, songTitle, songDate, rating, genre, comment);
+        Music newMusic = new Music(releaseYear, title, artist, rating, genre, comment);
 
 
         // Hinzufügen des neuen Musikstücks zur Liste
