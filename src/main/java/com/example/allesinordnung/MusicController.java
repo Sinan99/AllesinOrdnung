@@ -135,6 +135,7 @@ public class MusicController extends AllesinOrdnungController {
         });
     }
 
+    //artist name darf nur Buchstaben enthalten
     private boolean isNumeric(String str) {
         try {
             Double.parseDouble(str);
@@ -143,6 +144,7 @@ public class MusicController extends AllesinOrdnungController {
             return false;
         }
     }
+
 
     @FXML
     private void addNewMusic() {
@@ -156,7 +158,7 @@ public class MusicController extends AllesinOrdnungController {
 
 
         if (!artist.matches("^[a-zA-Z]+$")) {
-            showAlert("Nur Buchstaben sind für den Namen erlaubt.");
+            showAlert("Only letters are allowed for the artist name.");
             return;
         }
 

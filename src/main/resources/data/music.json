@@ -1,1 +1,15 @@
-[ ]
+[ {
+  "title" : "was",
+  "artist" : "was",
+  "rating" : 2.0,
+  "genre" : "sa",
+  "comment" : "ass",
+  "year" : 12
+}, {
+  "title" : "sd",
+  "artist" : "dds",
+  "rating" : 11.0,
+  "genre" : "sads",
+  "comment" : "sad",
+  "year" : 11
+} ]
