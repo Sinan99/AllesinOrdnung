@@ -135,7 +135,6 @@ public class MusicController extends AllesinOrdnungController {
         });
     }
 
-    //artist name darf nur Buchstaben enthalten
     private boolean isNumeric(String str) {
         try {
             Double.parseDouble(str);
@@ -145,14 +144,17 @@ public class MusicController extends AllesinOrdnungController {
         }
     }
 
+    private boolean containsOnlyDigits(String input) {
+        return input.matches("^\\d+$");
+    }
 
     @FXML
     private void addNewMusic() {
         // Erfassen der Benutzereingaben
         String artist = artistNameField.getText().isEmpty() ? null : artistNameField.getText();
         String title = songTitleField.getText().isEmpty() ? null : songTitleField.getText();
-        int releaseYear = songDateField.getText().isEmpty() ? 0 : Integer.parseInt(commentField.getText());
-        Double rating = ratingField.getText().isEmpty() ? 0 : Double.parseDouble(commentField.getText());
+        int year = songDateField.getText().isEmpty() ? 0 : Integer.parseInt(songDateField.getText());
+        Double rating = ratingField.getText().isEmpty() ? 0 : Double.parseDouble(ratingField.getText());
         String genre = genreField.getText().isEmpty() ? null : genreField.getText();
         String comment = commentField.getText().isEmpty() ? null : commentField.getText();
 
@@ -162,8 +164,15 @@ public class MusicController extends AllesinOrdnungController {
             return;
         }
 
+        /*
+        if (!ratingField.getText().matches("^\\d+$")) {
+            showAlert("Only numbers are allowed for rating.");
+            return;
+        }
+         */
+
         // Erstellen eines neuen Musikobjekts
-        Music newMusic = new Music(releaseYear, title, artist, rating, genre, comment);
+        Music newMusic = new Music(year, title, artist, rating, genre, comment);
 
 
         // Hinzufügen des neuen Musikstücks zur Liste
@@ -183,7 +192,7 @@ public class MusicController extends AllesinOrdnungController {
 
     private void showAlert(String message) {
         Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle("Fehler");
+        alert.setTitle("Error");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();

@@ -12,4 +12,11 @@
   "genre" : "sads",
   "comment" : "sad",
   "year" : 11
+}, {
+  "title" : "sd",
+  "artist" : "sds",
+  "rating" : 1.0,
+  "genre" : "sd",
+  "comment" : "sd",
+  "year" : 12
 } ]
