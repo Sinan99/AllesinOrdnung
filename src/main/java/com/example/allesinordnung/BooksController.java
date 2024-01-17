@@ -24,6 +24,8 @@ public class BooksController extends AllesinOrdnungController {
     @FXML
     private Button cancelAddBook;
     @FXML
+    private Button updateButton;
+    @FXML
     private Button saveBook;
     @FXML
     private AnchorPane body;
@@ -73,6 +75,17 @@ public class BooksController extends AllesinOrdnungController {
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
         ratingColumn.setCellValueFactory(new PropertyValueFactory<>("rating"));
         commentColumn.setCellValueFactory(new PropertyValueFactory<>("comment"));
+
+        //Tooltips für Knöpfe
+        Tooltip cancelAddMovieTooltip = new Tooltip("Deletes Selected Entry");
+        Tooltip updateButtonTooltip = new Tooltip("Adopts Changes");
+        Tooltip saveMovieTooltip = new Tooltip("Save the Book");
+        Tooltip homeButtonTooltip = new Tooltip("Go to Homepage");
+
+        cancelAddBook.setTooltip(cancelAddMovieTooltip);
+        updateButton.setTooltip(updateButtonTooltip);
+        saveBook.setTooltip(saveMovieTooltip);
+        home.setTooltip(homeButtonTooltip);
 
         // Set the cell factory for each column
         setTooltipForColumn(genreColumn);

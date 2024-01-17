@@ -25,6 +25,8 @@ public class MusicController extends AllesinOrdnungController {
     @FXML
     private Button cancelAddMusic;
     @FXML
+    private Button updateButton;
+    @FXML
     private Button saveMusic;
     @FXML
     private TextField searchField;
@@ -81,6 +83,17 @@ public class MusicController extends AllesinOrdnungController {
         setTooltipForColumn(ratingColumn);
         setTooltipForColumn(genreColumn);
         setTooltipForColumn(commentColumn);
+
+        //Tooltips für Knöpfe
+        Tooltip cancelAddMovieTooltip = new Tooltip("Deletes Selected Entry");
+        Tooltip updateButtonTooltip = new Tooltip("Adopts Changes");
+        Tooltip saveMovieTooltip = new Tooltip("Save the Song");
+        Tooltip homeButtonTooltip = new Tooltip("Go to Homepage");
+
+        cancelAddMusic.setTooltip(cancelAddMovieTooltip);
+        updateButton.setTooltip(updateButtonTooltip);
+        saveMusic.setTooltip(saveMovieTooltip);
+        home.setTooltip(homeButtonTooltip);
 
 
         // Laden der Daten aus JSON
