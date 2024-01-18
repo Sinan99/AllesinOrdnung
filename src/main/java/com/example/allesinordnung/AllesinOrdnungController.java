@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -32,9 +31,10 @@ public class AllesinOrdnungController {
     @FXML
     private Button openBooks;
     // Die bilder für cursor laden
-    private final Image booksCursorImage = new Image("/book-bookmark.png");
-    private final Image musicCursorImage = new Image("/music-alt.png");
-    private final Image moviesCursorImage = new Image("/film.png");
+    private final Image booksCursorImage = new Image("/Icons/book-bookmark.png");
+    private final Image musicCursorImage = new Image("/Icons/music-alt.png");
+    private final Image moviesCursorImage = new Image("/Icons/film.png");
+    private final Image closeProgramCursorImage = new Image("/Icons/hand-fingers-crossed.png");
 
     @FXML
     public void initialize() {
@@ -53,11 +53,13 @@ public class AllesinOrdnungController {
         openBooks.setCursor(Cursor.DEFAULT);
         openMusic.setCursor(Cursor.DEFAULT);
         openMovies.setCursor(Cursor.DEFAULT);
+        closeProgram.setCursor(Cursor.DEFAULT);
 
     // Add event handlers for each button
     setCursorOnHover(openBooks, booksCursorImage);
     setCursorOnHover(openMusic, musicCursorImage);
     setCursorOnHover(openMovies, moviesCursorImage);
+    setCursorOnHover(closeProgram, closeProgramCursorImage);
 }
     private void setCursorOnHover(Button button, Image cursorImage) {
         // Set custom cursor on mouse enter
