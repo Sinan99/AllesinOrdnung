@@ -157,10 +157,6 @@ public class MusicController extends AllesinOrdnungController {
         }
     }
 
-    private boolean containsOnlyDigits(String input) {
-        return input.matches("^\\d+$");
-    }
-
     @FXML
     private void addNewMusic() {
         // Erfassen der Benutzereingaben
@@ -171,18 +167,20 @@ public class MusicController extends AllesinOrdnungController {
         String genre = genreField.getText().isEmpty() ? null : genreField.getText();
         String comment = commentField.getText().isEmpty() ? null : commentField.getText();
 
-
-        if (!artist.matches("^[a-zA-Z]+$")) {
-            showAlert("Only letters are allowed for the artist name.");
+        //Eingabe von year überprüfen
+        if (!String.valueOf(year).matches("^[0-9]+$")) {
+            showAlert("Please enter a valid number for Year.");
             return;
         }
 
-        /*
-        if (!ratingField.getText().matches("^\\d+$")) {
-            showAlert("Only numbers are allowed for rating.");
+        // Eingabe von rating überprüfen
+        if (!String.valueOf(rating).matches("^[0-9.]+$")) {
+            showAlert("Please enter a valid number for Rating.");
             return;
+        } else if (rating < 1 || rating > 10) {
+            showAlert("Please enter a number between 1 and 10.");
         }
-         */
+
 
         // Erstellen eines neuen Musikobjekts
         Music newMusic = new Music(year, title, artist, rating, genre, comment);
