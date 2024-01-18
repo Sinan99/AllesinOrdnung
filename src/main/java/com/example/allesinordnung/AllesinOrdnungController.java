@@ -3,9 +3,12 @@ package com.example.allesinordnung;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
+import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -28,6 +31,10 @@ public class AllesinOrdnungController {
     private Button openMusic;
     @FXML
     private Button openBooks;
+    // Die bilder für cursor laden
+    private final Image booksCursorImage = new Image("/book-bookmark.png");
+    private final Image musicCursorImage = new Image("/music-alt.png");
+    private final Image moviesCursorImage = new Image("/film.png");
 
     @FXML
     public void initialize() {
@@ -41,6 +48,28 @@ public class AllesinOrdnungController {
         openMusic.prefWidthProperty().bind(Bindings.divide(body.widthProperty(), 2.7));
         closeProgram.prefHeightProperty().bind(Bindings.divide(body.heightProperty(), 4.4));
         closeProgram.prefWidthProperty().bind(Bindings.divide(body.widthProperty(), 2.7));
+
+    // Set default cursors
+        openBooks.setCursor(Cursor.DEFAULT);
+        openMusic.setCursor(Cursor.DEFAULT);
+        openMovies.setCursor(Cursor.DEFAULT);
+
+    // Add event handlers for each button
+    setCursorOnHover(openBooks, booksCursorImage);
+    setCursorOnHover(openMusic, musicCursorImage);
+    setCursorOnHover(openMovies, moviesCursorImage);
+}
+    private void setCursorOnHover(Button button, Image cursorImage) {
+        // Set custom cursor on mouse enter
+        button.setOnMouseEntered(event -> {
+            button.setCursor(Cursor.NONE); // Hide the default cursor
+            button.setCursor(new ImageCursor(cursorImage));
+        });
+
+        // Revert to default cursor on mouse exit
+        button.setOnMouseExited(event -> {
+            button.setCursor(Cursor.DEFAULT);
+        });
     }
 
     @FXML
