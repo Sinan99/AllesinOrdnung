@@ -167,18 +167,23 @@ public class MusicController extends AllesinOrdnungController {
         String genre = genreField.getText().isEmpty() ? null : genreField.getText();
         String comment = commentField.getText().isEmpty() ? null : commentField.getText();
 
-        //Eingabe von year überprüfen
-        if (!String.valueOf(year).matches("^[0-9]+$")) {
-            showAlert("Please enter a valid number for Year.");
+        /*
+        if (songDateField.getText().matches(".*[a-zA-Z].*")) {
+            showAlert("Please enter a valid number for year.");
+            return;
+        }
+         */
+
+        //Eingabe von year überprüfen, es müssen 4 Zahlen sein
+       if(!songDateField.getText().matches("\\d{4}")) {
+            showAlert("Please enter a valid 4-digit year.");
             return;
         }
 
         // Eingabe von rating überprüfen
-        if (!String.valueOf(rating).matches("^[0-9.]+$")) {
-            showAlert("Please enter a valid number for Rating.");
-            return;
-        } else if (rating < 1 || rating > 10) {
+        if (rating < 1 || rating > 10) {
             showAlert("Please enter a number between 1 and 10.");
+            return;
         }
 
 

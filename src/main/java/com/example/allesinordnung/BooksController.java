@@ -167,6 +167,18 @@ public class BooksController extends AllesinOrdnungController {
         String comment = commentField.getText().isEmpty() ? null : commentField.getText();
         double rating = ratingField.getText().isEmpty() ? 0 : Double.parseDouble(ratingField.getText());
 
+        //Eingabe von year überprüfen, es müssen 4 Zahlen sein
+        if(!yearField.getText().matches("\\d{4}")) {
+            showAlert("Please enter a valid 4-digit year.");
+            return;
+        }
+
+        // Eingabe von rating überprüfen
+        if (rating < 1 || rating > 10) {
+            showAlert("Please enter a number between 1 and 10.");
+            return;
+        }
+
         // Erstellt ein neues Buchobjekt
         Book newBook = new Book(genre, year, author, title, rating, comment);
 
@@ -185,6 +197,13 @@ public class BooksController extends AllesinOrdnungController {
         commentField.clear();
     }
 
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
     private void fillFormWithBook(Book book) {
         // Befüllt die Formularfelder mit den Daten des ausgewählten Buches
         genreField.setText(book.getGenre());

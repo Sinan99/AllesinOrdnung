@@ -178,6 +178,18 @@ public class MoviesController extends AllesinOrdnungController {
         Double rating = ratingField.getText().isEmpty() ? 0 : Double.parseDouble(ratingField.getText());
         String comment = commentField.getText().isEmpty() ? null : commentField.getText();
 
+        //Eingabe von year überprüfen, es müssen 4 Zahlen sein
+        if(!releaseYearField.getText().matches("\\d{4}")) {
+            showAlert("Please enter a valid 4-digit year.");
+            return;
+        }
+
+        // Eingabe von rating überprüfen
+        if (rating < 1 || rating > 10) {
+            showAlert("Please enter a number between 1 and 10.");
+            return;
+        }
+
         // Neues Movie-Objekt erstellen
         Movie newMovie = new Movie(releaseYear, title, director, rating, genre, comment);
 
@@ -194,6 +206,14 @@ public class MoviesController extends AllesinOrdnungController {
         genreField.clear();
         ratingField.clear(); // Bewertungsfeld leeren
         commentField.clear(); // Kommentarfeld leeren
+    }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     // Hilfsmethode zum Parsen von Double oder null zurückgeben, falls das Parsen fehlschlägt
