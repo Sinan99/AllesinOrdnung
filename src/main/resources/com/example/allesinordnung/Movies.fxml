@@ -135,16 +135,11 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="300.0">
                 <children>
-                    <TextField fx:id="searchField" prefHeight="50.0" prefWidth="215.0" promptText="Search">
+                    <TextField fx:id="searchField" prefHeight="50.0" prefWidth="215.0" promptText="Search 🔍">
                         <font>
                             <Font size="20.0" />
                         </font>
                     </TextField>
-                    <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="55.0" style="-fx-background-color: #252525;" text="🔍" textAlignment="CENTER" textFill="WHITE">
-                        <font>
-                            <Font size="23.0" />
-                        </font>
-                    </Button>
                 </children>
                 <VBox.margin>
                     <Insets />

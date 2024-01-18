@@ -49,6 +49,7 @@
                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints />
                 </rowConstraints>
                 <children>
                     <Label text="Artist:" GridPane.columnIndex="0" GridPane.rowIndex="0">
@@ -129,16 +130,11 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="300.0">
                 <children>
-                    <TextField fx:id="searchField" prefHeight="50.0" prefWidth="220.0" promptText="Search">
+                    <TextField fx:id="searchField" prefHeight="50.0" prefWidth="220.0" promptText="Search 🔍">
                         <font>
                             <Font size="20.0" />
                         </font>
                     </TextField>
-                    <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="60.0" style="-fx-background-color: #252525;" text="🔍" textAlignment="CENTER" textFill="WHITE">
-                        <font>
-                            <Font size="23.0" />
-                        </font>
-                    </Button>
                 </children>
                 <VBox.margin>
                     <Insets />
@@ -152,7 +148,7 @@
             <TableColumn fx:id="artistNameColumn" maxWidth="200.0" minWidth="130.0" prefWidth="-1.0" styleClass="header" text="Artist" />
             <TableColumn fx:id="songDateColumn" maxWidth="90.0" minWidth="90.0" prefWidth="-1.0" styleClass="header" text="Date" />
             <TableColumn fx:id="ratingColumn" maxWidth="60.0" minWidth="60.0" prefWidth="-1.0" styleClass="header" text="★" />
-            <TableColumn fx:id="genreColumn" maxWidth="150.0" minWidth="90.0" prefWidth="-1.0" styleClass="header" text="Genre"/>
+            <TableColumn fx:id="genreColumn" maxWidth="150.0" minWidth="90.0" prefWidth="-1.0" styleClass="header" text="Genre" />
             <TableColumn fx:id="commentColumn" minWidth="150.0" prefWidth="-1.0" styleClass="header" text="Comment" />
         </columns>
         <columnResizePolicy>
