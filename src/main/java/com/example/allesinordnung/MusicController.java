@@ -148,6 +148,7 @@ public class MusicController extends AllesinOrdnungController {
         });
     }
 
+    //Prüfen ob übergebener Wert eine Zahl ist
     private boolean isNumeric(String str) {
         try {
             Double.parseDouble(str);
@@ -167,26 +168,6 @@ public class MusicController extends AllesinOrdnungController {
         String genre = genreField.getText().isEmpty() ? null : genreField.getText();
         String comment = commentField.getText().isEmpty() ? null : commentField.getText();
 
-        /*
-        if (songDateField.getText().matches(".*[a-zA-Z].*")) {
-            showAlert("Please enter a valid number for year.");
-            return;
-        }
-         */
-
-        //Eingabe von year überprüfen, es müssen 4 Zahlen sein
-       if(!songDateField.getText().matches("\\d{4}")) {
-            showAlert("Please enter a valid 4-digit year.");
-            return;
-        }
-
-        // Eingabe von rating überprüfen
-        if (rating < 1 || rating > 10) {
-            showAlert("Please enter a number between 1 and 10.");
-            return;
-        }
-
-
         // Erstellen eines neuen Musikobjekts
         Music newMusic = new Music(year, title, artist, rating, genre, comment);
 
@@ -205,7 +186,6 @@ public class MusicController extends AllesinOrdnungController {
         genreField.clear();
         commentField.clear();
     }
-
 
 
     private void fillFormWithMusic(Music music) {
