@@ -71,7 +71,7 @@
                             <Font size="15.0" />
                         </font>
                     </Label>
-                    <TextField fx:id="releaseYearField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    <TextField fx:id="yearField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
                     <Label text="Genre:" GridPane.columnIndex="0" GridPane.rowIndex="3">
                         <font>
@@ -151,7 +151,7 @@
         <columns>
             <TableColumn fx:id="titleColumn" maxWidth="250.0" minWidth="150.0" prefWidth="-1.0" styleClass="header" text="Title" />
             <TableColumn fx:id="directorColumn" maxWidth="200.0" minWidth="110.0" prefWidth="-1.0" styleClass="header" text="Director" />
-            <TableColumn fx:id="releaseYearColumn" maxWidth="60.0" minWidth="60.0" prefWidth="-1.0" styleClass="header" text="Year" />
+            <TableColumn fx:id="yearColumn" maxWidth="60.0" minWidth="60.0" prefWidth="-1.0" styleClass="header" text="Year" />
             <TableColumn fx:id="genreColumn" maxWidth="150.0" minWidth="100.0" prefWidth="-1.0" styleClass="header" text="Genre" />
             <TableColumn fx:id="ratingColumn" maxWidth="60.0" minWidth="60.0" prefWidth="-1.0" styleClass="header" text="★" />
             <TableColumn fx:id="commentColumn" minWidth="120.0" prefWidth="-1.0" styleClass="header" text="Comment" />

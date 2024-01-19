@@ -1,5 +1,8 @@
 package com.example.allesinordnung;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -13,11 +16,13 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
+import org.controlsfx.control.Notifications;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 public class MoviesController extends AllesinOrdnungController {
@@ -43,7 +48,7 @@ public class MoviesController extends AllesinOrdnungController {
     @FXML
     private TextField titleField;
     @FXML
-    private TextField releaseYearField;
+    private TextField yearField;
     @FXML
     private TextField genreField;
     @FXML
@@ -62,7 +67,7 @@ public class MoviesController extends AllesinOrdnungController {
     private TableColumn<Movie, String> titleColumn;
 
     @FXML
-    private TableColumn<Movie, Integer> releaseYearColumn;
+    private TableColumn<Movie, Integer> yearColumn;
 
     @FXML
     private TableColumn<Movie, String> genreColumn;
@@ -73,8 +78,6 @@ public class MoviesController extends AllesinOrdnungController {
     @FXML
     private TableColumn<Movie, String> commentColumn;
 
-
-
     @FXML
     public void initialize() {
         headerBG.widthProperty().bind(body.widthProperty());
@@ -82,22 +85,21 @@ public class MoviesController extends AllesinOrdnungController {
         // Initialisieren der TableView-Spalten
         directorColumn.setCellValueFactory(new PropertyValueFactory<>("director"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-        releaseYearColumn.setCellValueFactory(new PropertyValueFactory<>("year")); // Verwenden Sie das "year" -Attribut
+        yearColumn.setCellValueFactory(new PropertyValueFactory<>("year")); // Verwenden Sie das "year" -Attribut
         genreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
         ratingColumn.setCellValueFactory(new PropertyValueFactory<>("rating"));
         commentColumn.setCellValueFactory(new PropertyValueFactory<>("comment"));
+        //Tooltips
         setTooltipForColumn(directorColumn);
         setTooltipForColumn(titleColumn);
-        setTooltipForColumn(releaseYearColumn);
+        setTooltipForColumn(yearColumn);
         setTooltipForColumn(genreColumn);
         setTooltipForColumn(ratingColumn);
         setTooltipForColumn(commentColumn);
-        //Tooltips für Knöpfe
         Tooltip cancelAddMovieTooltip = new Tooltip("Deletes Selected Entry");
         Tooltip updateButtonTooltip = new Tooltip("Adopts Changes");
         Tooltip saveMovieTooltip = new Tooltip("Save Movie");
         Tooltip homeButtonTooltip = new Tooltip("Go to Homepage");
-
         cancelAddMovie.setTooltip(cancelAddMovieTooltip);
         updateButton.setTooltip(updateButtonTooltip);
         saveMovie.setTooltip(saveMovieTooltip);
@@ -166,39 +168,6 @@ public class MoviesController extends AllesinOrdnungController {
             return false;
         }
     }
-
-    @FXML
-    private void addNewMovie() {
-
-        //Textfelder in Variablen packen -> Falls Textfelder leer sind -> null rein packen
-        String director = directorField.getText().isEmpty() ? null : directorField.getText();
-        String title = titleField.getText().isEmpty() ? null : titleField.getText();
-        Integer releaseYear = releaseYearField.getText().isEmpty() ? 0 : Integer.parseInt(releaseYearField.getText());
-        String genre = genreField.getText().isEmpty() ? null : genreField.getText();
-        Double rating = ratingField.getText().isEmpty() ? 0 : Double.parseDouble(ratingField.getText());
-        String comment = commentField.getText().isEmpty() ? null : commentField.getText();
-
-
-        // Neues Movie-Objekt erstellen
-        Movie newMovie = new Movie(releaseYear, title, director, rating, genre, comment);
-
-        // Movie-Daten hinzufügen
-        addMovieData(newMovie);
-
-        // Movie-Daten in JSON-Datei speichern
-        saveMovieDataToJson();
-
-        // Textfelder im Formular leeren
-        directorField.clear();
-        titleField.clear();
-        releaseYearField.clear();
-        genreField.clear();
-        ratingField.clear(); // Bewertungsfeld leeren
-        commentField.clear(); // Kommentarfeld leeren
-    }
-
-
-
     // Hilfsmethode zum Parsen von Double oder null zurückgeben, falls das Parsen fehlschlägt
     private Double parseDoubleOrNull(String value) {
         try {
@@ -207,12 +176,72 @@ public class MoviesController extends AllesinOrdnungController {
             return null;
         }
     }
+    @FXML
+    private void addNewMovie() {
+        // Capture user inputs
+        String genre = genreField.getText().isEmpty() ? null : genreField.getText();
+
+        int year;
+        if (!yearField.getText().isEmpty() && isNumeric(yearField.getText())) {
+            year = Integer.parseInt(yearField.getText());
+        } else if (!yearField.getText().isEmpty()) {
+            showAlert("Please enter a valid year in numerals.");
+            return;
+        } else {
+            year = 0; // Default value when no input is provided
+        }
+
+        String director = directorField.getText().isEmpty() ? null : directorField.getText();
+        String title = titleField.getText().isEmpty() ? null : titleField.getText();
+        String comment = commentField.getText().isEmpty() ? null : commentField.getText();
+
+        String ratingText = ratingField.getText();
+        double rating;
+        if (!ratingText.isEmpty()) {
+            if (isNumeric(ratingText)) {
+                rating = Double.parseDouble(ratingText);
+                if (rating < 1 || rating > 10) {
+                    showAlert("Please enter a valid rating between 1 and 10.");
+                    return;
+                }
+            } else {
+                showAlert("Please enter a valid numeric rating.");
+                return;
+            }
+        } else {
+            rating = Double.NaN; // "unrated"
+        }
+        // Check if at least title and director are provided
+        if (title == null || director == null) {
+            showAlert("Title and director are required fields.");
+            return;
+        }
+        // Create a new Movie object
+        Movie newMovie = new Movie(genre, year, director, title, rating, comment);
+
+        // Add the new movie to movieData
+        addMovieData(newMovie);
+
+        // Save the updated data to the JSON file
+        saveMovieDataToJson();
+
+        // Clear the form fields
+        genreField.clear();
+        yearField.clear();
+        directorField.clear();
+        titleField.clear();
+        ratingField.clear();
+        commentField.clear();
+        // Show a success message in the corner of the screen
+        Notifications.create().text("Movie added successfully!").showInformation();
+    }
+
 
     private void fillFormWithMovie(Movie movie) {
         // Formularfelder mit den Daten des ausgewählten Films füllen
         directorField.setText(movie.getDirector());
         titleField.setText(movie.getTitle());
-        releaseYearField.setText(String.valueOf(movie.getYear()));
+        yearField.setText(String.valueOf(movie.getYear()));
         genreField.setText(movie.getGenre());
         ratingField.setText(String.valueOf(movie.getRating())); // Bewertungsfeld setzen
         commentField.setText(movie.getComment()); // Kommentarfeld setzen
@@ -246,17 +275,39 @@ public class MoviesController extends AllesinOrdnungController {
 
     @FXML
     private void deleteSelectedMovie() {
+        // Get the selected movie
         Movie selectedMovie = tableView.getSelectionModel().getSelectedItem();
 
+        // Check if a movie was selected
         if (selectedMovie != null) {
-            movieData.remove(selectedMovie);
-            saveMovieDataToJson();
-            directorField.clear();
-            titleField.clear();
-            releaseYearField.clear();
-            genreField.clear();
-            ratingField.clear(); // Bewertungsfeld leeren
-            commentField.clear(); // Kommentarfeld leeren
+            // Create a confirmation dialog
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation Dialog");
+            alert.setHeaderText("Delete " + selectedMovie.getTitle());
+            alert.setContentText("Are you sure you want to delete the selected movie?\n"
+                    + "Title: " + selectedMovie.getTitle() + "\nDirector: " + selectedMovie.getDirector());
+
+            // Show the dialog and wait for user action
+            Optional<ButtonType> result = alert.showAndWait();
+
+            // Check if the user selected "OK"
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                // Remove the movie from the ObservableList
+                movieData.remove(selectedMovie);
+
+                // Save the updated list to the JSON file
+                saveMovieDataToJson();
+
+                // Clear the form fields
+                genreField.clear();
+                yearField.clear();
+                directorField.clear();
+                titleField.clear();
+                ratingField.clear();
+                commentField.clear();
+                // Show a success message in the corner of the screen
+                Notifications.create().text("Movie deleted successfully!").showInformation();
+            }
         }
     }
 
@@ -267,7 +318,7 @@ public class MoviesController extends AllesinOrdnungController {
         if (selectedMovie != null) {
             String director = directorField.getText();
             String title = titleField.getText();
-            int releaseYear = Integer.parseInt(releaseYearField.getText());
+            int year = Integer.parseInt(yearField.getText());
             String genre = genreField.getText();
             double rating = Double.parseDouble(ratingField.getText()); // Bewertungsfeld hinzugefügt
             String comment = commentField.getText(); // Kommentarfeld hinzugefügt
@@ -277,7 +328,7 @@ public class MoviesController extends AllesinOrdnungController {
             selectedMovie.setComment(comment);
             selectedMovie.setDirector(director);
             selectedMovie.setTitle(title);
-            selectedMovie.setYear(releaseYear);
+            selectedMovie.setYear(year);
             selectedMovie.setGenre(genre);
             selectedMovie.setRating(rating); // Bewertungsfeld setzen
             selectedMovie.setComment(comment); // Kommentarfeld setzen
@@ -285,6 +336,8 @@ public class MoviesController extends AllesinOrdnungController {
             movieData.set(movieData.indexOf(selectedMovie), selectedMovie);
 
             saveMovieDataToJson();
+            // Zeigt eine Erfolgsmeldung in der Ecke des Bildschirms an
+            Notifications.create().text("Movie updated successfully!").showInformation();
         }
     }
 

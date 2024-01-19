@@ -11,6 +11,7 @@ public class MediaItem {
     private double rating;
 
     public MediaItem(){
+        this.year = 2024;
         this.rating = 5.0;
     }
 

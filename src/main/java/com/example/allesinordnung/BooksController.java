@@ -249,9 +249,10 @@ public class BooksController extends AllesinOrdnungController {
                 titleField.clear();
                 ratingField.clear();
                 commentField.clear();
+                // Zeigt eine Erfolgsmeldung in der Ecke des Bildschirms an
+                Notifications.create().text("Book deleted successfully!").showInformation();
             }
-            // Zeigt eine Erfolgsmeldung in der Ecke des Bildschirms an
-            Notifications.create().text("Book deleted successfully!").showInformation();
+
         }
     }
     private void fillFormWithBook(Book book) {

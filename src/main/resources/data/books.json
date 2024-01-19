@@ -1,11 +1,4 @@
 [ {
-  "genre" : "Fiction",
-  "year" : 2022,
-  "author" : "J.K. Rowling",
-  "title" : "Harry Potter and the Sorcerer's Stone",
-  "rating" : 9.5,
-  "comment" : "A magical adventure!"
-}, {
   "genre" : "Science Fiction",
   "year" : 2011,
   "author" : "Christopher Nolan",
@@ -90,10 +83,10 @@
   "rating" : 8.4,
   "comment" : "A gripping mystery involving art and religion."
 }, {
-  "genre" : "Science Fiction",
-  "year" : 20101,
-  "author" : "Christopher Nolan",
-  "title" : "Inception",
-  "rating" : 8.8,
-  "comment" : "Mind-bending plot!"
+  "genre" : "Fiction",
+  "year" : 2022,
+  "author" : "J.K. Rowling",
+  "title" : "Harry Potter and the Sorcerer's Stone",
+  "rating" : 9.5,
+  "comment" : "A magical adventure!"
 } ]
