@@ -20,90 +20,73 @@
   "rating" : 8.0,
   "comment" : "Twists and turns!"
 }, {
-  "genre" : "fgh",
-  "year" : 0,
-  "author" : "asd",
-  "title" : "asd",
-  "rating" : "NaN",
-  "comment" : null
-},
-  {
-    "title": "To Kill a Mockingbird",
-    "author": "Harper Lee",
-    "genre": "Fiction",
-    "year": 1960,
-    "rating": 8.5,
-    "comment": "Classic novel addressing racial injustice."
-  },
-  {
-    "title": "1984",
-    "author": "George Orwell",
-    "genre": "Dystopian",
-    "year": 1949,
-    "rating": 9.0,
-    "comment": "A thought-provoking exploration of a totalitarian society."
-  },
-  {
-    "title": "The Great Gatsby",
-    "author": "F. Scott Fitzgerald",
-    "genre": "Classic",
-    "year": 1925,
-    "rating": 8.8,
-    "comment": "An American classic depicting the Jazz Age."
-  },
-  {
-    "title": "The Catcher in the Rye",
-    "author": "J.D. Salinger",
-    "genre": "Coming-of-age",
-    "year": 1951,
-    "rating": 8.0,
-    "comment": "A novel about teenage rebellion and identity."
-  },
-  {
-    "title": "Harry Potter and the Sorcerer's Stone",
-    "author": "J.K. Rowling",
-    "genre": "Fantasy",
-    "year": 1997,
-    "rating": 9.3,
-    "comment": "The beginning of the beloved wizarding series."
-  },
-  {
-    "title": "The Hobbit",
-    "author": "J.R.R. Tolkien",
-    "genre": "Fantasy",
-    "year": 1937,
-    "rating": 9.1,
-    "comment": "A classic fantasy adventure novel."
-  },
-  {
-    "title": "The Hunger Games",
-    "author": "Suzanne Collins",
-    "genre": "Science Fiction",
-    "year": 2008,
-    "rating": 8.6,
-    "comment": "A gripping dystopian series."
-  },
-  {
-    "title": "Pride and Prejudice",
-    "author": "Jane Austen",
-    "genre": "Romance",
-    "year": 1813,
-    "rating": 8.7,
-    "comment": "A timeless romantic novel."
-  },
-  {
-    "title": "The Shining",
-    "author": "Stephen King",
-    "genre": "Horror",
-    "year": 1977,
-    "rating": 8.9,
-    "comment": "A classic horror novel set in an isolated hotel."
-  },
-  {
-    "title": "The Da Vinci Code",
-    "author": "Dan Brown",
-    "genre": "Mystery",
-    "year": 2003,
-    "rating": 8.4,
-    "comment": "A gripping mystery involving art and religion."
-  }]
+  "genre" : "Fiction",
+  "year" : 1960,
+  "author" : "Harper Lee",
+  "title" : "To Kill a Mockingbird",
+  "rating" : 8.5,
+  "comment" : "Classic novel addressing racial injustice."
+}, {
+  "genre" : "Dystopian",
+  "year" : 1949,
+  "author" : "George Orwell",
+  "title" : "1984",
+  "rating" : 9.0,
+  "comment" : "A thought-provoking exploration of a totalitarian society."
+}, {
+  "genre" : "Classic",
+  "year" : 1925,
+  "author" : "F. Scott Fitzgerald",
+  "title" : "The Great Gatsby",
+  "rating" : 8.8,
+  "comment" : "An American classic depicting the Jazz Age."
+}, {
+  "genre" : "Coming-of-age",
+  "year" : 1951,
+  "author" : "J.D. Salinger",
+  "title" : "The Catcher in the Rye",
+  "rating" : 8.0,
+  "comment" : "A novel about teenage rebellion and identity."
+}, {
+  "genre" : "Fantasy",
+  "year" : 1997,
+  "author" : "J.K. Rowling",
+  "title" : "Harry Potter and the Sorcerer's Stone",
+  "rating" : 9.3,
+  "comment" : "The beginning of the beloved wizarding series."
+}, {
+  "genre" : "Fantasy",
+  "year" : 1937,
+  "author" : "J.R.R. Tolkien",
+  "title" : "The Hobbit",
+  "rating" : 9.1,
+  "comment" : "A classic fantasy adventure novel."
+}, {
+  "genre" : "Science Fiction",
+  "year" : 2008,
+  "author" : "Suzanne Collins",
+  "title" : "The Hunger Games",
+  "rating" : 8.6,
+  "comment" : "A gripping dystopian series."
+}, {
+  "genre" : "Romance",
+  "year" : 1813,
+  "author" : "Jane Austen",
+  "title" : "Pride and Prejudice",
+  "rating" : 8.7,
+  "comment" : "A timeless romantic novel."
+}, {
+  "genre" : "Horror",
+  "year" : 1977,
+  "author" : "Stephen King",
+  "title" : "The Shining",
+  "rating" : 8.9,
+  "comment" : "A classic horror novel set in an isolated hotel."
+}, {
+  "genre" : "Mystery",
+  "year" : 2003,
+  "author" : "Dan Brown",
+  "title" : "The Da Vinci Code",
+  "rating" : 8.4,
+  "comment" : "A gripping mystery involving art and religion."
+} ]

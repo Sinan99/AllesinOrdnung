@@ -18,6 +18,7 @@ import javafx.scene.shape.Rectangle;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 public class BooksController extends AllesinOrdnungController {
@@ -213,6 +214,41 @@ public class BooksController extends AllesinOrdnungController {
         ratingField.clear();
         commentField.clear();
     }
+    @FXML
+    private void deleteSelectedBook() {
+        // Holt das ausgewählte Buch
+        Book selectedBook = tableView.getSelectionModel().getSelectedItem();
+
+        // Prüft, ob ein Buch ausgewählt wurde
+        if (selectedBook != null) {
+            // Erstellt einen Bestätigungsdialog
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation Dialog");
+            alert.setHeaderText("Delete " + selectedBook.getTitle());
+            alert.setContentText("Are you sure you want to delete the selected book?\n"
+                    + "Title: " + selectedBook.getTitle() + "\nAuthor: " + selectedBook.getAuthor());
+
+            // Zeigt den Dialog und wartet auf Benutzeraktion
+            Optional<ButtonType> result = alert.showAndWait();
+
+            // Prüft, ob der Benutzer "OK" ausgewählt hat
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                // Entfernt das Buch aus der ObservableList
+                bookData.remove(selectedBook);
+
+                // Speichert die aktualisierte Liste in der JSON-Datei
+                saveBookDataToJson();
+
+                // Löscht die Formularfelder
+                genreField.clear();
+                yearField.clear();
+                authorField.clear();
+                titleField.clear();
+                ratingField.clear();
+                commentField.clear();
+            }
+        }
+    }
     private void fillFormWithBook(Book book) {
         // Befüllt die Formularfelder mit den Daten des ausgewählten Buches
         genreField.setText(book.getGenre());
@@ -250,7 +286,7 @@ public class BooksController extends AllesinOrdnungController {
         bookData.add(newBook);
     }
 
-    @FXML
+   /* @FXML
     private void deleteSelectedBook() {
         // Holt das ausgewählte Buch
         Book selectedBook = tableView.getSelectionModel().getSelectedItem();
@@ -271,7 +307,7 @@ public class BooksController extends AllesinOrdnungController {
             ratingField.clear();
             commentField.clear();
         }
-    }
+    }*/
 
     @FXML
     private void updateSelectedBook() {
