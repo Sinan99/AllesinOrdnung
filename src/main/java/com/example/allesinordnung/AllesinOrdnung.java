@@ -39,4 +39,5 @@ public class AllesinOrdnung extends Application {
                 .text("Alles in Ordnung application started successfully!")
                 .showInformation();
     }
+
 }
