@@ -25,19 +25,11 @@ public class AllesinOrdnung extends Application {
         stage.setScene(scene);
         stage.show();
 
-        // Show a welcome notification when the application starts
-        showWelcomeNotification();
     }
 
     public static void main(String[] args) {
         launch();
     }
 
-    private static void showWelcomeNotification() {
-        Notifications.create()
-                .title("Welcome")
-                .text("Alles in Ordnung application started successfully!")
-                .showInformation();
-    }
 
 }
