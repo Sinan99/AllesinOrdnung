@@ -208,13 +208,7 @@ public class MoviesController extends AllesinOrdnungController {
         commentField.clear(); // Kommentarfeld leeren
     }
 
-    private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
+
 
     // Hilfsmethode zum Parsen von Double oder null zurückgeben, falls das Parsen fehlschlägt
     private Double parseDoubleOrNull(String value) {

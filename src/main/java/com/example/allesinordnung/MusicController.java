@@ -206,13 +206,7 @@ public class MusicController extends AllesinOrdnungController {
         commentField.clear();
     }
 
-    private void showAlert(String message) {
-        Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
+
 
     private void fillFormWithMusic(Music music) {
         // Befüllen der Formularfelder mit den Daten des ausgewählten Musikstücks
