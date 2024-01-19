@@ -7,12 +7,15 @@ import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 
 public class AllesinOrdnungController {
@@ -73,19 +76,23 @@ public class AllesinOrdnungController {
             button.setCursor(Cursor.DEFAULT);
         });
     }
-
+    public static void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
     @FXML
     private void openBooks() {
         try {
-            // Lade das FXML-Layout für die neue Seite
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Books.fxml"));
             Parent newPageRoot = loader.load();
-            // Erhalte die Stage der aktuellen Szene
             Stage currentStage = (Stage) openBooks.getScene().getWindow();
-            // Setze die neue Scene auf der aktuellen Stage, um die Seite zu ändern
             currentStage.setScene(new Scene(newPageRoot, currentStage.getScene().getWidth(), currentStage.getScene().getHeight()));
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (IOException e) {
+            showAlert("Error opening Books: " + e.getMessage());
+            e.printStackTrace(); // Log the exception for further investigation
         }
     }
 

@@ -1,50 +1,109 @@
 [ {
-  "genre" : "asfd",
-  "year" : 2002,
-  "author" : "ich",
-  "title" : "ashd",
-  "rating" : 5.5,
-  "comment" : "sfs"
+  "genre" : "Fiction",
+  "year" : 2022,
+  "author" : "J.K. Rowling",
+  "title" : "Harry Potter and the Sorcerer's Stone",
+  "rating" : 9.5,
+  "comment" : "A magical adventure!"
 }, {
-  "genre" : "sxasda",
-  "year" : 2002,
-  "author" : "askdla",
-  "title" : "kalnfal",
-  "rating" : 5.5,
-  "comment" : "jkasf"
+  "genre" : "Science Fiction",
+  "year" : 2010,
+  "author" : "Christopher Nolan",
+  "title" : "Inception",
+  "rating" : 8.8,
+  "comment" : "Mind-bending plot!"
 }, {
-  "genre" : "sada",
-  "year" : 3333,
-  "author" : "sdfsf",
-  "title" : "asdfaf",
-  "rating" : 5.5,
-  "comment" : "sdfsd"
-}, {
-  "genre" : "assfas",
-  "year" : 2002,
-  "author" : "lksfns",
-  "title" : "sjdsbf",
+  "genre" : "Mystery",
+  "year" : 2014,
+  "author" : "Gillian Flynn",
+  "title" : "Gone Girl",
   "rating" : 8.0,
-  "comment" : "lfnsdflsnw"
+  "comment" : "Twists and turns!"
 }, {
-  "genre" : "sfd",
-  "year" : 2002,
-  "author" : "sdfjsn",
-  "title" : "xxx",
-  "rating" : 7.7,
-  "comment" : "sdfds"
-}, {
-  "genre" : "asd",
-  "year" : 1234,
-  "author" : "a",
-  "title" : "b",
-  "rating" : 12.0,
-  "comment" : ""
-}, {
-  "genre" : null,
-  "year" : 22,
-  "author" : "sds",
-  "title" : "22",
-  "rating" : 2.0,
-  "comment" : "sd"
-} ]
+  "genre" : "fgh",
+  "year" : 0,
+  "author" : "asd",
+  "title" : "asd",
+  "rating" : "NaN",
+  "comment" : null
+},
+  {
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "genre": "Fiction",
+    "year": 1960,
+    "rating": 8.5,
+    "comment": "Classic novel addressing racial injustice."
+  },
+  {
+    "title": "1984",
+    "author": "George Orwell",
+    "genre": "Dystopian",
+    "year": 1949,
+    "rating": 9.0,
+    "comment": "A thought-provoking exploration of a totalitarian society."
+  },
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "genre": "Classic",
+    "year": 1925,
+    "rating": 8.8,
+    "comment": "An American classic depicting the Jazz Age."
+  },
+  {
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "genre": "Coming-of-age",
+    "year": 1951,
+    "rating": 8.0,
+    "comment": "A novel about teenage rebellion and identity."
+  },
+  {
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "author": "J.K. Rowling",
+    "genre": "Fantasy",
+    "year": 1997,
+    "rating": 9.3,
+    "comment": "The beginning of the beloved wizarding series."
+  },
+  {
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "genre": "Fantasy",
+    "year": 1937,
+    "rating": 9.1,
+    "comment": "A classic fantasy adventure novel."
+  },
+  {
+    "title": "The Hunger Games",
+    "author": "Suzanne Collins",
+    "genre": "Science Fiction",
+    "year": 2008,
+    "rating": 8.6,
+    "comment": "A gripping dystopian series."
+  },
+  {
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "genre": "Romance",
+    "year": 1813,
+    "rating": 8.7,
+    "comment": "A timeless romantic novel."
+  },
+  {
+    "title": "The Shining",
+    "author": "Stephen King",
+    "genre": "Horror",
+    "year": 1977,
+    "rating": 8.9,
+    "comment": "A classic horror novel set in an isolated hotel."
+  },
+  {
+    "title": "The Da Vinci Code",
+    "author": "Dan Brown",
+    "genre": "Mystery",
+    "year": 2003,
+    "rating": 8.4,
+    "comment": "A gripping mystery involving art and religion."
+  }]

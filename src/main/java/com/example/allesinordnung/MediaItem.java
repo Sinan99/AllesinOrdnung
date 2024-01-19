@@ -1,5 +1,7 @@
 package com.example.allesinordnung;
 
+import static com.example.allesinordnung.AllesinOrdnungController.showAlert;
+
 public class MediaItem {
 
     private String genre;
@@ -9,7 +11,7 @@ public class MediaItem {
     private double rating;
 
     public MediaItem(){
-
+        this.rating = 5.0;
     }
 
     ////hbfsdhfb
@@ -19,8 +21,22 @@ public class MediaItem {
         this.year = year;
         this.title = title;
         this.comment = comment;
-        this.rating = rating;
+        this.rating = validateNumber(String.valueOf(rating), "rating", 1, 10) ? rating : 5.0;
     }
+    protected boolean validateNumber(String input, String fieldName, double minValue, double maxValue) {
+        try {
+            double parsedValue = Double.parseDouble(input);
+            if (parsedValue < minValue || parsedValue > maxValue) {
+                showAlert("Please enter a valid " + fieldName + " between " + minValue + " and " + maxValue + ".");
+                return false;
+            }
+            return true;
+        } catch (NumberFormatException e) {
+            showAlert("Please enter a valid " + fieldName + " in numerals.");
+            return false;
+        }
+    }
+
     public String getGenre() {
         return genre;
     }

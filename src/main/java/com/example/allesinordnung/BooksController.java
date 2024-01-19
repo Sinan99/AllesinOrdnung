@@ -156,29 +156,46 @@ public class BooksController extends AllesinOrdnungController {
             return false;
         }
     }
-
     @FXML
     private void addNewBook() {
         // Erfasst die Benutzereingaben
         String genre = genreField.getText().isEmpty() ? null : genreField.getText();
-        int year = yearField.getText().isEmpty() ? 0 : Integer.parseInt(yearField.getText());
+
+        int year;
+        if (!yearField.getText().isEmpty() && isNumeric(yearField.getText())) {
+            year = Integer.parseInt(yearField.getText());
+        } else if (!yearField.getText().isEmpty()) {
+            showAlert("Please enter a valid year in numerals.");
+            return;
+        } else {
+            year = 0; // Default value when no input is provided
+        }
+
         String author = authorField.getText().isEmpty() ? null : authorField.getText();
         String title = titleField.getText().isEmpty() ? null : titleField.getText();
         String comment = commentField.getText().isEmpty() ? null : commentField.getText();
-        double rating = ratingField.getText().isEmpty() ? 0 : Double.parseDouble(ratingField.getText());
 
-        //Eingabe von year überprüfen, es müssen 4 Zahlen sein
-        if(!yearField.getText().matches("\\d{4}")) {
-            showAlert("Please enter a valid 4-digit year.");
+        String ratingText = ratingField.getText();
+        double rating;
+        if (!ratingText.isEmpty()) {
+            if (isNumeric(ratingText)) {
+                rating = Double.parseDouble(ratingText);
+                if (rating < 1 || rating > 10) {
+                    showAlert("Please enter a valid rating between 1 and 10.");
+                    return;
+                }
+            } else {
+                showAlert("Please enter a valid numeric rating.");
+                return;
+            }
+        } else {
+            rating = Double.NaN; // "unrated"
+        }
+        // Check if at least title and author are provided
+        if (title == null || author == null) {
+            showAlert("Title and author are required fields.");
             return;
         }
-
-        // Eingabe von rating überprüfen
-        if (rating < 1 || rating > 10) {
-            showAlert("Please enter a number between 1 and 10.");
-            return;
-        }
-
         // Erstellt ein neues Buchobjekt
         Book newBook = new Book(genre, year, author, title, rating, comment);
 
@@ -195,14 +212,6 @@ public class BooksController extends AllesinOrdnungController {
         titleField.clear();
         ratingField.clear();
         commentField.clear();
-    }
-
-    private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
     private void fillFormWithBook(Book book) {
         // Befüllt die Formularfelder mit den Daten des ausgewählten Buches
