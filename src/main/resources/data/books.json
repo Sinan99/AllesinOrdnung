@@ -7,7 +7,7 @@
   "comment" : "A magical adventure!"
 }, {
   "genre" : "Science Fiction",
-  "year" : 2010,
+  "year" : 2011,
   "author" : "Christopher Nolan",
   "title" : "Inception",
   "rating" : 8.8,
@@ -89,4 +89,11 @@
   "title" : "The Da Vinci Code",
   "rating" : 8.4,
   "comment" : "A gripping mystery involving art and religion."
+}, {
+  "genre" : "Science Fiction",
+  "year" : 20101,
+  "author" : "Christopher Nolan",
+  "title" : "Inception",
+  "rating" : 8.8,
+  "comment" : "Mind-bending plot!"
 } ]

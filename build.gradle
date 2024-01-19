@@ -35,9 +35,11 @@ javafx {
 }
 
 dependencies {
+    implementation 'org.controlsfx:controlsfx:11.1.0'
     implementation('com.dlsc.formsfx:formsfx-core:11.6.0') {
         exclude(group: 'org.openjfx')
     }
+
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")

@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
+import org.controlsfx.control.Notifications;
 
 import java.io.File;
 import java.io.IOException;
@@ -213,6 +214,8 @@ public class BooksController extends AllesinOrdnungController {
         titleField.clear();
         ratingField.clear();
         commentField.clear();
+        // Zeigt eine Erfolgsmeldung in der Ecke des Bildschirms an
+        Notifications.create().text("Book added successfully!").showInformation();
     }
     @FXML
     private void deleteSelectedBook() {
@@ -247,6 +250,8 @@ public class BooksController extends AllesinOrdnungController {
                 ratingField.clear();
                 commentField.clear();
             }
+            // Zeigt eine Erfolgsmeldung in der Ecke des Bildschirms an
+            Notifications.create().text("Book deleted successfully!").showInformation();
         }
     }
     private void fillFormWithBook(Book book) {
@@ -337,6 +342,8 @@ public class BooksController extends AllesinOrdnungController {
 
             // Speichert die aktualisierte Liste in der JSON-Datei
             saveBookDataToJson();
+            // Zeigt eine Erfolgsmeldung in der Ecke des Bildschirms an
+            Notifications.create().text("Book updated successfully!").showInformation();
         }
     }
 
