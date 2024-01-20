@@ -17,9 +17,11 @@ import javafx.scene.shape.Rectangle;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import org.controlsfx.control.Notifications;
 
 public class MusicController extends AllesinOrdnungController {
     @FXML
@@ -163,8 +165,36 @@ public class MusicController extends AllesinOrdnungController {
         // Erfassen der Benutzereingaben
         String artist = artistNameField.getText().isEmpty() ? null : artistNameField.getText();
         String title = songTitleField.getText().isEmpty() ? null : songTitleField.getText();
-        int year = songDateField.getText().isEmpty() ? 0 : Integer.parseInt(songDateField.getText());
-        Double rating = ratingField.getText().isEmpty() ? 0 : Double.parseDouble(ratingField.getText());
+        int year;
+        if (!songDateField.getText().isEmpty() && isNumeric(songDateField.getText())) {
+            year = Integer.parseInt(songDateField.getText());
+        } else if (!songDateField.getText().isEmpty()) {
+            showAlert("Please enter a valid year in numerals.");
+            return;
+        } else {
+            year = 0; // Default value when no input is provided
+        }
+        String ratingText = ratingField.getText();
+        Double rating;
+        if (!ratingText.isEmpty()) {
+            if (isNumeric(ratingText)) {
+                rating = Double.parseDouble(ratingText);
+                if (rating < 1 || rating > 10) {
+                    showAlert("Please enter a valid rating between 1 and 10.");
+                    return;
+                }
+            } else {
+                showAlert("Please enter a valid numeric rating.");
+                return;
+            }
+        } else {
+            rating = Double.NaN; // "unrated"
+        }
+        // Check if at least title and artist are provided
+        if (title == null || artist == null) {
+            showAlert("Title and Artist are required fields.");
+            return;
+        }
         String genre = genreField.getText().isEmpty() ? null : genreField.getText();
         String comment = commentField.getText().isEmpty() ? null : commentField.getText();
 
@@ -185,6 +215,8 @@ public class MusicController extends AllesinOrdnungController {
         ratingField.clear();
         genreField.clear();
         commentField.clear();
+        // Show a success message in the corner of the screen
+        Notifications.create().text("Song added successfully!").showInformation();
     }
 
 
@@ -224,30 +256,43 @@ public class MusicController extends AllesinOrdnungController {
     public void addMusicData(Music newMusic) {
         musicData.add(newMusic);
     }
-
     @FXML
     private void deleteSelectedMusic() {
-        // Holen des ausgewählten Musikstücks
+        // Get the selected SOng
         Music selectedMusic = tableView.getSelectionModel().getSelectedItem();
 
-        // Überprüfen, ob ein Musikstück ausgewählt wurde
+        // Check if a song was selected
         if (selectedMusic != null) {
-            // Entfernen des Musikstücks aus der Liste
-            musicData.remove(selectedMusic);
+            // Create a confirmation dialog
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation Dialog");
+            alert.setHeaderText("Delete " + selectedMusic.getTitle());
+            alert.setContentText("Are you sure you want to delete the selected song?\n"
+                    + "Title: " + selectedMusic.getTitle() + "\nArtist: " + selectedMusic.getArtist());
 
-            // Speichern der aktualisierten Liste in der JSON-Datei
-            saveMusicDataToJson();
+            // Show the dialog and wait for user action
+            Optional<ButtonType> result = alert.showAndWait();
 
-            // Löschen der Formularfelder
-            artistNameField.clear();
-            songTitleField.clear();
-            songDateField.clear();
-            ratingField.clear();
-            genreField.clear();
-            commentField.clear();
+            // Check if the user selected "OK"
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                // Remove the song from the ObservableList
+                musicData.remove(selectedMusic);
+
+                // Save the updated list to the JSON file
+                saveMusicDataToJson();
+
+                // Clear the form fields
+                genreField.clear();
+                songDateField.clear();
+                artistNameField.clear();
+                songTitleField.clear();
+                ratingField.clear();
+                commentField.clear();
+                // Show a success message in the corner of the screen
+                Notifications.create().text("Song deleted successfully!").showInformation();
+            }
         }
     }
-
     @FXML
     private void updateSelectedMusic() {
         // Holen des ausgewählten Musikstücks
@@ -276,6 +321,8 @@ public class MusicController extends AllesinOrdnungController {
 
             // Speichern der aktualisierten Liste in der JSON-Datei
             saveMusicDataToJson();
+            // Zeigt eine Erfolgsmeldung in der Ecke des Bildschirms an
+            Notifications.create().text("Song updated successfully!").showInformation();
         }
     }
 

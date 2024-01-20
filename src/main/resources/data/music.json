@@ -1,8 +1,120 @@
-[ {
-  "title" : "asa",
-  "artist" : "asas",
-  "rating" : 12.0,
-  "genre" : "asas",
-  "comment" : "as",
-  "year" : 12
-} ]
+[
+  {
+    "year": 1994,
+    "title": "Illmatic",
+    "artist": "Nas",
+    "rating": 9.8,
+    "genre": "Rap",
+    "comment": "Legendary debut album with poetic lyrics"
+  },
+  {
+    "year": 1996,
+    "title": "All Eyez on Me",
+    "artist": "2Pac",
+    "rating": 9.5,
+    "genre": "Rap",
+    "comment": "Double-disc masterpiece from the iconic rapper"
+  },
+  {
+    "year": 1988,
+    "title": "Straight Outta Compton",
+    "artist": "N.W.A",
+    "rating": 9.3,
+    "genre": "Rap",
+    "comment": "Revolutionary album that changed the rap game"
+  },
+  {
+    "year": 1997,
+    "title": "Life After Death",
+    "artist": "The Notorious B.I.G.",
+    "rating": 9.6,
+    "genre": "Rap",
+    "comment": "Posthumous classic with diverse and impactful tracks"
+  },
+  {
+    "year": 2000,
+    "title": "The Marshall Mathers LP",
+    "artist": "Eminem",
+    "rating": 9.7,
+    "genre": "Rap",
+    "comment": "Eminem's breakthrough album with powerful storytelling"
+  },
+  {
+    "year": 1992,
+    "title": "The Chronic",
+    "artist": "Dr. Dre",
+    "rating": 9.4,
+    "genre": "Rap",
+    "comment": "Influential album that introduced G-funk to the world"
+  },
+  {
+    "year": 1989,
+    "title": "3 Feet High and Rising",
+    "artist": "De La Soul",
+    "rating": 9.1,
+    "genre": "Rap",
+    "comment": "Innovative and eclectic rap album"
+  },
+  {
+  "year" : 0,
+  "title" : "My name is",
+  "artist" : "Eminem",
+  "rating" : "NaN",
+  "genre" : null,
+  "comment" : null
+}, {
+  "year" : 2001,
+  "title" : "Marshal Matters",
+  "artist" : "The Real Slim Shady",
+  "rating" : 10.0,
+  "genre" : "Rap",
+  "comment" : "Please stand up!"
+}, {
+  "year" : 1,
+  "title" : "asd",
+  "artist" : "asd",
+  "rating" : 1.0,
+  "genre" : "asd",
+  "comment" : "asd"
+},
+    {
+      "year": 2020,
+      "title": "Song One",
+      "artist": "Artist A",
+      "rating": 8.5,
+      "genre": "Pop",
+      "comment": "Catchy tune with great vocals"
+    },
+    {
+      "year": 2018,
+      "title": "Melody Master",
+      "artist": "Artist B",
+      "rating": 9.2,
+      "genre": "Rock",
+      "comment": "Guitar solos are amazing"
+    },
+    {
+      "year": 2019,
+      "title": "Beats Bliss",
+      "artist": "Artist C",
+      "rating": 7.8,
+      "genre": "Electronic",
+      "comment": "Perfect for dancing"
+    },
+    {
+      "year": 2021,
+      "title": "Serenade in Blue",
+      "artist": "Artist D",
+      "rating": 8.0,
+      "genre": "Jazz",
+      "comment": "Smooth jazz for relaxing evenings"
+    },
+    {
+      "year": 2017,
+      "title": "Harmony Haven",
+      "artist": "Artist E",
+      "rating": 9.5,
+      "genre": "Classical",
+      "comment": "Orchestral masterpiece"
+    }
+  ]
