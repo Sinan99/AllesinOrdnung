@@ -5,8 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
-
+<?import java.net.URL?>
 <AnchorPane fx:id="body" minHeight="600.0" minWidth="900.0" style="-fx-background-color: #FFF;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.allesinordnung.AllesinOrdnungController">
+    <stylesheets>
+        <URL value="@hoverstyle.css" />
+    </stylesheets>
 <Rectangle fx:id="headerBG" fill="#252525" height="150.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.topAnchor="0.0" />
    <VBox fx:id="headerVBox" alignment="CENTER" minHeight="150.0" minWidth="900.0" prefHeight="150.0" AnchorPane.topAnchor="0.0">
       <children>
