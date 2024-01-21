@@ -33,6 +33,7 @@ public class AllesinOrdnungController {
     private Button openMusic;
     @FXML
     private Button openBooks;
+    // Die bilder für cursor laden
     private final Image booksCursorImage = new Image("/Icons/book-bookmark.png");
     private final Image musicCursorImage = new Image("/Icons/music-alt.png");
     private final Image moviesCursorImage = new Image("/Icons/film.png");
@@ -51,21 +52,30 @@ public class AllesinOrdnungController {
         closeProgram.prefHeightProperty().bind(Bindings.divide(body.heightProperty(), 4.4));
         closeProgram.prefWidthProperty().bind(Bindings.divide(body.widthProperty(), 2.7));
 
-        // Add event handlers for each button
-        setCursorOnHover(openBooks, booksCursorImage);
-        setCursorOnHover(openMusic, musicCursorImage);
-        setCursorOnHover(openMovies, moviesCursorImage);
-        setCursorOnHover(closeProgram, closeProgramCursorImage);
-    }
+    // Set default cursors
+        openBooks.setCursor(Cursor.DEFAULT);
+        openMusic.setCursor(Cursor.DEFAULT);
+        openMovies.setCursor(Cursor.DEFAULT);
+        closeProgram.setCursor(Cursor.DEFAULT);
 
+    // Add event handlers for each button
+    setCursorOnHover(openBooks, booksCursorImage);
+    setCursorOnHover(openMusic, musicCursorImage);
+    setCursorOnHover(openMovies, moviesCursorImage);
+    setCursorOnHover(closeProgram, closeProgramCursorImage);
+}
     private void setCursorOnHover(Button button, Image cursorImage) {
         // Set custom cursor on mouse enter
         button.setOnMouseEntered(event -> {
             button.setCursor(Cursor.NONE); // Hide the default cursor
             button.setCursor(new ImageCursor(cursorImage));
         });
-    }
 
+        // Revert to default cursor on mouse exit
+        button.setOnMouseExited(event -> {
+            button.setCursor(Cursor.DEFAULT);
+        });
+    }
     public static void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
@@ -80,6 +90,7 @@ public class AllesinOrdnungController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
     @FXML
     private void openBooks() {
         try {
