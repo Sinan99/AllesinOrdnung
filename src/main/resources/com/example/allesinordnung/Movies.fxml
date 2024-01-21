@@ -19,9 +19,6 @@
 <AnchorPane fx:id="body" minHeight="600.0" minWidth="900.0" style="-fx-background-color: #FFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.allesinordnung.MoviesController">
 
     <Rectangle fx:id="headerBG" fill="#252525" height="110.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-    <stylesheets>
-        <URL value="@hoverstyle.css" />
-    </stylesheets>
     <VBox alignment="CENTER" minHeight="110.0" minWidth="900.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <children>
             <Text fill="WHITE" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Movies" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="500.0">
