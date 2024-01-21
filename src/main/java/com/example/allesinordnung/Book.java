@@ -10,18 +10,13 @@ public class Book extends MediaItem {
     public Book() {
         super();
     }
-    public Book(String genre, int year, String author, String title, double rating, String comment) {
-        super(genre, year, title, comment, rating);
-        setAuthor(author);
-    }
-
 
     @JsonCreator
     public Book(@JsonProperty("genre") String genre,
                 @JsonProperty("year") int year,
                 @JsonProperty("author") String author,
                 @JsonProperty("title") String title,
-                @JsonProperty("rating") Double rating,
+                @JsonProperty("rating") double rating,
                 @JsonProperty("comment") String comment) {
 
         super(genre,year,title,comment,rating);
@@ -31,13 +26,10 @@ public class Book extends MediaItem {
             throw new IllegalArgumentException("Invalid year value");
         }
 
-        if (rating != null && (rating < 1 || rating > 10)) {
+        if ((rating < 1 || rating > 10)) {
             throw new IllegalArgumentException("Invalid rating value");
         }
     }
-
-
-
 
     public String getAuthor() {
         return author;

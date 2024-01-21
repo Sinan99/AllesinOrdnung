@@ -11,11 +11,7 @@ public class MediaItem {
     private double rating;
 
     public MediaItem(){
-        this.year = 2024;
-        this.rating = 5.0;
     }
-
-    ////hbfsdhfb
 
     public MediaItem(String genre, int year, String title, String comment, double rating){
         this.genre = genre;

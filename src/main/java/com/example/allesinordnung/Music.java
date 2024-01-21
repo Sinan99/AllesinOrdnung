@@ -9,15 +9,11 @@ public class Music extends MediaItem{
     public Music(){
         super();
     }
-    public Music(String genre, int year,String artist,String title, double rating, String comment){
-        super(genre, year, title,comment,rating);
-        setArtist(artist);
-    }
     @JsonCreator
-    public Music(@JsonProperty("year") @JsonInclude(JsonInclude.Include.NON_NULL) Integer year,
+    public Music(@JsonProperty("year") int year,
                  @JsonProperty("title") String title,
                  @JsonProperty("artist") String artist,
-                 @JsonProperty("rating") @JsonInclude(JsonInclude.Include.NON_NULL) Double rating,
+                 @JsonProperty("rating") double rating,
                  @JsonProperty("genre") String genre,
                  @JsonProperty("comment") String comment) {
 

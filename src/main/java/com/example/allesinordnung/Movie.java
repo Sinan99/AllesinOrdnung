@@ -9,15 +9,11 @@ public class Movie extends MediaItem {
     public Movie(){
         super();
     }
-    public Movie(String genre, int year, String director, String title, double rating, String comment) {
-        super(genre, year, title, comment, rating);
-        setDirector(director);
-    }
     @JsonCreator
     public Movie(@JsonProperty("year") int year,
                  @JsonProperty("title") String title,
                  @JsonProperty("director") String director,
-                 @JsonProperty("rating") Double rating,
+                 @JsonProperty("rating") double rating,
                  @JsonProperty("genre") String genre,
                  @JsonProperty("comment") String comment) {
 

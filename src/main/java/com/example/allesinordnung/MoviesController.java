@@ -52,7 +52,7 @@ public class MoviesController extends AllesinOrdnungController {
     @FXML
     private TextField genreField;
     @FXML
-    private TextField commentField; // Hinzugefügtes Kommentarfeld
+    private TextField commentField;
 
     @FXML
     private Button home;
@@ -217,7 +217,7 @@ public class MoviesController extends AllesinOrdnungController {
             return;
         }
         // Create a new Movie object
-        Movie newMovie = new Movie(genre, year, director, title, rating, comment);
+        Movie newMovie = new Movie(year, title, director, rating,genre,comment);
 
         // Add the new movie to movieData
         addMovieData(newMovie);
@@ -236,15 +236,14 @@ public class MoviesController extends AllesinOrdnungController {
         Notifications.create().text("Movie added successfully!").showInformation();
     }
 
-
     private void fillFormWithMovie(Movie movie) {
         // Formularfelder mit den Daten des ausgewählten Films füllen
         directorField.setText(movie.getDirector());
         titleField.setText(movie.getTitle());
         yearField.setText(String.valueOf(movie.getYear()));
         genreField.setText(movie.getGenre());
-        ratingField.setText(String.valueOf(movie.getRating())); // Bewertungsfeld setzen
-        commentField.setText(movie.getComment()); // Kommentarfeld setzen
+        ratingField.setText(String.valueOf(movie.getRating()));
+        commentField.setText(movie.getComment());
     }
 
     private void loadDataFromJson() {
@@ -320,8 +319,8 @@ public class MoviesController extends AllesinOrdnungController {
             String title = titleField.getText();
             int year = Integer.parseInt(yearField.getText());
             String genre = genreField.getText();
-            double rating = Double.parseDouble(ratingField.getText()); // Bewertungsfeld hinzugefügt
-            String comment = commentField.getText(); // Kommentarfeld hinzugefügt
+            double rating = Double.parseDouble(ratingField.getText());
+            String comment = commentField.getText();
 
 
             selectedMovie.setRating(rating);
@@ -330,8 +329,8 @@ public class MoviesController extends AllesinOrdnungController {
             selectedMovie.setTitle(title);
             selectedMovie.setYear(year);
             selectedMovie.setGenre(genre);
-            selectedMovie.setRating(rating); // Bewertungsfeld setzen
-            selectedMovie.setComment(comment); // Kommentarfeld setzen
+            selectedMovie.setRating(rating);
+            selectedMovie.setComment(comment);
 
             movieData.set(movieData.indexOf(selectedMovie), selectedMovie);
 

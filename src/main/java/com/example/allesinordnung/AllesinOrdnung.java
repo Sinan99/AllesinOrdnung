@@ -25,10 +25,8 @@ public class AllesinOrdnung extends Application {
         stage.show();
 
     }
-
     public static void main(String[] args) {
         launch();
     }
-
 
 }

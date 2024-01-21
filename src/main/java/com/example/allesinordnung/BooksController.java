@@ -1,6 +1,7 @@
 package com.example.allesinordnung;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -10,9 +11,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import org.controlsfx.control.Notifications;
 
@@ -51,7 +50,7 @@ public class BooksController extends AllesinOrdnungController {
     private Button home;
     @FXML
     private TableView<Book> tableView;
-    private ObservableList<Book> bookData = FXCollections.observableArrayList();
+    private final ObservableList<Book> bookData = FXCollections.observableArrayList();
     @FXML
     private TableColumn<Book, String> genreColumn;
     @FXML
@@ -96,6 +95,7 @@ public class BooksController extends AllesinOrdnungController {
         setTooltipForColumn(titleColumn);
         setTooltipForColumn(ratingColumn);
         setTooltipForColumn(commentColumn);
+
         // Lädt Daten aus der JSON-Datei
         loadDataFromJson();
 
@@ -125,7 +125,7 @@ public class BooksController extends AllesinOrdnungController {
                                 return book.getRating() >= numericInput;
                             }
                             // Wenn nein -> wird nach dem Jahr gesucht
-                            else{
+                            else {
                                 return book.getYear() == numericInput;
                             }
                         }
@@ -154,10 +154,11 @@ public class BooksController extends AllesinOrdnungController {
         try {
             Double.parseDouble(str);
             return true;
-        } catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             return false;
         }
     }
+
     @FXML
     private void addNewBook() {
         // Erfasst die Benutzereingaben
@@ -217,6 +218,7 @@ public class BooksController extends AllesinOrdnungController {
         // Zeigt eine Erfolgsmeldung in der Ecke des Bildschirms an
         Notifications.create().text("Book added successfully!").showInformation();
     }
+
     @FXML
     private void deleteSelectedBook() {
         // Holt das ausgewählte Buch
@@ -255,6 +257,7 @@ public class BooksController extends AllesinOrdnungController {
 
         }
     }
+
     private void fillFormWithBook(Book book) {
         // Befüllt die Formularfelder mit den Daten des ausgewählten Buches
         genreField.setText(book.getGenre());
@@ -291,29 +294,6 @@ public class BooksController extends AllesinOrdnungController {
     public void addBookData(Book newBook) {
         bookData.add(newBook);
     }
-
-   /* @FXML
-    private void deleteSelectedBook() {
-        // Holt das ausgewählte Buch
-        Book selectedBook = tableView.getSelectionModel().getSelectedItem();
-
-        // Prüft, ob ein Buch ausgewählt wurde
-        if (selectedBook != null) {
-            // Entfernt das Buch aus der ObservableList
-            bookData.remove(selectedBook);
-
-            // Speichert die aktualisierte Liste in der JSON-Datei
-            saveBookDataToJson();
-
-            // Löscht die Formularfelder
-            genreField.clear();
-            yearField.clear();
-            authorField.clear();
-            titleField.clear();
-            ratingField.clear();
-            commentField.clear();
-        }
-    }*/
 
     @FXML
     private void updateSelectedBook() {
