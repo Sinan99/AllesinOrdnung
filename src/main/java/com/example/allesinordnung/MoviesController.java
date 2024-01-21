@@ -139,10 +139,19 @@ public class MoviesController extends AllesinOrdnungController {
                             }
                         }
 
-                        return  movie.getTitle().toLowerCase().contains(lowerCaseFilter) ||
-                                movie.getDirector().toLowerCase().contains(lowerCaseFilter) ||
-                                movie.getGenre().toLowerCase().contains(lowerCaseFilter) ||
-                                movie.getComment().toLowerCase().contains(lowerCaseFilter);
+                        if (movie.getTitle() != null && movie.getTitle().toLowerCase().contains(lowerCaseFilter)) {
+                            return true;
+                        }
+                        if (movie.getDirector() != null && movie.getDirector().toLowerCase().contains(lowerCaseFilter)) {
+                            return true;
+                        }
+                        if (movie.getGenre() != null && movie.getGenre().toLowerCase().contains(lowerCaseFilter)) {
+                            return true;
+                        }
+                        if (movie.getComment() != null && movie.getComment().toLowerCase().contains(lowerCaseFilter)) {
+                            return true;
+                        }
+                        return false;
                     }
                 });
             }
