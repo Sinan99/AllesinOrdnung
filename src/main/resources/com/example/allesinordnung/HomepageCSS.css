@@ -3,11 +3,7 @@
 }
 
 .button:hover {
-    -fx-background-color: #00bbff;
+    -fx-background-color: #0000FF;
     -fx-effect: dropshadow(gaussian, #00bbff, 15, 0.0, 0, 0);
-
 }
 
-#closeProgram.button:hover {
-    -fx-effect: dropshadow(gaussian, #FF0000, 15, 0.0, 0, 0);
-}
