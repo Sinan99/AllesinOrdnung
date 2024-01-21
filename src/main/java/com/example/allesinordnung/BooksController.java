@@ -50,7 +50,7 @@ public class BooksController extends AllesinOrdnungController {
     private Button home;
     @FXML
     private TableView<Book> tableView;
-    private final ObservableList<Book> bookData = FXCollections.observableArrayList();
+    private ObservableList<Book> bookData = FXCollections.observableArrayList();
     @FXML
     private TableColumn<Book, String> genreColumn;
     @FXML
