@@ -30,7 +30,7 @@
             </font>
         </Text>
     </VBox>
-    <VBox alignment="TOP_CENTER" maxWidth="270.0" minHeight="470.0" minWidth="270.0" AnchorPane.bottomAnchor="10.0"
+    <VBox stylesheets="@TableViewCSS.css" alignment="TOP_CENTER" maxWidth="270.0" minHeight="470.0" minWidth="270.0" AnchorPane.bottomAnchor="10.0"
           AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="120.0">
         <Button fx:id="home" graphicTextGap="0.0" mnemonicParsing="false" onAction="#Home" prefHeight="49.0"
                 prefWidth="270.0" style="-fx-background-color: #252525;-fx-cursor: hand;" text="🏠"
@@ -115,7 +115,7 @@
             </Button>
             <Button fx:id="updateButton" alignment="CENTER" mnemonicParsing="false"
                     onAction="#updateSelectedBook" prefHeight="40.0" prefWidth="60.0"
-                    style="-fx-background-color: #00bbff;    -fx-cursor: hand;" text="🔄" textFill="WHITE">
+                    style="-fx-background-color: #00bbff;   -fx-cursor: hand;" text="🔄" textFill="WHITE">
                 <font>
                     <Font size="20.0"/>
                 </font>
