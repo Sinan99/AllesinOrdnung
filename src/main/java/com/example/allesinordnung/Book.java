@@ -1,6 +1,7 @@
 package com.example.allesinordnung;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import static com.example.allesinordnung.AllesinOrdnungController.showAlert;
@@ -18,10 +19,10 @@ public class Book extends MediaItem {
 
     @JsonCreator
     public Book(@JsonProperty("genre") String genre,
-                @JsonProperty("year") int year,
+                @JsonProperty("year")  int year,
                 @JsonProperty("author") String author,
                 @JsonProperty("title") String title,
-                @JsonProperty("rating") Double rating,
+                @JsonProperty("rating")  Double rating,
                 @JsonProperty("comment") String comment) {
 
         super(genre,year,title,comment,rating);

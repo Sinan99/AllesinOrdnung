@@ -20,13 +20,6 @@
   "rating" : 8.5,
   "comment" : "Classic novel addressing racial injustice."
 }, {
-  "genre" : "Dystopian",
-  "year" : 1949,
-  "author" : "George Orwell",
-  "title" : "1984",
-  "rating" : 9.0,
-  "comment" : "A thought-provoking exploration of a totalitarian society."
-}, {
   "genre" : "Classic",
   "year" : 1925,
   "author" : "F. Scott Fitzgerald",
