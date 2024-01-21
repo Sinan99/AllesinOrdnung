@@ -104,6 +104,7 @@ public class AllesinOrdnungController {
         }
     }
 
+
     @FXML
     private void closeProgram() {
         System.exit(0);
