@@ -72,3 +72,16 @@
     -fx-background-color:#FFFFFF;
     -fx-border-color:#FFFFFF;
 }
+#home.button:hover{
+    -fx-effect: dropshadow(gaussian, #252525, 15, 0.0, 0, 0);
+}
+
+#cancelAddBook.button:hover{
+    -fx-effect: dropshadow(gaussian, red, 15, 0.0, 0, 0);
+}
+#updateButton.button:hover{
+    -fx-effect: dropshadow(gaussian, #00bbff, 15, 0.0, 0, 0);
+}
+#saveBook.button:hover{
+    -fx-effect: dropshadow(gaussian, green, 15, 0.0, 0, 0);
+}
