@@ -14,8 +14,6 @@ public class Book extends MediaItem {
         super(genre, year, title, comment, rating);
         setAuthor(author);
     }
-
-
     @JsonCreator
     public Book(@JsonProperty("genre") String genre,
                 @JsonProperty("year") int year,
