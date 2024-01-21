@@ -19,6 +19,7 @@ public class AllesinOrdnung extends Application {
         // Eine neue Szene (Scene) wird erstellt und mit der geladenen Benutzeroberfläche (FXML-Datei) initialisiert.
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
+
         // Set the stage properties
         stage.setResizable(true);
         stage.setScene(scene);
