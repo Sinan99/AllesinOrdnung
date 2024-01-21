@@ -1,8 +1,0 @@
-.button:hover {
-    -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, #00bbff, 15, 0.0, 0, 0);
-}
-
-.button:pressed {
-    -fx-effect: dropshadow(gaussian, #00FFFF, 10, 0.0, 0, 0);
-}
