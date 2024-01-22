@@ -309,26 +309,54 @@ public class MusicController extends AllesinOrdnungController {
 
         // Überprüfen, ob ein Musikstück ausgewählt wurde
         if (selectedMusic != null) {
-            // Holen der neuen Daten aus den Formularfeldern
-            String artistName = artistNameField.getText();
-            String songTitle = songTitleField.getText();
-            String songDate = songDateField.getText();
-            double rating = Double.parseDouble(ratingField.getText());
-            String genre = genreField.getText();
-            String comment = commentField.getText();
+            String artistName = artistNameField.getText().isEmpty() ? null : artistNameField.getText();
+            String songTitle = songTitleField.getText().isEmpty() ? null : songTitleField.getText();
 
-            // Aktualisieren der Musikdaten
+            int year;
+            if (!songDateField.getText().isEmpty() && isNumeric(songDateField.getText())) {
+                year = Integer.parseInt(songDateField.getText());
+            } else if (!songDateField.getText().isEmpty()) {
+                showAlert("Please enter a valid year in numerals.");
+                return;
+            } else {
+                year = 0; // Default value when no input is provided
+            }
+
+            String genre = genreField.getText().isEmpty() ? null : genreField.getText();
+            String comment = commentField.getText().isEmpty() ? null : commentField.getText();
+
+            String ratingText = ratingField.getText();
+            double rating;
+            if (!ratingText.isEmpty()) {
+                if (isNumeric(ratingText)) {
+                    rating = Double.parseDouble(ratingText);
+                    if (rating < 1 || rating > 10) {
+                        showAlert("Please enter a valid rating between 1 and 10.");
+                        return;
+                    }
+                } else {
+                    showAlert("Please enter a valid numeric rating.");
+                    return;
+                }
+            } else {
+                rating = Double.NaN; // "unrated"
+            }
+
+            // Check if at least title and artist are provided
+            if (songTitle == null || artistName == null) {
+                showAlert("Song title and artist name are required fields.");
+                return;
+            }
+
             selectedMusic.setArtist(artistName);
             selectedMusic.setTitle(songTitle);
-            selectedMusic.setYear(Integer.parseInt(songDate));
+            selectedMusic.setYear(year);
             selectedMusic.setRating(rating);
             selectedMusic.setGenre(genre);
             selectedMusic.setComment(comment);
 
-            // Aktualisieren des Musikstücks in der Liste
             musicData.set(musicData.indexOf(selectedMusic), selectedMusic);
 
-            // Speichern der aktualisierten Liste in der JSON-Datei
             saveMusicDataToJson();
             // Zeigt eine Erfolgsmeldung in der Ecke des Bildschirms an
             Notifications.create().text("Song updated successfully!").showInformation();

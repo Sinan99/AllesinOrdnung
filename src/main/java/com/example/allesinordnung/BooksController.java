@@ -312,12 +312,44 @@ public class BooksController extends AllesinOrdnungController {
         // Prüft, ob ein Buch ausgewählt wurde
         if (selectedBook != null) {
             // Holt die neuen Daten aus den Formularfeldern
-            String genre = genreField.getText();
-            int year = Integer.parseInt(yearField.getText()); // Achten Sie auf Fehlerbehandlung
-            String author = authorField.getText();
-            String title = titleField.getText();
-            double rating = Double.parseDouble(ratingField.getText());
-            String comment = commentField.getText();
+            String genre = genreField.getText().isEmpty() ? null : genreField.getText();
+
+            int year;
+            if (!yearField.getText().isEmpty() && isNumeric(yearField.getText())) {
+                year = Integer.parseInt(yearField.getText());
+            } else if (!yearField.getText().isEmpty()) {
+                showAlert("Please enter a valid year in numerals.");
+                return;
+            } else {
+                year = 0; // Default value when no input is provided
+            }
+
+            String author = authorField.getText().isEmpty() ? null : authorField.getText();
+            String title = titleField.getText().isEmpty() ? null : titleField.getText();
+            String comment = commentField.getText().isEmpty() ? null : commentField.getText();
+
+            String ratingText = ratingField.getText();
+            double rating;
+            if (!ratingText.isEmpty()) {
+                if (isNumeric(ratingText)) {
+                    rating = Double.parseDouble(ratingText);
+                    if (rating < 1 || rating > 10) {
+                        showAlert("Please enter a valid rating between 1 and 10.");
+                        return;
+                    }
+                } else {
+                    showAlert("Please enter a valid numeric rating.");
+                    return;
+                }
+            } else {
+                rating = Double.NaN; // "unrated"
+            }
+
+            // Check if at least title and author are provided
+            if (title == null || author == null) {
+                showAlert("Title and author are required fields.");
+                return;
+            }
 
             // Aktualisiert die Buchdaten
             selectedBook.setGenre(genre);
@@ -332,10 +364,12 @@ public class BooksController extends AllesinOrdnungController {
 
             // Speichert die aktualisierte Liste in der JSON-Datei
             saveBookDataToJson();
+
             // Zeigt eine Erfolgsmeldung in der Ecke des Bildschirms an
             Notifications.create().text("Book updated successfully!").showInformation();
         }
     }
+
 
     @FXML
     private void Home() {
