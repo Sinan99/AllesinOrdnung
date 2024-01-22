@@ -362,7 +362,6 @@ public class MoviesController extends AllesinOrdnungController {
                 showAlert("Title and director are required fields.");
                 return;
             }
-
             selectedMovie.setRating(rating);
             selectedMovie.setComment(comment);
             selectedMovie.setDirector(director);
