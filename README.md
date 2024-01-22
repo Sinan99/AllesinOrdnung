@@ -1,4 +1,5 @@
 # Alles in Ordnung - Media Library Application
+By: Wahida, Sinan, Enis and Uros
 
 Alles in Ordnung is a JavaFX application designed to manage and organize a media library, focusing on books.
 
