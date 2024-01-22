@@ -133,13 +133,13 @@ public class MusicController extends AllesinOrdnungController {
                         if (music.getTitle() != null && music.getTitle().toLowerCase().contains(lowerCaseFilter)) {
                             return true;
                         }
-                        if (music.getArtist() != null && music.getArtist().toLowerCase().contains(lowerCaseFilter)) {
+                        else if (music.getArtist() != null && music.getArtist().toLowerCase().contains(lowerCaseFilter)) {
                             return true;
                         }
-                        if (music.getGenre() != null && music.getGenre().toLowerCase().contains(lowerCaseFilter)) {
+                        else if (music.getGenre() != null && music.getGenre().toLowerCase().contains(lowerCaseFilter)) {
                             return true;
                         }
-                        if (music.getComment() != null && music.getComment().toLowerCase().contains(lowerCaseFilter)) {
+                        else if (music.getComment() != null && music.getComment().toLowerCase().contains(lowerCaseFilter)) {
                             return true;
                         }
                         return false;

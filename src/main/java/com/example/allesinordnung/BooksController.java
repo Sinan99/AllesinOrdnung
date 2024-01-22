@@ -133,13 +133,13 @@ public class BooksController extends AllesinOrdnungController {
                         if (book.getTitle() != null && book.getTitle().toLowerCase().contains(lowerCaseFilter)) {
                             return true;
                         }
-                        if (book.getAuthor() != null && book.getAuthor().toLowerCase().contains(lowerCaseFilter)) {
+                        else if (book.getAuthor() != null && book.getAuthor().toLowerCase().contains(lowerCaseFilter)) {
                             return true;
                         }
-                        if (book.getGenre() != null && book.getGenre().toLowerCase().contains(lowerCaseFilter)) {
+                        else if (book.getGenre() != null && book.getGenre().toLowerCase().contains(lowerCaseFilter)) {
                             return true;
                         }
-                        if (book.getComment() != null && book.getComment().toLowerCase().contains(lowerCaseFilter)) {
+                        else if (book.getComment() != null && book.getComment().toLowerCase().contains(lowerCaseFilter)) {
                             return true;
                         }
                         return false;

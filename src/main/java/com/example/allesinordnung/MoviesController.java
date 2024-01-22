@@ -142,13 +142,13 @@ public class MoviesController extends AllesinOrdnungController {
                         if (movie.getTitle() != null && movie.getTitle().toLowerCase().contains(lowerCaseFilter)) {
                             return true;
                         }
-                        if (movie.getDirector() != null && movie.getDirector().toLowerCase().contains(lowerCaseFilter)) {
+                        else if (movie.getDirector() != null && movie.getDirector().toLowerCase().contains(lowerCaseFilter)) {
                             return true;
                         }
-                        if (movie.getGenre() != null && movie.getGenre().toLowerCase().contains(lowerCaseFilter)) {
+                        else if (movie.getGenre() != null && movie.getGenre().toLowerCase().contains(lowerCaseFilter)) {
                             return true;
                         }
-                        if (movie.getComment() != null && movie.getComment().toLowerCase().contains(lowerCaseFilter)) {
+                        else if (movie.getComment() != null && movie.getComment().toLowerCase().contains(lowerCaseFilter)) {
                             return true;
                         }
                         return false;
