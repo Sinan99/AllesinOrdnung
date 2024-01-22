@@ -8,7 +8,10 @@
     -fx-border-width: 2;
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.4) , 10, 0 , 0 , 1 );
 }
+#closeProgram.button:hover{
 
+    -fx-effect: dropshadow(gaussian, red, 15, 0.0, 0, 0)
+}
 .button:hover {
   /*  -fx-background-color: #2980b9; /* Darker blue on hover */
   /*  -fx-effect: dropshadow(gaussian, #00FFFF, 3, 1, 0, 0);
