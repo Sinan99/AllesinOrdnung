@@ -324,14 +324,44 @@ public class MoviesController extends AllesinOrdnungController {
         Movie selectedMovie = tableView.getSelectionModel().getSelectedItem();
 
         if (selectedMovie != null) {
-            String director = directorField.getText();
-            String title = titleField.getText();
-            int year = Integer.parseInt(yearField.getText());
-            String genre = genreField.getText();
-            double rating = Double.parseDouble(ratingField.getText());
-            String comment = commentField.getText();
+            String director = directorField.getText().isEmpty() ? null : directorField.getText();
+            String title = titleField.getText().isEmpty() ? null : titleField.getText();
 
+            int year;
+            if (!yearField.getText().isEmpty() && isNumeric(yearField.getText())) {
+                year = Integer.parseInt(yearField.getText());
+            } else if (!yearField.getText().isEmpty()) {
+                showAlert("Please enter a valid year in numerals.");
+                return;
+            } else {
+                year = 0; // Default value when no input is provided
+            }
 
+            String genre = genreField.getText().isEmpty() ? null : genreField.getText();
+            String comment = commentField.getText().isEmpty() ? null : commentField.getText();
+
+            String ratingText = ratingField.getText();
+            double rating;
+            if (!ratingText.isEmpty()) {
+                if (isNumeric(ratingText)) {
+                    rating = Double.parseDouble(ratingText);
+                    if (rating < 1 || rating > 10) {
+                        showAlert("Please enter a valid rating between 1 and 10.");
+                        return;
+                    }
+                } else {
+                    showAlert("Please enter a valid numeric rating.");
+                    return;
+                }
+            } else {
+                rating = Double.NaN; // "unrated"
+            }
+
+            // Check if at least title and director are provided
+            if (title == null || director == null) {
+                showAlert("Title and director are required fields.");
+                return;
+            }
             selectedMovie.setRating(rating);
             selectedMovie.setComment(comment);
             selectedMovie.setDirector(director);
